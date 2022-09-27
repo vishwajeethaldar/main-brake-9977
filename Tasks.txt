@@ -1,0 +1,55 @@
+ ----Prateek---
+# HomePage
+# NavBar
+# Footer
+
+# Features
+# Download
+
+
+---- Priyanshu ---
+
+# Login 
+# Signup
+# App Navbar and Sidebar
+
+
+
+-------------------
+[Projects, Time Tracker, Team, Clients]
+
+---- Ravishankar  ---
+	Teams & Clients
+---- Js Sanjay  ---
+	Time Tracker
+
+---- Vishwajeet  ---
+	Projects
+
+---  Database ---
+
+
+
+1. Users - (name, password, email)
+2. Projects - (Nmae, client, tracked, amount, progress, aceess, archive)
+3. Clients - (Name, Address, Note, archive)
+4. Teams -
+		group - (name, aceess)
+
+
+
+Dep - 
+
+1. chakra UI 
+npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion 
+2. react-icons --save
+3. axios
+4. redux react-redux redux-thunk
+5. react-router-dom
+//backend 
+
+1. express
+2. nodemon
+3. cors
+4. mongoose
+5. 
