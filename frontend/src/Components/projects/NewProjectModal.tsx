@@ -9,8 +9,8 @@ import {
     ModalCloseButton,
     ModalBody,
     ModalFooter,
-    Text
-
+    Text,
+    Flex
 } from "@chakra-ui/react"
 import { RegistrationForm } from "./RegistrationForm";
 
@@ -28,19 +28,25 @@ export const NewProjectModal = () => {
           
         </Button>
         <Modal onClose={onClose} isOpen={isOpen}  isCentered>
-            <ModalOverlay />
-            <ModalContent maxW={"650px"}>
+            <ModalOverlay  bg='none'
+              backdropFilter='auto'
+              backdropInvert='60%'
+              backdropBlur='2px'/>
+            <ModalContent maxW={"580px"}>
             <ModalHeader borderBottom={"1px solid #ccc"}> 
               <Text fontSize={"1.4em"} color={"#999"} >
                   Create New Project
               </Text>
             </ModalHeader>
             <ModalCloseButton />
-            <ModalBody >
+            <ModalBody borderBottom={"1px solid #ccc"} py="25px">
                <RegistrationForm/>
             </ModalBody>
             <ModalFooter>
-                <Button onClick={onClose}>Close</Button>
+                <Flex gap="25px" align="center">
+                  <Button onClick={onClose} bg="none" _hover={{color:"blue", textDecoration:"underline"}}>Close</Button>
+                  <Button colorScheme={"twitter"} borderRadius="0px">Create</Button>
+                </Flex>
             </ModalFooter>
             </ModalContent>
       </Modal>

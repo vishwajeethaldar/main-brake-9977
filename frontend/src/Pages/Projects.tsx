@@ -11,8 +11,13 @@ import { PageTitle } from '../Components/projects/PageTitle'
         <Box  width={["100%", "100%", "100%","80%"]} px={["20px"]} >
             <Flex justify={"space-between"} width="100%" align={["center"]} py={["25px","25px","25px","50px"]}>
                 <PageTitle title='Projects'/>
-                <NewProjectModal/>
+                <Box >
+                    <NewProjectModal/>
+                </Box>
+                
             </Flex>
+
+       
         </Box>
 
         
