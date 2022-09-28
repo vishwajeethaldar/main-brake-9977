@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import {useSelector, useDispatch} from "react-redux"
+import Timer_Tracker from "./Components/Time_Tracker/Timer_Tracker";
 import { useAppDispatch } from "./hooks/user";
 import { login } from "./store/users/users.action"
 
@@ -17,17 +18,18 @@ function App() {
   const user = {
     email:"p@gmail.com", password:"12345678"
   }
-useEffect(()=>{
-  dispatch(login(user))
-})
+// useEffect(()=>{
+//   dispatch(login(user))
+// })
 
   return (
       <div>
-      <form>
+      {/* <form>
         <input type={"email"} name={"email"}/>
         <input type={"text"} name={"password"}/>
         <button type="submit">Login</button>
-      </form>
+      </form> */}
+      <Timer_Tracker/>
     </div>
   )
 }
