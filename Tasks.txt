@@ -31,7 +31,7 @@
 
 
 1. Users - (name, password, email)
-2. Projects - (Nmae, client, tracked, amount, progress, aceess, archive)
+2. Projects - (name, client, tracked, amount, progress, aceess, archive)
 3. Clients - (Name, Address, Note, archive)
 4. Teams -
 		group - (name, aceess)
@@ -53,3 +53,7 @@ npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
 3. cors
 4. mongoose
 5. 
+
+
+
+clear filter
