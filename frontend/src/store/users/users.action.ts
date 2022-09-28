@@ -14,6 +14,7 @@ type credsProp={
     email:string;
     password:string;
 }
+
 type response={
     token:string;
 }
