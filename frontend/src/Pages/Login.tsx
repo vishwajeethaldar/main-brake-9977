@@ -19,7 +19,6 @@ const Login = () => {
   const [loginCreds, setLoginCreds] = useState<credsProp>({ email: "", password: "" });
   const navigate = useNavigate();
   const { state } = useLocation();
-  // const { login } = useContext(AuthContext);
   const dispatch = useAppDispatch();
 
   const hanldeChange = (e: ChangeEvent<HTMLInputElement>) => {

@@ -48,19 +48,19 @@ const userReducer = (state = intialState, { type, payload }: actionprop) => {
             return {
                 ...state, loading: false, error: true
             }
-        // case USER_SIGNUP_SUCCESS :
-        //     return {
-        //         ...state, loading: false, error: false, username:payload.username, email:payload.email, password:payload.password, message:"Login Successfully"
-        //     }
-        // case USER_SIGNUP_ERROR :
-        //     return {
-        //         ...state, loading: false, error: false, username:"", email:"", password:"", message:"Same User Exists" 
-        //     }
-        // case USER_LOGOUT:
-        //     localStorage.removeItem("token")
-        //     return {
-        //         ...state, loading: false, error: false, token: "",
-        //     }
+        case USER_SIGNUP_SUCCESS :
+            return {
+                ...state, loading: false, error: false, username:payload.username, email:payload.email, password:payload.password, message:"Login Successfully"
+            }
+        case USER_SIGNUP_ERROR :
+            return {
+                ...state, loading: false, error: false, username:"", email:"", password:"", message:"Same User Exists" 
+            }
+        case USER_LOGOUT:
+            localStorage.removeItem("token")
+            return {
+                ...state, loading: false, error: false, token: "",
+            }
         default:
             return state;
     }
