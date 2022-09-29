@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom"
+import Login from "../Pages/Login"
 import Timer_Tracker from "../Components/Time_Tracker/Timer_Tracker"
 import { Projects } from "../Pages/Projects"
 import Team from "../Pages/Team"
@@ -6,7 +7,7 @@ export const MainRoutes = () => {
   return (
     <Routes>
         <Route path="/" element={"home"} />
-        <Route path="/login" element={"Login"} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={"signup"} />
         <Route path="/downloads" element={"downloads"} />
         <Route path="/features" element={"features"} />
