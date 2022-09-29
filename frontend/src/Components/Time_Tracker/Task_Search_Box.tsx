@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import React from 'react'
 import { useSelector } from 'react-redux'
 type task={
@@ -20,9 +20,9 @@ const Task_Search_Box = ({handleSetValue,tasks,setShow}:tasksSearchProps) => {
       setShow(false)
     }
   return (
-    <Box position={"absolute"} border="1px solid red" width={"100%"} bg="white" zIndex="1">
+    <Box boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} position={"absolute"} width={"100%"} bg="white" zIndex="1">
         {tasks.map((el)=>(
-            <Box cursor={"pointer"} onClick={()=>handleSearch(el.name)} key={el.userId}>{el.name}</Box>
+            <Box _hover={{bg:"#e4eaee"}} padding={"10px"} cursor={"pointer"} onClick={()=>handleSearch(el.name)} key={el.userId}><Text fontSize={"sm"}>{el.name}</Text></Box>
         ))}
     </Box>
   )
