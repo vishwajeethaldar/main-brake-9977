@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom"
+import Timer_Tracker from "../Components/Time_Tracker/Timer_Tracker"
 import { Projects } from "../Pages/Projects"
 import Team from "../Pages/Team"
 export const MainRoutes = () => {
@@ -9,6 +10,8 @@ export const MainRoutes = () => {
         <Route path="/signup" element={"signup"} />
         <Route path="/downloads" element={"downloads"} />
         <Route path="/features" element={"features"} />
+        <Route path="/tracker" element={<Timer_Tracker/>} />
+        <Route path="/projects" element={"projects"} />
         <Route path="/tracker" element={"Tracker"} />
         <Route path="/projects" element={<Projects/>} />
         <Route path="/projects/id" element={"individual-project"} />
