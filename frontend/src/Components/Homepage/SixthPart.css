@@ -1,0 +1,25 @@
+.appfirstdiv{
+    display: flex;
+    border: 2px solid green;
+    height: 500px;
+    width:75%;
+    margin: auto;
+}
+.appbtns{
+    height: 6%;
+    width: 19%;
+    color: #03a9f4;
+    margin-top: 30px;
+    padding: 9px;
+    margin-left: 8%;
+    border-color: #03a9f4;
+    border: 1px solid #03a9f4;
+    border-radius: 5px;
+    background-color: #f8fdff;
+    margin-top: -10px;
+    cursor: pointer;
+}
+.appbtns:hover{
+    background-color: #03a9f4;
+    color: white;
+}
