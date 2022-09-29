@@ -1,3 +1,4 @@
+// import { loadDataLocalStorage, saveDataLocalStorage } from '../../hooks/user';
 import 
 {
     USER_LOGIN_LOADING,
@@ -13,19 +14,20 @@ import
 type stateInter = {
     loading:boolean;
     error:boolean;
-    token:string;   
+    token:string;  
     isAuth:boolean;
 }
 type actionprop = {
     type:string;
-    payload:{};
+    payload:{status:string,token:string};
 }
 
 
-const intialState = {
+const intialState:stateInter = {
     loading:false,
     error:false,
     token:localStorage.getItem("token")||"",
+    // token:loadDataLocalStorage('token') || "",
     isAuth:false
 
 }
@@ -39,6 +41,7 @@ const userReducer = (state=intialState, {type, payload}:actionprop)=>{
             }
         case USER_LOGIN_SUCCESS :
             // localStorage.setItem("token", payload)
+            localStorage.setItem("token",JSON.stringify(payload.token))
             return {
                 ...state, loading:false, error:false, token:payload
             }
