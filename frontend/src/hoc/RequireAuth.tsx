@@ -1,34 +1,19 @@
-// import React, { useContext } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate, useLocation, Navigate } from "react-router-dom";
+import React,{ReactElement, ReactNode} from 'react';
+import { Navigate, RelativeRoutingType, To } from "react-router-dom";
 import { useAppSelector } from "../hooks/user";
-// import { AuthContext } from "../context/AuthContext";
 
 type AuthProps = {
-    children : JSX.Element;
+    children : ReactElement
 }
 
-type ReturnAuth = {
-
-}
-
-const RequireAuth = ({ children }:AuthProps) => {
-  const isAuth = useAppSelector((store)=>store.users.token);
-  // const isAuth = localStorage.getItem("token");
-  const { pathname } = useLocation();
-  let navigate = useNavigate();
-  // const switchToLogin = () => {navigate("/login")}
-  console.log(isAuth);
-  if (isAuth) {
-    return children;
-  } 
-  else {
-    return (
-      // Redirecting to Login page
-      // <Navigate />
-      <>Login</>
-    );
+const RequireAuth = ({children}:AuthProps) => {
+  const token = useAppSelector((store)=>store.users.token);
+  if(!token){
+    return children
   }
+
+  return <Navigate to="/login" replace={true} />
+  
 };
 
 export default RequireAuth;
