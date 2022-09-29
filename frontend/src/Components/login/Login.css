@@ -1,0 +1,16 @@
+.login-left-part{
+    background: linear-gradient(-10deg,  #1f86da, #0d1eb7,#4720bf, #441fb3, #381992, rgb(94, 8, 232), rgb(78, 6, 193), rgb(64, 5, 159));
+	/* background-size: 400% 400%; */
+	animation: 15s ease infinite;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

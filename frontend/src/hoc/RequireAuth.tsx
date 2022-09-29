@@ -8,7 +8,7 @@ type AuthProps = {
 
 const RequireAuth = ({children}:AuthProps) => {
   const token = useAppSelector((store)=>store.users.token);
-  if(!token){
+  if(token){
     return children
   }
 
