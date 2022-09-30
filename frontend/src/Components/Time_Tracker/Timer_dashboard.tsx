@@ -11,6 +11,7 @@ import useCounter from '../../hooks/useCounter'
 import {task} from "./Task_Search_Box"
 import { useAppDispatch, useAppSelector } from '../../features/hooks'
 import { addTask, getTasks, updateTask } from '../../features/tasks/tasksSlice'
+import { getProjects } from '../../features/projects/projectsSlice'
 type trackerProps={
   show:boolean;
   setShow:Function;
@@ -23,6 +24,8 @@ let init={
 }
 export const Timer_dashboard = ({show,setShow,handleProps,updatedTask}:trackerProps) => {
   const token= useAppSelector(store=>store.authSlice.token)
+  const projects= useAppSelector(store=>store.projectsSlice)
+ 
   const [userid, email, p] = token.trim().split(":")
   const dispatch= useAppDispatch()
   const [type,setType]=useState<boolean>(true)
@@ -34,7 +37,9 @@ export const Timer_dashboard = ({show,setShow,handleProps,updatedTask}:trackerPr
   const [update,setUpdate]=useState<boolean>(false)
   useEffect(()=>{
      handleProps(setType,handleStart,setUpdate)
+   //   dispatch(getProjects({token:token, query:""}))
   },[])
+ 
   const onClick=()=>{
      if(type)
      {
@@ -86,7 +91,7 @@ export const Timer_dashboard = ({show,setShow,handleProps,updatedTask}:trackerPr
             <Input ref={ref} onChange={onChange} placeholder='What are you working on?'/>
             {show&&tasks? <Task_Search_Box handleSetValue={handleSetValue} setShow={setShow} tasks={tasks}/>:null}
             </Box>
-            <Create_Project/>
+            <Create_Project />
         </Flex>
         <Flex alignItems={"center"} justifyContent="space-between">
             <Flex justifyContent="space-between" width={"40%"}>
