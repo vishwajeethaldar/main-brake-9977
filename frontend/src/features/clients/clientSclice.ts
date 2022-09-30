@@ -58,6 +58,60 @@ export const deleteClient = createAsyncThunk(
 )
 
 
-// const initialState:clientSliceType = {
-    
-// }
+const initialState:clientSliceType = {
+    loading:false,
+    error:false,
+    errmsg:"",
+    clients:[]
+}
+
+const clientSlice = createSlice({
+    name:"clientsworkspace",
+    initialState,
+    reducers:{},
+    extraReducers(builder) {
+        builder.addCase(addClients.pending,(state, action   )=>{
+            state.loading =true;
+        })
+        .addCase(addClients.fulfilled, (state, action:PayloadAction<clientType>)=>{
+            state.loading =false;
+            state.error =false;
+            state.clients = [...state.clients,action.payload]
+        })
+        .addCase(addClients.rejected, (state, action:PayloadAction<any>)=>{
+            state.errmsg = action.payload;
+            state.error = true;
+            state.loading = false
+        })
+        .addCase(getClients.pending,(state, action)=>{
+            state.loading =true;
+        })
+        .addCase(getClients.fulfilled, (state, action:PayloadAction<clientType[]>)=>{
+            state.loading =false;
+            state.error =false;
+            state.clients = action.payload    
+        })
+        .addCase(getClients.rejected, (state, action:PayloadAction<any>)=>{
+            state.errmsg = action.payload;
+            state.error = true;
+            state.loading = false
+        })
+        .addCase(deleteClient.pending,(state, action)=>{
+            state.loading =true;
+        })
+        .addCase(deleteClient.fulfilled, (state, action:PayloadAction<clientType>)=>{
+            state.loading =false;
+            state.error =false;
+            state.clients = state.clients.filter((item)=>item._id!==action.payload._id)   
+        })
+        .addCase(deleteClient.rejected, (state, action:PayloadAction<any>)=>{
+            state.errmsg = action.payload;
+            state.error = true;
+            state.loading = false
+        })
+
+
+    },
+})
+
+export default clientSlice.reducer

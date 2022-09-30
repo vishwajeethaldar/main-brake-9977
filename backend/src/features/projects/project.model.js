@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 
 const projectSchema =new mongoose.Schema({
     name:{type:String, required:true},
-    client:{type:mongoose.Schema.Types.ObjectId,ref:"client", required:false},
+    client:{type:String, required:false},
+    clientId:{type:mongoose.Schema.Types.ObjectId,ref:"client", required:false},
     tracked:{type:Number, default:0.00},
     amount:{type:Number, default:0.00},
     billable:{type:Boolean, default:true}, 

@@ -14,6 +14,8 @@ export const getProjects = createAsyncThunk(
                     token:data.token
                 }
             });
+            console.log(res.data);
+            
             return res.data;
         }catch(error:any){
             return thunkapi.rejectWithValue(error.message);

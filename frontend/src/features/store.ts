@@ -3,10 +3,10 @@ import usersSlice from "./users/usersSlice";
 import projectsSlice from './projects/projectsSlice'
 import authSlice from "./auth/authSlice";
 import tasksSlice from "./tasks/tasksSlice";
-
+import clientSlice from './clients/clientSclice'
 const store = configureStore({
     reducer:{
-        projectsSlice,authSlice,tasksSlice
+        projectsSlice,authSlice,tasksSlice,clientSlice
     },
   });
 

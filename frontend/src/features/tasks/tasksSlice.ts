@@ -22,7 +22,6 @@ export const getTasks = createAsyncThunk(
     }
 )
 
-
 // add New task
 export const addTask = createAsyncThunk(
     'tasks/addTasks',
