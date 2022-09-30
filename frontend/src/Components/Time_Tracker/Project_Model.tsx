@@ -12,8 +12,9 @@ import {
     Text,
     Flex
 } from "@chakra-ui/react"
-import { RegistrationForm } from "../projects/RegistrationForm";
+// import { RegistrationForm } from "../projects/RegistrationForm";
 import {IoAddCircleSharp} from "react-icons/io5"
+import { RegistrationForm } from "../projects/RegistrationForm"
 export const Project_Model = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
   return (
@@ -32,14 +33,8 @@ export const Project_Model = () => {
             </ModalHeader>
             <ModalCloseButton />
             <ModalBody borderBottom={"1px solid #ccc"} py="25px">
-               <RegistrationForm/>
+               <RegistrationForm onClose={onClose}/>
             </ModalBody>
-            <ModalFooter>
-                <Flex gap="25px" align="center">
-                  <Button onClick={onClose} bg="none" _hover={{color:"blue", textDecoration:"underline"}}>Close</Button>
-                  <Button colorScheme={"twitter"} borderRadius="0px">Create</Button>
-                </Flex>
-            </ModalFooter>
             </ModalContent>
       </Modal>
     </Box>
