@@ -13,16 +13,27 @@ const rootReducer = combineReducers({
 */
 
 import { configureStore } from '@reduxjs/toolkit'
-import { intStateType, projectReducer } from './projects/project.reducer'
+
+//import { intStateType, projectReducer } from './projects/project.reducer'
+//import userReducer from './users/users.reducer'
+//import {combineReducers, legacy_createStore, applyMiddleware} from "redux"
+//import thunk from 'redux-thunk'
+//export const rootReducers = combineReducers({
+ // users: userReducer,
+  //projects:projectReducer
+
+import { tasksReducer } from './tasks/tasks_reducer'
 import userReducer from './users/users.reducer'
-import {combineReducers, legacy_createStore, applyMiddleware} from "redux"
-import thunk from 'redux-thunk'
-export const rootReducers = combineReducers({
-  users: userReducer,
-  projects:projectReducer
+
+ const store = configureStore({
+  reducer: {
+    users: userReducer,
+    tasks: tasksReducer,
+  }
+
 })
 
-const store = legacy_createStore(rootReducers,{}, applyMiddleware(thunk))
+//const store = legacy_createStore(rootReducers,{}, applyMiddleware(thunk))
 //  const store = configureStore({
 //   reducer: {
 //     users: userReducer,

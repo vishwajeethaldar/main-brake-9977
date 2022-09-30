@@ -1,0 +1,30 @@
+.sechead{
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 650px;
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+.tracetimebtn{
+    width: 23%;
+    padding: 1%;
+    background-color: #0288d1;
+    font-size: 16px;
+    color: white;
+    border-radius: 5px;
+    border-color: #03a9f4;
+    text-align: center;
+    margin-left: 550px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.anchor{
+    text-align: center;
+    margin: auto;
+    color: #01579B;
+    margin-left: 600px;
+}
+.disney{
+    margin-top: 55px;
+    margin-left: 240px;
+}
