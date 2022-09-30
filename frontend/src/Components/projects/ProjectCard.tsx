@@ -5,24 +5,30 @@ import {BsBorderBottom, BsThreeDotsVertical} from "react-icons/bs"
 import {FaRegStar} from "react-icons/fa"
 import {BsFillArrowDownSquareFill,BsFillArrowUpSquareFill} from 'react-icons/bs'
 import {
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
-    PopoverHeader,
-    PopoverBody,
-    PopoverFooter,
-    PopoverArrow,
-    PopoverCloseButton,
-    PopoverAnchor,
-    Button,
-    ButtonGroup,
-  } from '@chakra-ui/react'
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
+  Button,
+} from '@chakra-ui/react'
+import { useAppDispatch, useAppSelector } from '../../features/hooks'
+import { deleteProject } from '../../features/projects/projectsSlice'
 
 export const ProjectCard = ({project,bordertop,borderbottom}:{project:projectType,bordertop?:string,borderbottom?:string}) => {
   const { isOpen, onToggle, onClose } = useDisclosure()
+  const dispatch = useAppDispatch()
+  const auth = useAppSelector(store=>store.authSlice)
   const [showcard, setShowcard] =  useState(false)
   const handleShowcard = () =>{
     setShowcard(showcard?false:true);
+   }
+
+   const handleDeleteProject = (id:string)=>{
+    dispatch(deleteProject({token:auth.token, id:id}))
    }
 
   return (
@@ -68,29 +74,22 @@ export const ProjectCard = ({project,bordertop,borderbottom}:{project:projectTyp
               </Flex>
             </Box>
             <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"} minW={["100%","100%","100%", "50px"]} _hover={{cursor:"pointer"}} alignSelf={["flex-end","flex-end","flex-end",""]}>
+          <Menu>
+          <MenuButton as={Button} /*rightIcon={}*/ variant={"outline"} border={"none"} _hover={{bg:"none"}} >
               <Flex align={"center"} justify="flex-end" pr="15px">
-    <Popover
-        returnFocusOnClose={false}
-        isOpen={isOpen}
-        onClose={onClose}
-        placement='right'
-        closeOnBlur={false}
-      >
-        <PopoverTrigger>
-        <BsThreeDotsVertical/>
-        </PopoverTrigger>
-        <PopoverContent>
-          <PopoverHeader fontWeight='semibold'>Confirmation</PopoverHeader>
-          <PopoverArrow />
-          <PopoverCloseButton />
-          <PopoverBody>
-            Are you sure you want to continue with your action?
-          </PopoverBody>
-         
-        </PopoverContent>
-      </Popover>
-             
-                </Flex>
+                <Box onClick={()=>onToggle()}>
+                    <BsThreeDotsVertical/>
+                </Box>          
+              </Flex>
+              </MenuButton>
+              <MenuList w="100px">
+                <MenuItem>Archive</MenuItem>
+                <MenuItem>Edit</MenuItem>
+                <MenuItem onClick={()=>handleDeleteProject(`${project._id}`)}>Delete</MenuItem>
+              </MenuList>
+          </Menu>
+
+
             </Box>
           </Flex>
           <Box>

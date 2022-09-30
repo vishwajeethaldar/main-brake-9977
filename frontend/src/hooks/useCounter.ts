@@ -22,7 +22,6 @@ const useCounter=(initialState:number)=>{
     }
   }
   const handleStop=()=>{
-    console.log(count)
     setCount(initialState)
     clearInterval(ref.current)
     ref.current=null
