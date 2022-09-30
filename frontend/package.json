@@ -1,6 +1,7 @@
 {
   "name": "clokify.me",
   "private": true,
+  "proxy": "https://clockify-clone-app.herokuapp.com",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -14,6 +15,7 @@
     "@emotion/styled": "^11.10.4",
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
+    "dotenv": "^16.0.2",
     "framer-motion": "^7.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -22,11 +24,14 @@
     "react-responsive": "^9.0.0",
     "react-router-dom": "^6.4.1",
     "redux": "^4.2.0",
-    "redux-thunk": "^2.4.1"
+    "redux-thunk": "^2.4.1",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
+    "@types/node": "^18.7.23",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
+    "@types/styled-components": "^5.1.26",
     "@vitejs/plugin-react": "^2.1.0",
     "typescript": "^4.6.4",
     "vite": "^3.1.0"
