@@ -10,6 +10,7 @@ export type userSliceState = {
     error:boolean;
     errmsg:string;
     successMsg:string;
+    user?:userType;
 }
 
 
