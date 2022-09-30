@@ -3,7 +3,7 @@ import { RiArrowDownSFill } from "react-icons/ri"
 
 const LoginFooter = () => {
     return (
-        <Stack>
+        <Stack marginBottom="3rem">
             <Flex justifyContent="center">
                 <Menu>
                     <MenuButton

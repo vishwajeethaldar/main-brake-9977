@@ -1,54 +1,90 @@
-import { Button } from '@chakra-ui/react';
+import { Box, Button, Checkbox, Flex, FormLabel, Input, Stack, StackDivider, Text } from '@chakra-ui/react';
 import { useState, FormEvent, ChangeEvent } from 'react'
+import { FcGoogle } from 'react-icons/fc';
+import LoginFooter from '../Components/login/LoginFooter';
+import SignUpNavbar from '../Components/signup/SignupNavbar';
 import { useAppDispatch } from '../features/hooks';
 import { addUser } from '../features/users/usersSlice';
 
 type SignCredProp = {
-    name: string;
-    email: string;
-    password: string;
+  name: string;
+  email: string;
+  password: string;
 }
 
 const SignUp = () => {
-    const [signupcreds, setSignupCred] = useState<SignCredProp>({name: "", email: "", password: ""});
-    const dispatch = useAppDispatch();
+  const [signupcreds, setSignupCred] = useState<SignCredProp>({ name: "", email: "", password: "" });
+  const dispatch = useAppDispatch();
 
-    const hanldeChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setSignupCred({
-          ...signupcreds,
-          [name]: value,
-        });
-      };
-    
-      const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log(signupcreds);
-        dispatch(addUser(signupcreds));
-      };
+  const hanldeChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setSignupCred({
+      ...signupcreds,
+      [name]: value,
+    });
+  };
 
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input 
-                name="name"
-                type="text"
-                placeholder="Enter name"
-                onChange={hanldeChange} />
-                <input  
-                name="email"
-                type="email"
-                placeholder="Enter email"
-                onChange={hanldeChange}/>
-                <input 
-                name="password"
-                type="password"
-                placeholder="Enter password"
-                onChange={hanldeChange} />
-                <Button type="submit" color="white" borderRadius="0" bgColor="#03a9f4" _hover={{ bg: '#0482bb' }}>SignUp</Button>
-            </form>
-        </div>
-    )
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(signupcreds);
+    dispatch(addUser(signupcreds));
+  };
+
+  return (
+    <Box bgColor="#f2f6f8" >
+      <SignUpNavbar />
+      <Box>
+        
+      </Box>
+      <Box w="30%" margin="auto" bgColor="white" padding="2rem 2rem" marginTop="3rem" >
+        <form onSubmit={handleSubmit}>
+          <FormLabel>Sign Up</FormLabel>
+          <Stack direction="column">
+            <Input
+              variant="outline"
+              name="name"
+              type="text"
+              borderRadius="none"
+              placeholder="Enter name"
+              onChange={hanldeChange} />
+              <StackDivider />
+            <Input
+              variant="outline"
+              name="email"
+              type="email"
+              borderRadius="none"
+              placeholder="Enter email"
+              onChange={hanldeChange} />
+              <StackDivider />
+            <Input
+              variant="outline"
+              name="password"
+              type="password"
+              borderRadius="none"
+              placeholder="Enter password"
+              onChange={hanldeChange} />
+              <StackDivider />
+              <Flex fontSize="xs">
+                  <Checkbox /><Text marginLeft=".5rem">I agree to the </Text><Text color="#03a9f4" _hover={{ textDecoration: "underline", cursor: "pointer" }} >Terms of Use</Text>
+                </Flex>
+              <StackDivider />
+            <Button type="submit" color="white" borderRadius="0" bgColor="#03a9f4" _hover={{ bg: '#0482bb' }}>SignUp</Button>
+            <StackDivider />
+              <StackDivider />
+              <h3 style={{ width: "100%", textAlign: "center", borderBottom: "1px solid black", lineHeight: "1px" }}>
+                <span style={{ background: "#fff", fontSize: ".95rem", padding: "0 .4rem" }}>OR</span>
+              </h3>
+              <StackDivider />
+              <StackDivider />
+              <Button leftIcon={<FcGoogle />} color="gray" borderRadius="none" bgColor="white" border="1px solid gray" _hover={{ bg: '#d4dbdd' }} > Continue with Google</Button>
+          </Stack>
+        </form>
+      </Box>
+      <Flex margin="auto" marginTop="3rem" justifyContent="center" >
+        <LoginFooter />
+      </Flex>
+    </Box>
+  )
 }
 
 export default SignUp

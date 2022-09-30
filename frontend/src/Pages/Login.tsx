@@ -57,6 +57,7 @@ const Login = () => {
                 variant='outline'
                 name="email"
                 type="email"
+                borderRadius="none"
                 placeholder="Enter email"
                 onChange={hanldeChange}
               />
@@ -65,6 +66,7 @@ const Login = () => {
                 variant='outline'
                 name="password"
                 type="password"
+                borderRadius="none"
                 placeholder="Enter password"
                 onChange={hanldeChange}
               />
@@ -89,7 +91,7 @@ const Login = () => {
               </h3>
               <StackDivider />
               <StackDivider />
-              <Button leftIcon={<FcGoogle />} color="gray" borderRadius="0" bgColor="white" border="1px solid gray" _hover={{ bg: '#d4dbdd' }} > Continue with Google</Button>
+              <Button leftIcon={<FcGoogle />} color="gray" borderRadius="none" bgColor="white" border="1px solid gray" _hover={{ bg: '#d4dbdd' }} > Continue with Google</Button>
             </Stack>
 
           </form>

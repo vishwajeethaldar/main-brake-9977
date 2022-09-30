@@ -1,0 +1,20 @@
+import { Flex, Text } from "@chakra-ui/react"
+import { Link } from "react-router-dom"
+
+const SignUpNavbar = () => {
+    
+  return (
+    <Flex justifyContent="space-between" padding="2rem 4rem">
+        <div>
+            <img src="https://app.clockify.me/assets/logo.svg" alt="logo" />
+        </div>
+        <Flex>
+            <Link to="/login">
+            <Text color="#03a9f4" marginLeft=".3rem" _hover={{ textDecoration: "underline", cursor: "pointer" }}>Logi In</Text>
+            </Link>
+        </Flex>
+    </Flex>
+  )
+}
+
+export default SignUpNavbar
