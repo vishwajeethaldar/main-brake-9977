@@ -50,6 +50,8 @@ export const addprojects = createAsyncThunk(
 export const updateProject = createAsyncThunk(
     'pojects/patchProject',
     async(data:{token:string, data:{},id:string}, thunkapi)=>{
+        console.log(data);
+        
         try{
         // <projectType>
             const res:AxiosResponse<projectType> = await axios({
@@ -156,6 +158,26 @@ const projectsSlice = createSlice({
 
         })
         .addCase(deleteProject.rejected,(state, action:PayloadAction<any>)=>{
+            state.loading=false;
+            state.error= true;
+            state.errmsg = action.payload
+        })
+        .addCase(updateProject.pending, (state, action)=>{
+            state.loading=true;
+        })
+        .addCase(updateProject.fulfilled, (state, action:PayloadAction<projectType>)=>{
+            state.loading=false;
+            state.error= false;
+            state.products =  state.products.map((project)=>{
+                if(project._id===action.payload._id){
+                    return action.payload
+                }else{
+                    return project
+                }
+            })
+
+        })
+        .addCase(updateProject.rejected,(state, action:PayloadAction<any>)=>{
             state.loading=false;
             state.error= true;
             state.errmsg = action.payload
