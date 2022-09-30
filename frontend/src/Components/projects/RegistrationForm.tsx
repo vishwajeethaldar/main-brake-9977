@@ -9,7 +9,7 @@ import AddTemplates from './AddTemplates'
 import { ColorPicker } from './ColorPicker'
 
 export const RegistrationForm = ({onClose}:{onClose:Function}) => {
-  const auth = useAppSelector(store=>store.usersSlice)
+  const auth = useAppSelector(store=>store.authSlice)
   const [info, setInfo] = useState<boolean>(false)
   const [showColor,setShowColor ] = useState<boolean>(false)
   const [color, setColor] = useState<string>("#ffc107")

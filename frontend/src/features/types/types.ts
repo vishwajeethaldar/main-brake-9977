@@ -83,6 +83,9 @@ export type taskPropType={
     endTime:number;
     totalTime?:number;
     userId:string;
+    eTime?:string;
+    sTime?:string;
+    _id?:string;
 }
 export type tasksSliceType = {
     tasks:taskPropType[],

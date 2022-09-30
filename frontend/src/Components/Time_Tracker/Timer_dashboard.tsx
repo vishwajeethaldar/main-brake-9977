@@ -1,51 +1,80 @@
-import React,{useState,ChangeEvent,useRef} from 'react'
+import React,{useState,ChangeEvent,useRef, useEffect} from 'react'
 import { Box, Flex, Input ,Button, Text} from '@chakra-ui/react'
 import {GrAddCircle} from "react-icons/gr"
 import {AiFillTag} from "react-icons/ai"
 import {BsCurrencyDollar} from "react-icons/bs"
-import {IoEllipsisVertical,IoAddCircleSharp} from "react-icons/io5"
+import {IoEllipsisVertical} from "react-icons/io5"
 import Create_Project from './Create_Project'
 import Task_Search_Box from './Task_Search_Box'
 import CounterApp from './CounterApp'
 import useCounter from '../../hooks/useCounter'
+import {task} from "./Task_Search_Box"
 import { useAppDispatch, useAppSelector } from '../../features/hooks'
-import { addTask, getTasks } from '../../features/tasks/tasksSlice'
+import { addTask, getTasks, updateTask } from '../../features/tasks/tasksSlice'
 type trackerProps={
   show:boolean;
   setShow:Function;
+  handleProps:Function;
+  updatedTask:task;
 }
-export const Timer_dashboard = ({show,setShow}:trackerProps) => {
+let init={
+   etime:"",
+   stime:"",
+}
+export const Timer_dashboard = ({show,setShow,handleProps,updatedTask}:trackerProps) => {
   const token= useAppSelector(store=>store.authSlice.token)
   const [userid, email, p] = token.trim().split(":")
   const dispatch= useAppDispatch()
-
   const [type,setType]=useState<boolean>(true)
   const [taskName,setTaskName]=useState<string>("")
   const [billable,setBillable]=useState(false)
   const {timeString,count,handleStart,handleStop}=useCounter(0)
   const tasks=useAppSelector((store)=>store.tasksSlice.tasks)
   const ref=useRef<any>(null)
+  const [update,setUpdate]=useState<boolean>(false)
+  useEffect(()=>{
+     handleProps(setType,handleStart,setUpdate)
+  },[])
   const onClick=()=>{
      if(type)
      {
         setType(false)
+        console.log(update,"hey")
+        !update? ref.current.value=taskName:ref.current.value=updatedTask.name
         handleStart()
+        let hours=new Date().getHours()
+        let minutes=new Date().getMinutes()
+        let time=`${hours}:${minutes}`
+        init.stime=time
      }
      else
      {
         setType(true)
         handleStop()
-        let data ={name:taskName,billable:billable,endTime:count,userId:userid}
-        dispatch(addTask({token:token, data:data}))
+        let hours=new Date().getHours()
+        let minutes=new Date().getMinutes()
+        let time=`${hours}:${minutes}`
+        init.etime=time
+        ref.current.value=""
+        let data ={name:taskName,billable:billable,endTime:count,userId:userid,sTime:init.stime,eTime:init.etime}
+        if(!update)
+        {
+         dispatch(addTask({token:token, data:data}))
+        }
+        else
+        {
+          setUpdate(false)
+          dispatch(updateTask({data:{...updatedTask,endTime:updatedTask.endTime+count,eTime:init.etime},token:token}))
+        }
      }
   }
   const handleSetValue=(value:string)=>{
      ref.current.value=value
   }
   const onChange=(event:ChangeEvent<HTMLInputElement>)=>{
-     setTaskName(event.target.value)
+     setTaskName(ref.current.value)
      setShow(true)
-     dispatch(getTasks({token:token,query:event.target.value}))
+     getTasks({token:token,query:event.target.value})
   }
   const handleBillable=()=>{
     setBillable(!billable)
