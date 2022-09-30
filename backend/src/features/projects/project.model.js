@@ -13,6 +13,7 @@ const projectSchema =new mongoose.Schema({
     starred:{type:Boolean, default:false},
     startTime:{type:Number,required:false},
     endTime:{type:Number,required:false},
+    template:{type:String,required:false},
     userId:{type:mongoose.Schema.Types.ObjectId,ref:"user",  require:true},
     
 })
