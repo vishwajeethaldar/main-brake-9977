@@ -9,10 +9,7 @@ export type userSliceState = {
     loading:boolean;
     error:boolean;
     errmsg:string;
-    token:string;  
-    isAuth:boolean;
-    regUser?:string;
-
+    successMsg:string;
 }
 
 
@@ -60,4 +57,35 @@ export type clientSliceType = {
     error:boolean;
     errmsg:string;
     clients:clientType[]
+}
+
+
+export type authStateSliceType = {
+    loading: boolean;
+    error: boolean;
+    token: string;
+    isAuth: boolean;
+}
+export type authAtionpropType = {
+    type: string;
+    payload: { status: string, token: string, username: string, email: string, password: string, message:string };
+}
+
+export type authResType = {
+    token: string;
+    status:string
+}
+
+export type taskPropType={
+    name:string;
+    billable:boolean;
+    startTime?:number;
+    endTime:number;
+    totalTime?:number;
+    userId:string;
+}
+export type tasksSliceType = {
+    tasks:taskPropType[],
+    loading:boolean,
+    error:boolean
 }

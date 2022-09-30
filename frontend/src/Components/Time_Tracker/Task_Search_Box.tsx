@@ -6,7 +6,7 @@ type task={
     billable:boolean;
     startTime?:number;
     endTime:number;
-    totalTime:number;
+    totalTime?:number;
     userId:string;
 }
 type tasksSearchProps={
@@ -22,7 +22,7 @@ const Task_Search_Box = ({handleSetValue,tasks,setShow}:tasksSearchProps) => {
   return (
     <Box boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} position={"absolute"} width={"100%"} bg="white" zIndex="1">
         {tasks.map((el)=>(
-            <Box _hover={{bg:"#e4eaee"}} padding={"10px"} cursor={"pointer"} onClick={()=>handleSearch(el.name)} key={el.userId}><Text fontSize={"sm"}>{el.name}</Text></Box>
+            <Box _hover={{bg:"#e4eaee"}} padding={"10px"} cursor={"pointer"} onClick={()=>handleSearch(el.name)} key={el.name}><Text fontSize={"sm"}>{el.name}</Text></Box>
         ))}
     </Box>
   )

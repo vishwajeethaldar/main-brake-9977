@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/react';
 import { useState, FormEvent, ChangeEvent } from 'react'
-import { useAppDispatch } from '../hooks/user';
-import { signup } from '../store/users/users.action';
+import { useAppDispatch } from '../features/hooks';
+import { addUser } from '../features/users/usersSlice';
 
 type SignCredProp = {
     name: string;
@@ -24,7 +24,7 @@ const SignUp = () => {
       const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(signupcreds);
-        dispatch(signup(signupcreds));
+        dispatch(addUser(signupcreds));
       };
 
     return (

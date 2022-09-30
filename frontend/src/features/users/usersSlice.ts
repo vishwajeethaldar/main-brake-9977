@@ -21,9 +21,7 @@ const initialState:userSliceState = {
     loading:false,
     error:false,
     errmsg:"",
-    token:localStorage.getItem("token")||"",
-    isAuth:localStorage.getItem("token")?true:false,
-    regUser:""
+    successMsg:""
 }
 // Slice
 
@@ -37,12 +35,11 @@ const usersSlice = createSlice({
         })
         .addCase(addUser.fulfilled,(state, action:PayloadAction<string>)=>{
              state.loading=false,
-             state.isAuth = true,
-             state.regUser = action.payload   
+             state.error=false
+             state.successMsg = action.payload   
         })
         .addCase(addUser.rejected, (state, action:PayloadAction<any>)=>{
             state.loading=false,
-            state.isAuth = false,
             state.errmsg = action.payload,
             state.error = true
         })

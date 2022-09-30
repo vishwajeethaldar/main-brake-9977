@@ -45,5 +45,5 @@ import userReducer from './users/users.reducer'
 export type RootState = ReturnType<typeof store.getState>
 // // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch
-export type State = ReturnType<typeof rootReducers>
+// export type State = ReturnType<typeof rootReducers>
 export default store

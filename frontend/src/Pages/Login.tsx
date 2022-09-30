@@ -7,11 +7,10 @@ import { FcGoogle } from "react-icons/fc"
 import LeftPart from "../Components/login/LeftPart";
 import LoginNavbar from "../Components/login/LoginNavbar";
 
-
-
-import { useAppDispatch, useAppSelector } from "../hooks/user";
-import { login } from "../store/users/users.action";
+// import { login } from "../store/users/users.action";
 import LoginFooter from "../Components/login/LoginFooter";
+import { useAppDispatch, useAppSelector } from "../features/hooks";
+import { login } from "../features/auth/authSlice";
 
 type credsProp = {
   email: string;
@@ -20,7 +19,7 @@ type credsProp = {
 
 const Login = () => {
 
-  const isAuth = useAppSelector((store)=>store.users.token);
+  const isAuth = useAppSelector((store)=>store.authSlice.isAuth);
   const [loginCreds, setLoginCreds] = useState<credsProp>({email:"",password:""});
 
   const navigate = useNavigate();

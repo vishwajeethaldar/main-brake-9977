@@ -8,21 +8,22 @@ import Create_Project from './Create_Project'
 import Task_Search_Box from './Task_Search_Box'
 import CounterApp from './CounterApp'
 import useCounter from '../../hooks/useCounter'
-import { useDispatch, useSelector } from 'react-redux'
-import { useAppDispatch } from '../../hooks/user'
-import { addTask, getTasks } from '../../store/tasks/tasks_actions'
+import { useAppDispatch, useAppSelector } from '../../features/hooks'
+import { addTask, getTasks } from '../../features/tasks/tasksSlice'
 type trackerProps={
   show:boolean;
   setShow:Function;
 }
 export const Timer_dashboard = ({show,setShow}:trackerProps) => {
-  
-  const dispatch=useAppDispatch()
+  const token= useAppSelector(store=>store.authSlice.token)
+  const [userid, email, p] = token.trim().split(":")
+  const dispatch= useAppDispatch()
+
   const [type,setType]=useState<boolean>(true)
   const [taskName,setTaskName]=useState<string>("")
   const [billable,setBillable]=useState(false)
   const {timeString,count,handleStart,handleStop}=useCounter(0)
-  const tasks=useSelector((store)=>store.tasks.tasks)
+  const tasks=useAppSelector((store)=>store.tasksSlice.tasks)
   const ref=useRef<any>(null)
   const onClick=()=>{
      if(type)
@@ -34,7 +35,8 @@ export const Timer_dashboard = ({show,setShow}:trackerProps) => {
      {
         setType(true)
         handleStop()
-        dispatch(addTask({name:taskName,billable:billable,endTime:count,userId:"6333f6b05df0b3cce904692c"}))
+        let data ={name:taskName,billable:billable,endTime:count,userId:userid}
+        dispatch(addTask({token:token, data:data}))
      }
   }
   const handleSetValue=(value:string)=>{
@@ -43,7 +45,7 @@ export const Timer_dashboard = ({show,setShow}:trackerProps) => {
   const onChange=(event:ChangeEvent<HTMLInputElement>)=>{
      setTaskName(event.target.value)
      setShow(true)
-     dispatch(getTasks(event.target.value))
+     dispatch(getTasks({token:token,query:event.target.value}))
   }
   const handleBillable=()=>{
     setBillable(!billable)
