@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import RequireAuth from "../hoc/RequireAuth"
+import Clients from "../Pages/Clients"
 import Login from "../Pages/Login"
 
 import { Projects } from "../Pages/Projects"
@@ -18,7 +19,7 @@ export const MainRoutes = () => {
         <Route path="/projects" element={<RequireAuth><Projects/></RequireAuth>} />
         <Route path="/projects/id" element={"individual-project"} />
         <Route path="/teams" element={<RequireAuth><Team /></RequireAuth>} />
-        <Route path="/clients" element={"clients"} />
+        <Route path="/clients" element={<Clients />} />
     </Routes>
   )
 }

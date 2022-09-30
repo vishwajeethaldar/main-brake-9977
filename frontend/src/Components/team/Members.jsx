@@ -15,6 +15,8 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 import React from "react";
+import { FiMoreVertical } from "react-icons/fi";
+import BillableModal from "./BillableModal";
 
 const Members = () => {
   return (
@@ -43,7 +45,7 @@ const Members = () => {
         <Table variant="simple">
           <Thead>
             <Tr>
-              <Th>To convert</Th>
+              <Th>Members</Th>
               <Th></Th>
               <Th></Th>
               <Th></Th>
@@ -74,8 +76,8 @@ const Members = () => {
                     -
                   </Box>
                   <Box>
-                    <Button colorScheme="#C6D2D9" variant="outline">
-                      Change
+                    <Button>
+                      <BillableModal />
                     </Button>
                   </Box>
                 </Flex>
@@ -91,8 +93,12 @@ const Members = () => {
                   </Button>
                 </Box>
               </Td>
-              <Td>GROUP</Td>
-              <Td>...</Td>
+              <Td>Group</Td>
+              <Td>
+                <Button>
+                  <FiMoreVertical />
+                </Button>
+              </Td>
             </Tr>
           </Tbody>
         </Table>
