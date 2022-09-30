@@ -1,5 +1,6 @@
 const express =  require("express")
 const cors =  require("cors")
+const dotenv = require("dotenv")
 const connect = require("./db");
 const userRouter = require("./features/users/users.route")
 const projectRouter = require("./features/projects/project.router")
@@ -7,8 +8,7 @@ const taskRouter = require("./features/tasks/task.router")
 const groupRouter =  require("./features/groups/group.router")
 const clientRouter =  require("./features/clients/client.router")
 const app = express();
-
-
+dotenv.config()
 app.use(cors());
 
 app.use(express.urlencoded({

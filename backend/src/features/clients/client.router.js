@@ -6,9 +6,16 @@ const app = express.Router();
 
 app.get("/", authMiddleware, async(req, res)=>{
     let id = req.reqId;
+    let {q} = req.query
     try{
-        let clients = await Clients.find({userId:id})
-        res.send(clients)
+        if(q){
+            let clients = await Clients.find({userId:id, name: { $regex: q, $options: "i" }})
+            res.send(clients)
+        }else{
+            let clients = await Clients.find({userId:id})
+            res.send(clients)
+        }
+        
     }catch(e){
         res.status(401).send(e.message)
     }
@@ -17,7 +24,7 @@ app.get("/", authMiddleware, async(req, res)=>{
 app.post("/", authMiddleware, async(req, res)=>{
     let {name} = req.body;
     try{
-        let client = await Clients.find({name:name})
+        let client = await Clients.findOne({name:name})
         if(client){
             res.send("client already exist")
         }else{
@@ -32,12 +39,12 @@ app.post("/", authMiddleware, async(req, res)=>{
 app.delete('/:id', authMiddleware, async(req, res)=>{
     let id = req.params.id;
     try{
-        let client = Clients.find({_id:id})
+        let client = await Clients.findOne({_id:id})
         if(client){
             await Clients.deleteOne({_id:id})
             return res.send("Deleted Successfully")
         }else{
-            return res.status(500).send("client not found")
+            return res.status(401).send("client not found")
         }
         
     }catch(e){
@@ -49,10 +56,10 @@ app.patch("/:id",authMiddleware, async(req, res)=>{
     let id = req.params.id;
 
     try{
-        let client = Clients.find({_id:id})
+        let client = await Clients.findOne({_id:id})
         if(client){
-            await Clients.updateOne({_id:id}, {...req.body})
-            return res.send("Updated Successfully")
+            let updated = await Clients.updateOne({_id:id}, {...req.body})
+            return res.send(updated)
         }else{
             return res.status(500).send("client not found")
         }
@@ -60,6 +67,5 @@ app.patch("/:id",authMiddleware, async(req, res)=>{
         res.status(401).send(e.message)
     }
 })
-
 
 module.exports=app

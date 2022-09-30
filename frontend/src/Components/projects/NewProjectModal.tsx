@@ -33,21 +33,21 @@ export const NewProjectModal = () => {
               backdropInvert='60%'
               backdropBlur='2px'/>
             <ModalContent maxW={"580px"}>
-            <ModalHeader borderBottom={"1px solid #ccc"}> 
+            <ModalHeader > 
               <Text fontSize={"1.4em"} color={"#999"} >
                   Create New Project
               </Text>
             </ModalHeader>
             <ModalCloseButton />
             <ModalBody borderBottom={"1px solid #ccc"} py="25px">
-               <RegistrationForm/>
+               <RegistrationForm onClose={onClose}/>
             </ModalBody>
-            <ModalFooter>
+            {/* <ModalFooter>
                 <Flex gap="25px" align="center">
                   <Button onClick={onClose} bg="none" _hover={{color:"blue", textDecoration:"underline"}}>Close</Button>
                   <Button colorScheme={"twitter"} borderRadius="0px">Create</Button>
                 </Flex>
-            </ModalFooter>
+            </ModalFooter> */}
             </ModalContent>
       </Modal>
     </Box>
