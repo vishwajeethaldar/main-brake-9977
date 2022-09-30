@@ -89,3 +89,15 @@ export type tasksSliceType = {
     loading:boolean,
     error:boolean
 }
+
+export type groupsType = {
+    name: string;
+    userId: string
+}
+
+export type groupSliceType = {
+    loading: boolean,
+    error: boolean,
+    errorMessage: string,
+    groups: groupsType[]
+}
