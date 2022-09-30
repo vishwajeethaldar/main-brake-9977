@@ -45,3 +45,19 @@ export type projectPostProp = {
     token:string;
     data:projectType
 }
+
+
+export type clientType = {
+    name:string;
+    address?:string;
+    note?:string
+    archive?:boolean;
+    userId:string;
+}
+
+export type clientSliceType = {
+    loading:boolean;
+    error:boolean;
+    errmsg:string;
+    clients:clientType[]
+}

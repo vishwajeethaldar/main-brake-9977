@@ -8,7 +8,6 @@ import { AddClient } from './AddClient'
 import AddTemplates from './AddTemplates'
 import { ColorPicker } from './ColorPicker'
 
-
 export const RegistrationForm = ({onClose}:{onClose:Function}) => {
   const auth = useAppSelector(store=>store.usersSlice)
   const [info, setInfo] = useState<boolean>(false)
