@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect, FormEvent, ChangeEvent } from "
 import {DispatchProp, useDispatch, useSelector} from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Dispatch } from "redux";
-import { useAppDispatch } from "../hooks/user";
+import { useAppDispatch, useAppSelector } from "../hooks/user";
 import { login } from "../store/users/users.action";
 
 type credsProp={
@@ -12,7 +12,7 @@ type credsProp={
 }
 
 const Login = () => {
-  const isAuth = useSelector((store)=>store.users.token);
+  const isAuth = useAppSelector((store)=>store.users.token);
   const [loginCreds, setLoginCreds] = useState<credsProp>({email:"",password:""});
   const navigate = useNavigate();
   const { state } = useLocation();
