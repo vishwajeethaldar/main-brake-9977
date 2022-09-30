@@ -26,7 +26,7 @@ const AppNavbar = ({ Open }: { Open: Function }) => {
 
     return (
         <Flex borderLeft="4px solid #02a9f4" borderBottom="2px solid #bdbdbd" padding=".3rem .8rem" alignContent="center" alignItems="center" justifyContent="space-between">
-            <Flex>
+            <Flex alignItems="center">
                 <Box>
                     <IconButton
                         variant='ghost'
