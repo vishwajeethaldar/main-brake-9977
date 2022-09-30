@@ -1,10 +1,25 @@
 import React,{useState} from 'react'
-import {Flex,Box, Checkbox,Text} from "@chakra-ui/react"
+import {Flex,Box, Checkbox,Text, useDisclosure} from "@chakra-ui/react"
 import { projectType } from '../../features/types/types'
 import {BsBorderBottom, BsThreeDotsVertical} from "react-icons/bs"
 import {FaRegStar} from "react-icons/fa"
 import {BsFillArrowDownSquareFill,BsFillArrowUpSquareFill} from 'react-icons/bs'
+import {
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverFooter,
+    PopoverArrow,
+    PopoverCloseButton,
+    PopoverAnchor,
+    Button,
+    ButtonGroup,
+  } from '@chakra-ui/react'
+
 export const ProjectCard = ({project,bordertop,borderbottom}:{project:projectType,bordertop?:string,borderbottom?:string}) => {
+  const { isOpen, onToggle, onClose } = useDisclosure()
   const [showcard, setShowcard] =  useState(false)
   const handleShowcard = () =>{
     setShowcard(showcard?false:true);
@@ -18,7 +33,7 @@ export const ProjectCard = ({project,bordertop,borderbottom}:{project:projectTyp
                       <Box  h={"10px"}  w="10px" bg={project.color} mx="10px" borderRadius={"50%"}></Box>
                       <Text>{project.name} </Text>
                     </Flex> 
-                    <Box onClick={()=>{
+                <Box _hover={{cursor:"pointer"}} onClick={()=>{
                        handleShowcard()
                     }}>
                       {!showcard?<BsFillArrowDownSquareFill color="#594"/>:<BsFillArrowUpSquareFill  color="#594"/>}
@@ -27,8 +42,8 @@ export const ProjectCard = ({project,bordertop,borderbottom}:{project:projectTyp
     <Box display={[showcard?"block":"none",showcard?"block":"none",showcard?"block":"none","block"]}>
       <Flex  bg={["#eee","#eee","#eee","#fff"]} px="20px" w="100%" justify={"space-between"} align="center">
           <Flex minH="35px" direction={"column"} gap="10px" w={["50%","50%","50%","0%"]} display={[`${showcard}?flex:none`,`${showcard}?flex:none`,`${showcard}?flex:none`,"none"]}>
-            {/* <Checkbox w="30px" name="access"  defaultChecked={false}></Checkbox> 
-              <Box minW="15%"> NAME</Box> */}
+             <Checkbox w="30px" name="access"  defaultChecked={false}></Checkbox> 
+              <Box minW="15%"> NAME</Box>
               <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"6px"}  minW="15%"> CLIENT</Box>
               <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"} minW="15%"> TRACKED</Box>
               <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"} minW="15%"> AMOUNT</Box>
@@ -42,11 +57,11 @@ export const ProjectCard = ({project,bordertop,borderbottom}:{project:projectTyp
             <Checkbox display={["none","none","none","block"]} w="30px" name="access"  defaultChecked={false}></Checkbox> 
             <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"} display={["none","none","none","block"]} h={"0px"} px={"10px"} w="0px" bg={project.color} mx="10px" borderRadius={"50%"}></Box>
             <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"} display={["none","none","none","block"]} minW="15%"> {project.name}</Box>
-            <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"} minW={["100%","100%","100%", "15%"]}> {project.client}</Box>
-            <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"} minW={["100%","100%","100%", "15%"]}> {project.tracked}</Box>
-            <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"} minW={["100%","100%","100%", "15%"]}> {project.amount}</Box>
-            <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"} minW={["100%","100%","100%", "15%"]}> - </Box>
-            <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"}  minW={["100%","100%","100%", "15%"]}>{project.access?"Public":"Private"}</Box>
+            <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"} minW={["100%","100%","100%", "14%"]}> {project.client}</Box>
+            <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"} minW={["100%","100%","100%", "14%"]}> {project.tracked}</Box>
+            <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"} minW={["100%","100%","100%", "14%"]}> {project.amount}</Box>
+            <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"} minW={["100%","100%","100%", "14%"]}> - </Box>
+            <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"}  minW={["100%","100%","100%", "14%"]}>{project.access?"Public":"Private"}</Box>
             <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"}  minW={["100%","100%","100%", "50px"]} _hover={{cursor:"pointer"}} textAlign={"right"} >
               <Flex align={"center"} justify="flex-end" pr="15px">
                 <FaRegStar fontSize={"16px"} />
@@ -54,7 +69,27 @@ export const ProjectCard = ({project,bordertop,borderbottom}:{project:projectTyp
             </Box>
             <Box borderBottom={["1px solid #ccc","1px solid #ccc","1px solid #ccc","none"]} py={"10px"} minW={["100%","100%","100%", "50px"]} _hover={{cursor:"pointer"}} alignSelf={["flex-end","flex-end","flex-end",""]}>
               <Flex align={"center"} justify="flex-end" pr="15px">
-              <BsThreeDotsVertical/>
+    <Popover
+        returnFocusOnClose={false}
+        isOpen={isOpen}
+        onClose={onClose}
+        placement='right'
+        closeOnBlur={false}
+      >
+        <PopoverTrigger>
+        <BsThreeDotsVertical/>
+        </PopoverTrigger>
+        <PopoverContent>
+          <PopoverHeader fontWeight='semibold'>Confirmation</PopoverHeader>
+          <PopoverArrow />
+          <PopoverCloseButton />
+          <PopoverBody>
+            Are you sure you want to continue with your action?
+          </PopoverBody>
+         
+        </PopoverContent>
+      </Popover>
+             
                 </Flex>
             </Box>
           </Flex>

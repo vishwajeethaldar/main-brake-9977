@@ -29,7 +29,7 @@ app.post("/", authMiddleware, async(req, res)=>{
             res.send("client already exist")
         }else{
             let newClient = await Clients.create(req.body)
-            res.send("client Added Successfully")
+            res.send(newClient)
         }
         
     }catch(e){
