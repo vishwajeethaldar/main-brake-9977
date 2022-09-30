@@ -13,12 +13,13 @@ const rootReducer = combineReducers({
 */
 
 import { configureStore } from '@reduxjs/toolkit'
+import { tasksReducer } from './tasks/tasks_reducer'
 import userReducer from './users/users.reducer'
 
  const store = configureStore({
   reducer: {
     users: userReducer,
-    
+    tasks: tasksReducer,
   }
 })
 export default store
