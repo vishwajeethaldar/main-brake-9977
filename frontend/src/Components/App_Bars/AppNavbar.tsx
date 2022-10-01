@@ -81,6 +81,7 @@ export default function AppNavbar({ Open }: { Open: Function }) {
                 </Box>
 
             </Flex>
+            
         </Flex>
     )
 }
