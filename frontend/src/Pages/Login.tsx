@@ -6,7 +6,7 @@ import "../Components/login/Login.css"
 import { FcGoogle } from "react-icons/fc"
 import LeftPart from "../Components/login/LeftPart";
 import LoginNavbar from "../Components/login/LoginNavbar";
-
+import load from "../../public/loader.gif"
 // import { login } from "../store/users/users.action";
 import LoginFooter from "../Components/login/LoginFooter";
 import { useAppDispatch, useAppSelector } from "../features/hooks";
@@ -19,8 +19,9 @@ type credsProp = {
 
 const Login = () => {
 
-  const isAuth = useAppSelector((store)=>store.authSlice.isAuth);
-  const [loginCreds, setLoginCreds] = useState<credsProp>({email:"",password:""});
+  const isAuth = useAppSelector((store) => store.authSlice.isAuth);
+  const Auth = useAppSelector((store) => store.authSlice);
+  const [loginCreds, setLoginCreds] = useState<credsProp>({ email: "", password: "" });
 
   const navigate = useNavigate();
   // const { state } = useLocation();
@@ -46,10 +47,10 @@ const Login = () => {
   }, [isAuth])
 
   return (
-    <Flex direction={["column","column","row","row"]} bgColor="#f2f6f8">
-      <Box w={["100%","100%","68%","68%"]}>
+    <Flex direction={["column", "column", "row", "row"]} bgColor="#f2f6f8">
+      <Box w={["100%", "100%", "68%", "68%"]}>
         <LoginNavbar />
-        <Box w={["82%","65%","50%","40%"]} margin="auto" bgColor="white" padding={["1rem 1rem","1rem 1rem","1.6rem 1.6rem","2rem 2rem"]} marginTop="3rem" >
+        <Box w={["82%", "65%", "50%", "40%"]} margin="auto" bgColor="white" padding={["1rem 1rem", "1rem 1rem", "1.6rem 1.6rem", "2rem 2rem"]} marginTop="3rem" >
           <form onSubmit={handleSubmit} >
             <FormLabel>Log In</FormLabel>
             <Stack direction="column">
@@ -100,9 +101,16 @@ const Login = () => {
           <LoginFooter />
         </Flex>
       </Box>
-      <Box w={["100%","100%","32%","32%"]} className='login-left-part'>
+      <Box w={["100%", "100%", "32%", "32%"]} className='login-left-part'>
         <LeftPart />
       </Box>
+      { Auth.loading?
+        <Box w="100%" h="100%" background= "linear-gradient(144deg, rgba(0,212,255,1) 0%, rgba(73,9,121,0.4822303921568627) 95%)"  position="absolute" top="0" left="0" zIndex="999">
+        <Box position="absolute" top="47vh" left="47vw" zIndex="9999">
+          <img src={load} alt="loader" />
+      </Box>
+      </Box>:null
+      }
     </Flex>
 
   );
