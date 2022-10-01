@@ -7,6 +7,8 @@ const taskSchema =new mongoose.Schema({
     startTime:{type:Number,required:false},
     endTime:{type:Number,required:false},
     totalTime:{type:Number, default:0.00},
+    sTime:{type:String, required:true},
+    eTime:{type:String, required:true},
     projectID:{type:mongoose.Schema.Types.ObjectId,ref:"project",  require:false},
     userId:{type:mongoose.Schema.Types.ObjectId,ref:"user", required:true}
 })
