@@ -11,13 +11,21 @@ import {
     Button,
   } from '@chakra-ui/react'
 import { FiX } from 'react-icons/fi';
+type deleteGroupProps={
+  handleDelete:Function;
+  name:string
+}
 
 
-const GroupsDeleteModal = () => {
+const GroupsDeleteModal = ({handleDelete, name}:deleteGroupProps) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const onClick = () => {
+      onClose();
+        handleDelete();
+    }
   return (
     <>
-        <Button onClick={onOpen}><FiX /></Button>
+        <Button variant='ghost' onClick={onOpen}><FiX /></Button>
   
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
@@ -25,14 +33,14 @@ const GroupsDeleteModal = () => {
             <ModalHeader>Delete</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-                Are you sure you want to delete group Group 1?
+                Are you sure you want to delete group {name}?
             </ModalBody>
   
             <ModalFooter>
               <Button variant='ghost' mr={3} onClick={onClose}>
                 Cancel
               </Button>
-              <Button background={"red"} color="white">Delete</Button>
+              <Button onClick={onClick} background={"red"} color="white">Delete</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>

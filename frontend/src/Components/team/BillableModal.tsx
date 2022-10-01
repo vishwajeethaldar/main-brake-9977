@@ -20,7 +20,7 @@ const BillableModal = () => {
     const [value, setValue] = React.useState('1')
     return (
       <>
-        <Button onClick={onOpen}>Change</Button>
+        <Button variant='link' onClick={onOpen}>Change</Button>
   
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />

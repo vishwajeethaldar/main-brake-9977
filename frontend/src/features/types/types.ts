@@ -98,6 +98,7 @@ export type tasksSliceType = {
 }
 
 export type groupsType = {
+    _id?:string;
     name: string;
     userId: string
 }
