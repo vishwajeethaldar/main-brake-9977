@@ -1,14 +1,6 @@
+import { Box, Flex, Image, Text, Link, Button } from '@chakra-ui/react';
 import React from 'react'
 
-import { Link } from "react-router-dom";
-
-import {
-  Maindivline,
-  Plinkone,
-  Signbutt,
-  Plinksecond,
-  Plinthird
-} from "./Navbarcss";
 
 
 
@@ -16,69 +8,42 @@ import {
 
 const NavbarHome = () => {
   return (
-    <div>
+    <Box boxShadow={"md"}>
+      <Flex align={"center"} px={"70px"} py={"20px"} justify={"space-between"} >
+        <Flex  align={"center"} gap="25px">
+          <Link href='/'><Image width={["150px"]} src="https://clockify.me/assets/images/clockify-logo.svg" alt='ImageNAvbar' /></Link>
 
-<Maindivline >
-        <Link
-          to={`/`}
-          style={{
-            marginLeft: "10%",
-            marginTop: "36px",
-            color: "#5A6B7B",
-            textDecoration: "none"
-          }}
-        >
-          <img
-            src="https://clockify.me/assets/images/clockify-logo.svg"
-            alt=""
-            style={{height:"40PX",marginTop:"-5PX"}}
-          />
-        </Link>
-
-        <Link
-          to={`/features`}
-          style={{ textDecoration: "none", marginLeft: "5%" }}
-        >
-          <Plinkone>FEATURES</Plinkone>
-        </Link>
-
-        <Link
-          to={`/downloads`}
-          style={{
-            textDecoration: "none",
-            marginLeft: "5%"
-          }}
-        >
-          <Plinkone>DOWNLOAD</Plinkone>
-        </Link>
-
-        <Link
-          to={`/login`}
-          style={{
-            marginLeft: "34%",
-            textDecoration: "none"
-          }}
-        >
-          <Plinksecond>LOG IN</Plinksecond>
-        </Link>
-
-        <Signbutt>
-          <Link
-            to={`/signup`}
-            style={{
-              borderRadius:"35px",
-              color: "#03a9f4",
-              textDecoration: "none",
-              fontSize: "15.0px",
-              
-         
-            }}
-          >
-            <Plinthird>SIGN UP FREE </Plinthird>
+          <Link _hover={{textDecoration:"none", color:"#03A9F4"}} textDecoration={"none"} href='/features'>
+          <Text > FEATURES</Text>
           </Link>
-        </Signbutt>
-      </Maindivline>
-    </div>
+
+
+          <Link _hover={{textDecoration:"none", color:"#03A9F4" }}  textDecoration={"none"} href='/downloads'>
+          <Text> DOWNLOADS</Text>
+          </Link>
+            
+         
+
+        </Flex>
+
+
+
+
+        <Flex align={"center"} gap="25px">
+        <Link _hover={{textDecoration:"none", color:"#03A9F4"}}  textDecoration={"none"} href='/login'>
+          <Text> LOGIN</Text>
+          </Link>
+            
+          <Link _hover={{textDecoration:"none", }}  href='/signup'>
+          {/* <Text colorScheme={"twitter"}  _hover={{bg:"#03A9F4", color:"#FFF"}} py={"10px"} px={"15px"} border={"1px solid black"}> SIGNUP FREE</Text> */}
+          <Button colorScheme={"twitter"}>SIGN UP FREE</Button>
+          </Link>
+
+        </Flex>
+      </Flex>
+
+      
+    </Box>
   )
 }
 

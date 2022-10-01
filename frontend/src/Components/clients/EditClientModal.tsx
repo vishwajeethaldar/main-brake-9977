@@ -12,31 +12,40 @@ import {
     Box,
     Text,
     Input,
-    Radio, RadioGroup, Stack, Flex
+    Radio, RadioGroup, Stack, Flex,
+    Textarea,
+    Divider
   } from '@chakra-ui/react'
 import { FiEdit2 } from 'react-icons/fi';
 
 
-const GroupsEditModal = () => {
+const EditClientModal = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-        <Button variant='ghost' onClick={onOpen}><FiEdit2 /></Button>
+        <Button onClick={onOpen}><FiEdit2 /></Button>
   
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>Edit group</ModalHeader>
+            <Divider />
             <ModalCloseButton />
             <ModalBody>
               <Box>
-                <Flex>
-                  <Box>Change name</Box>
-                  <Box><Input /></Box>
-                </Flex>
+                  <Box margin={"5px"}>Client name</Box>
+                  <Box margin={"10px"}><Input /></Box>
+              </Box>
+              <Box>
+                  <Box margin={"5px"}>Client Address</Box>
+                  <Box margin={"10px"}><Textarea placeholder='Enter address' /></Box>
+              </Box>
+              <Box>
+                  <Box margin={"5px"}>Client Note</Box>
+                  <Box margin={"10px"}><Textarea placeholder='Enter note' /></Box>
               </Box>
             </ModalBody>
-  
+            <Divider />
             <ModalFooter>
               <Button variant='ghost' mr={3} onClick={onClose}>
                 Cancel
@@ -49,4 +58,4 @@ const GroupsEditModal = () => {
   )
 }
 
-export default GroupsEditModal
+export default EditClientModal
