@@ -20,7 +20,7 @@ const Delete_Task = ({id}:deleteTaskProp) => {
     // }
   return (
     <Menu>
-  <MenuButton _hover={{bg:"none"}} _active={{bg:"none"}} bg={"none"} as={Button} rightIcon={<IoEllipsisVertical color='grey'/>}></MenuButton>
+  <MenuButton width={"2px"} _hover={{bg:"none"}} _active={{bg:"none"}} bg={"none"} as={Button} rightIcon={<IoEllipsisVertical color='grey'/>}></MenuButton>
   <MenuList width={"0.2"}>
     <MenuItem><Text fontSize={"sm"}>Duplicate</Text></MenuItem>
     <MenuItem onClick={()=>handleDelete(id)}><Text fontSize={"sm"}>Delete</Text></MenuItem>

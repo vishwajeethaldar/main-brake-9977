@@ -50,8 +50,9 @@ const Timer_Tracker = () => {
   return (
     <Box>
       <AppNavbar Open={Open} />
-      <Flex>
-        {isOpen ? <ExpandedAppSidebar /> : <CompactAppSidebar />}
+      <Flex position={"relative"}>
+        <Box display={["none","none","block","block"]}>{isOpen ? <ExpandedAppSidebar /> : <CompactAppSidebar />}</Box>
+        <Box bg={"white"} height={"100%"} position={"absolute"} top="0px" zIndex={"5"} display={["block","block","none","none"]}>{isOpen ? <ExpandedAppSidebar /> : <CompactAppSidebar />}</Box>
         <Box
           minH={"100vh"}
           width={"100vw"}
