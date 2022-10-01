@@ -33,8 +33,8 @@ const Timer_Task_Display = ({tasks,setType,handleStart,handleUpdateId,setUpdate,
         </Flex>
         <Box mt={"30px"}>
             <Flex justifyContent={"space-between"} bg="#e4eaee" padding={"10px"} border="1px solid #ababab">
-                <Text color={"grey"} fontSize={"sm"} width={"10%"}>Today</Text>
-                <Flex justifyContent={"space-between"} width={"12%"} textAlign="center">
+                <Text color={"grey"} fontSize={"sm"} width={"20%"}>Today</Text>
+                <Flex justifyContent={"space-between"} width={["30%","30%","20%","12%"]} textAlign="center">
                     <Text color={"grey"} fontSize={"sm"}>Total:</Text>
                     <Text fontWeight={"500"} fontSize={"sm"}>{TimeString(total)}</Text>
                     <FaRegEdit fontSize="20px" color="grey"/>
@@ -42,22 +42,22 @@ const Timer_Task_Display = ({tasks,setType,handleStart,handleUpdateId,setUpdate,
             </Flex>
             {tasks.map((el)=>{
                 return(
-                    <Flex key={el.name} justifyContent={"space-between"} padding="10px" bg={"white"} border="1px solid #ababab" borderTop={"none"}>
-                        <Flex justifyContent={"space-between"}  width={"20%"} alignItems="center" >
-                            <Text fontSize={"sm"}>{el.name}</Text>
-                            <Text fontSize={"sm"}>Project</Text>
+                    <Flex key={el.name}  justifyContent={"space-between"} padding="10px" bg={"white"} border="1px solid #ababab" borderTop={"none"}>
+                        <Flex  flexDirection={["column","column","row","row"]}  justifyContent={"space-between"}  width={"20%"} alignItems="center" >
+                            <Text  fontSize={"sm"}>{el.name}</Text>
+                            <Text  fontSize={"sm"}>{el.projectName}</Text>
                         </Flex>
-                        <Flex justifyContent={"space-between"}   width={"50%"}>
-                        <Flex alignItems={"center"} justifyContent={"space-between"}   width={"10%"}>
+                        <Flex justifyContent={"space-between"}   width={["80%","75%","70%","70%"]}>
+                        <Flex  alignItems={"center"} justifyContent={"space-between"}   width={"15%"}>
                             <AiFillTag color='grey'/>
                             <BsCurrencyDollar cursor={"pointer"} color={el.billable? "#03a9f4":"grey"}/>
                         </Flex>
-                        <Flex justifyContent={"space-between"} alignItems="center"  width={"10%"}>
+                        <Flex justifyContent={"space-between"} alignItems="center"   width={["20%","20%","20%","10%"]}>
                             <Text fontSize={"sm"}>{el.sTime}</Text>
                             <Text fontSize={"sm"}>-</Text>
                             <Text fontSize={"sm"}>{el.eTime}</Text>
                         </Flex>
-                        <Flex alignItems={"center"} justifyContent={"space-between"}   width={"30%"}>
+                        <Flex  alignItems={"center"} justifyContent={"space-between"}   width={["20%","50%","40%","30%"]}>
                         <GoCalendar cursor={"pointer"}/>
                         <Text fontSize={"sm"} fontWeight="bold">{TimeString(el.endTime)}</Text>
                         <BsFillPlayFill onClick={()=>onClick(el)} cursor={"pointer"} color='grey'/>

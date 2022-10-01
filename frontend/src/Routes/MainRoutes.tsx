@@ -23,7 +23,7 @@ export const MainRoutes = () => {
         <Route path="/projects" element={<RequireAuth><Projects/></RequireAuth>} />
         <Route path="/projects/id" element={"individual-project"} />
         <Route path="/teams" element={<RequireAuth><Team /></RequireAuth>} />
-        <Route path="/clients" element={<Clients />} />
+        <Route path="/clients" element={<RequireAuth><Clients /></RequireAuth>} />
     </Routes>
   )
 }
