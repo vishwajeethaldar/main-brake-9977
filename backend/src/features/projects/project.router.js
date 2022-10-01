@@ -40,22 +40,39 @@ app.post("/", authMiddleware, async(req, res)=>{
 
 })
 
-
-app.patch("/id", authMiddleware, async(req, res)=>{
-   let id = req.params.id;
+app.patch("/:id", async(req, res)=>{
+    let id = req.params.id;
     try{
-        let project = await Projects.findById(id)
-        if(project){
-            await Projects.updateOne({_id:id}, { $set:{...req.body}})
-            let updatedproject = await Projects.findById(id)
-            return res.send(updatedproject)
+        let task = await Projects.findById(id)
+        if(task){
+             await Projects.updateOne({_id:task._id},{ $set:{...req.body}})
+            let updaProject = await Projects.findById(id)
+            return res.send(updaProject)
         }else{
-            return res.send("Project Not Matched")
+            return res.send("Project Not Found")
         }
+        
     }catch(e){
         res.status(400).send(e.message)
     }
 })
+
+
+// app.patch("/id", authMiddleware, async(req, res)=>{
+//    let id = req.params.id;
+//     try{
+//         let project = await Projects.findById(id)
+//         if(project){
+//             await Projects.updateOne({_id:id}, { $set:{...req.body}})
+//             let updatedproject = await Projects.findById(id)
+//             return res.send(updatedproject)
+//         }else{
+//             return res.send("Project Not Matched")
+//         }
+//     }catch(e){
+//         res.status(400).send(e.message)
+//     }
+// })
 
 app.delete("/:id", authMiddleware, async(req, res)=>{
     let id = req.params.id;

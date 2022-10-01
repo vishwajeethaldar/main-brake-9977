@@ -4,7 +4,7 @@ import { addClients, getClients } from "../../features/clients/clientSclice"
 import { useAppDispatch, useAppSelector } from "../../features/hooks"
 import { projectType } from "../../features/types/types"
 
-export const AddClient = ({setProjectProp,projectProp}:{setProjectProp:Function,projectProp:projectType}) => {
+export const AddClient = ({setProjectProp,projectProp,setShowClient}:{setProjectProp:Function,projectProp:projectType,setShowClient:Function}) => {
   const dispatch = useAppDispatch()
   const clients_state = useAppSelector(store=>store.clientSlice)
   const token = useAppSelector(store=>store.authSlice.token)
@@ -22,7 +22,7 @@ export const AddClient = ({setProjectProp,projectProp}:{setProjectProp:Function,
   const updateClient = (name:string, id:string)=>{
 
     setProjectProp({...projectProp,client:name, clientId:id})
-    console.log(projectProp);
+    setShowClient(false)
   }
 
   return (

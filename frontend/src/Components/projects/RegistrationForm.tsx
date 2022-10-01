@@ -1,4 +1,4 @@
-import {Box,Flex,Checkbox, Stack,Input, Button,Text, InputRightAddon, InputGroup} from '@chakra-ui/react'
+import {Box,Flex,Checkbox, Stack,Input, Button,Text, InputRightAddon, InputGroup, Menu, MenuButton, MenuList, MenuItem, useDisclosure} from '@chakra-ui/react'
 import { ChangeEvent, useEffect, useState } from 'react';
 import {BsFillCaretDownFill} from "react-icons/bs";
 import {GoInfo} from "react-icons/go";
@@ -17,7 +17,7 @@ export const RegistrationForm = ({onClose}:{onClose:Function}) => {
   const [showClient, setShowClient] = useState<boolean>(false)
   const [showTemplate, setShowTemplate] = useState<boolean>(false)
   const [addprojectProp, setProjectProp] =  useState({name:"", color:"", userId:"",client:"", clientId:"", template:"", access:true})
-  
+  const {isOpen}  = useDisclosure()
   let [userid,e,p] = auth.token.trim().split(":")
   // custom dispatch, selector Hook
   const project = useAppSelector(store=>store.projectsSlice)
@@ -35,6 +35,7 @@ export const RegistrationForm = ({onClose}:{onClose:Function}) => {
 //  {name:addprojectProp.name, color:addprojectProp.color, userId:addprojectProp.userId, access:addprojectProp.access, client:"x"}
   const handleAddProject = ()=>{
       dispatch(addprojects({token:auth.token, data:addprojectProp}))
+      console.log(onClose());      
   }
   useEffect(()=>{
     setProjectProp({...addprojectProp, color:color, userId:userid}) 
@@ -47,17 +48,25 @@ export const RegistrationForm = ({onClose}:{onClose:Function}) => {
               handleChange(e)
               setShowClient(false)
               setShowTemplate(false)
-            } } placeholder='Enter Project Name' />
+            } } placeholder='Enter Project Name' onClick={()=>{
+              setShowClient(false)
+              setShowTemplate(false)
+            }}/>
             <InputGroup width={["100%","100%","100%","50%"]} border={"1px solid #ccc"} _hover={{bg:"#eee", cursor:"pointer"}} onClick={()=>{
               setShowClient(showClient?false:true)
               setShowTemplate(false)
-            }}>     
-              <Input type='text' name={"client"} placeholder='Select client' value={addprojectProp.client!=""?addprojectProp.client:""} disabled _hover={{cursor:"pointer"}}/>
-              <InputRightAddon    children={<BsFillCaretDownFill/>} bg="none" border={"none"}/>
+              
+            }}>  
+             <Input type='text' name={"client"} placeholder='Select client' value={addprojectProp.client!=""?addprojectProp.client:""} disabled _hover={{cursor:"pointer"}}/>
+      <InputRightAddon    children={<BsFillCaretDownFill/>} bg="none" border={"none"}/>
+   
+              
             </InputGroup>
         </Flex>
+        
+
         <Box display={showClient?"block":"none"} position={"absolute"}  left={["0%","0%","0%","51.5%"]} top={["33%","33%","33%","21%"]} minW={["100%","100%","100%","70%"]} border={"1px solid #ddd"} bg="#fff" zIndex="9999">
-            <AddClient setProjectProp={setProjectProp} projectProp={addprojectProp}/>
+            <AddClient setProjectProp={setProjectProp} projectProp={addprojectProp} setShowClient={setShowClient}/>
         </Box>
 
         <Flex direction={["column","column","column","row"]} justify={"center"} gap={"15px"} align="center" >
@@ -97,7 +106,9 @@ export const RegistrationForm = ({onClose}:{onClose:Function}) => {
           <Box borderTop={"1px solid #ccc"} pt={"20px"}>
               <Flex gap="25px" align="center" justify={"flex-end"}>
                 <Button onClick={()=>onClose()} bg="none" _hover={{color:"blue", textDecoration:"underline"}}>Close</Button>
-                <Button onClick={()=>handleAddProject()}colorScheme={"twitter"} borderRadius="0px">Create</Button>
+                <Button onClick={()=>{
+                  handleAddProject()   
+                }}colorScheme={"twitter"} borderRadius="0px">Create</Button>
               </Flex>
           </Box>
        
