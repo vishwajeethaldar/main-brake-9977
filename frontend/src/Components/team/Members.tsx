@@ -43,7 +43,7 @@ const Members = () => {
   if(isLargerThan1365){
   return (
     <Box>
-      <Flex>
+      <Flex marginBottom={"20px"}>
         <Flex>
           <Box>
             <Select>
@@ -63,19 +63,19 @@ const Members = () => {
           </Button>
         </Box>
       </Flex>
-      <Box bg={"#e4eaee"} padding="10px 20px">
+      <Box border={"1px solid"} bg={"#e4eaee"} padding="10px 20px">
                   Members
                   </Box>
-                  <Flex border={"1px solid"} bg='white'>
+                  <Flex borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"} bg='white'>
     <Box width={"20%"} padding="10px 10px 10px 20px">NAME</Box>
     <Box width={"18%"} padding="10px 0px">EMAIL</Box>
     <Box width={"20%"} padding="10px 0px">BILLABLE RATE (USD)</Box>
     <Box width={"19%"} padding="10px 0px">ROLE</Box>
     <Box width={"20%"} padding="10px 0px">GROUP</Box>
     </Flex>
-    <Flex>
-    <Box width={"20%"} padding="10px 10px 10px 20px">{user.name}</Box>
-              <Box width={"18%"} padding="10px 0px">{user.email}</Box>
+    <Flex borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
+    <Box width={"20%"} padding="10px 10px 10px 20px">{user?.name}</Box>
+              <Box width={"18%"} padding="10px 0px">{user?.email}</Box>
               <Box width={"20%"} padding="10px 0px">
                 <Flex>
                   
@@ -202,13 +202,13 @@ const Members = () => {
                       </Box>
                   </Flex>
                   {item?<Flex padding={"10px"} borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
-                    <Box width={"95%"}>{user.name}</Box>
+                    <Box width={"95%"}>{user?.name}</Box>
                     <Box>
                       <Button background={"#E1F5FE"} onClick={()=> setItem(!item)}><RiArrowDropUpLine fontSize={"30px"} /></Button>
                       </Box>
                   </Flex>:<Box padding={"10px"} borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
                   <Flex>
-                    <Box width={"95%"}>{user.name}</Box>
+                    <Box width={"95%"}>{user?.name}</Box>
                     <Box>
                       <Button background={"#E1F5FE"} onClick={()=> setItem(!item)}><RiArrowDropDownLine fontSize={"30px"} /></Button>
                       </Box>
@@ -216,7 +216,7 @@ const Members = () => {
                   <Box bg={"#e4eaee"}>
                     <Flex border={"1px solid"}>
                       <Box width={"50%"} padding="10px">EMAIL</Box>
-                      <Box borderLeft={"1px dashed"} padding="10px">{user.email}</Box>
+                      <Box borderLeft={"1px dashed"} padding="10px">{user?.email}</Box>
                     </Flex>
                     <Flex borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
                       <Box width={"50%"} padding="10px">BILLABLE RATE</Box>

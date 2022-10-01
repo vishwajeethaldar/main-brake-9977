@@ -67,7 +67,7 @@ export const deleteClient = createAsyncThunk(
                     token:data.token
                 }
             })          
-            return res.data;
+            return data.id;
         }catch(error:any){
             return thunkapi.rejectWithValue(error.message);
         }
@@ -125,10 +125,14 @@ const clientSlice = createSlice({
         .addCase(deleteClient.pending, (state, action) => {
             state.loading = true
         })
-        .addCase(deleteClient.fulfilled, (state, action:PayloadAction<clientType>) => {
+        .addCase(deleteClient.fulfilled, (state, action:PayloadAction<string>) => {
             state.loading = false,
             state.error = false,
-            state.clients = [...state.clients, action.payload]
+            state.clients = state.clients.filter((client)=>{
+                if(client._id !== action.payload){
+                    return client
+                }
+            })
         })
         .addCase(deleteClient.rejected, (state, action:PayloadAction<any>) => {
             state.error = true,
