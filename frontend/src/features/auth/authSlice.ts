@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 import { userSliceState, userType,authStateSliceType, authResType } from "../types/types";
-
 const DBLINK = "https://clockify-clone-app.herokuapp.com";
 
 // login action 
@@ -26,14 +26,19 @@ const initialState: authStateSliceType = {
     isAuth: localStorage.getItem("token")?true:false
 }
 
-export const logout = ()=>{
-      localStorage.removeItem("token")
-}
+
 
 const authSlice = createSlice({
     name:"auth",
     initialState,
-    reducers:{},
+    reducers:{
+        logout(state){
+            console.log("hello")
+            state.isAuth=false
+            state.token=""
+            localStorage.removeItem("token")
+        }
+    },
     extraReducers(builder) {
         builder.addCase(login.pending,(state,action)=>{
             state.loading=true;
@@ -49,8 +54,12 @@ const authSlice = createSlice({
             state.isAuth = false,
             state.error = true
         })
-
+        
     }
 })
 
+<<<<<<< HEAD
+=======
+export const {logout} =authSlice.actions
+>>>>>>> fa3e48bb93d3ffab39fb8ed5f91adc68d6f8e854
 export default authSlice.reducer
