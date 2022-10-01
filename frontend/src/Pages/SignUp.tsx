@@ -59,7 +59,7 @@ const SignUp = () => {
         </Stack>
         
       </Box>
-      <Box w="30%" margin="auto" bgColor="white" padding="2rem 2rem" marginTop="3rem" >
+      <Box w={["82%","40%","35%","35%"]} margin="auto" bgColor="white" padding={["1rem 1rem","1rem 1rem","2rem 2rem","2rem 2rem"]} marginTop="3rem" >
         <form onSubmit={handleSubmit}>
           <FormLabel>Sign Up</FormLabel>
           <Stack direction="column">
