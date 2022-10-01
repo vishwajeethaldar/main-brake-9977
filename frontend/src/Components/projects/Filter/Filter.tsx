@@ -16,8 +16,9 @@ import {
 } from '@chakra-ui/react'
 import axios from 'axios';
 import {useState} from 'react'
-import { useAppSelector } from '../../../features/hooks'
+import { useAppDispatch, useAppSelector } from '../../../features/hooks'
 import { FaLessThanEqual } from 'react-icons/fa'
+import { updateProjects } from '../../../features/projects/projectsSlice'
 
 const DBLINK = "https://clockify-clone-app.herokuapp.com";
 
@@ -39,12 +40,11 @@ export type filterQueryType = {
 
 
 
-export const Filter = () => {
+export const Filter = ({allProjects, setAllProjects,projects}:{projects:projectType[],allProjects:projectType[],setAllProjects:Function} ) => {
   const [clients, setClients] =  useState<clientType[]>([])
   const auth = useAppSelector(store=>store.authSlice)
-  const projects = useAppSelector(store=>store.projectsSlice)
   const [filterQuery, setFilterQuery] = useState<filterQueryType>({})
-
+  const dispatch = useAppDispatch()
 const seachClients = async(val:string)=>{
   let data=  await axios.get<clientType[]>(`${DBLINK}/clients?q=${val}`,{
     headers:{
@@ -56,7 +56,25 @@ setClients(data.data)
 }
 
 const handleSearch =()=>{
-  console.log(filterQuery);
+  
+      let newFilter = projects.filter((project)=>{
+        if(filterQuery.access===true||false){
+          console.log(project.access, filterQuery);
+            return project.access ===filterQuery.access
+        }else
+        if(filterQuery.archive===true||false){
+          return project.archive ===filterQuery.archive
+        }else
+        if(filterQuery.client){
+          return project.client ===filterQuery.client
+        }else
+        if(filterQuery.name){
+              return project.name === filterQuery.name
+            }
+        }) 
+       
+            
+    dispatch(updateProjects(newFilter))
   }
 
   return (
@@ -81,15 +99,16 @@ const handleSearch =()=>{
                     </MenuList>
                   </Menu>
               </Flex>
-              <Flex borderRight={["none", "none", "1px dotted #666","1px dotted #666"]} justify="center" align={"center"} gap={"10px"} textAlign={"center"} w={["50%","50%","25%","20%"]} _hover={{cursor:"pointer"}}>
-                <Menu>
+              <Flex  borderRight={["none", "none", "1px dotted #666","1px dotted #666"]} justify="center" align={"center"} gap={"10px"} textAlign={"center"} w={["50%","50%","25%","20%"]} _hover={{cursor:"pointer"}}>
+               
+                <Menu >
                     <MenuButton as={Button} /*rightIcon={}*/ variant={"outline"} border={"none"} _hover={{bg:"none"}} _active={{bg:"none"}} >
                     <Flex align={"center"} gap={"10px"}>
                           <Text fontSize={"16px"} >Client</Text> 
                           <BsCaretDownFill fontSize={"10px"}/>
                     </Flex>
                     </MenuButton>
-                    <MenuList>
+                    <MenuList maxH={"200px"}  overflow={"scroll"}>
                       <Box px={'15px'} mb={'15px'}>
                         <Input onChange={(e)=>seachClients(e.target.value)} type="text" placeholder="Search Client" />
                       </Box>
@@ -100,6 +119,9 @@ const handleSearch =()=>{
                       })}
                     </MenuList>
                   </Menu>
+
+               
+
               </Flex>
               <Flex borderRight={"1px dotted #666"} justify="center" align={"center"} gap={"10px"} textAlign={"center"} w={["50%","50%","25%","20%"]} _hover={{cursor:"pointer"}}>
               <Menu >
@@ -135,7 +157,7 @@ const handleSearch =()=>{
 
         <Box w={["98%","98%","98%","48%"]} >
             <Flex gap={"10px"} justify="space-between" >
-             <Box w="80%">
+             <Box w="80%" >
                 <Search filterQuery={filterQuery} setFilterQuery={setFilterQuery}/>
              </Box>
              <Box>
