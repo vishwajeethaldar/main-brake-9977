@@ -10,7 +10,7 @@ const SignUpNavbar = () => {
         </div>
         <Flex>
             <Link to="/login">
-            <Text color="#03a9f4" marginLeft=".3rem" _hover={{ textDecoration: "underline", cursor: "pointer" }}>Logi In</Text>
+            <Text color="#03a9f4" marginLeft=".3rem" _hover={{ textDecoration: "underline", cursor: "pointer" }}>Log In</Text>
             </Link>
         </Flex>
     </Flex>
