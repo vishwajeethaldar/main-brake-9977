@@ -1,4 +1,5 @@
 import { Flex, Text } from "@chakra-ui/react"
+import { Link } from "react-router-dom"
 
 const LoginNavbar = () => {
   return (
@@ -10,7 +11,10 @@ const LoginNavbar = () => {
             <Text color="gray">
                 Don't have an account?
             </Text>
-            <Text color="#03a9f4" marginLeft=".3rem" _hover={{ textDecoration: "underline", cursor: "pointer" }}>Sign up</Text>
+            <Link to="/signup">
+              <Text color="#03a9f4" marginLeft=".3rem" _hover={{ textDecoration: "underline", cursor: "pointer" }}>Sign up</Text>
+            </Link>
+
         </Flex>
     </Flex>
   )

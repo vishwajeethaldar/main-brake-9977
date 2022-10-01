@@ -17,6 +17,19 @@ export const addUser = createAsyncThunk(
     }
 )
 
+export const getUser = createAsyncThunk(
+    "users/getUserData",
+    async(data:{token:string,id:string}, thunkApi)=>{
+        try{
+            const responce = await axios.get<userType>(`${DBLINK}/users/${data.id}`,{headers:{token:data.token}})
+            return responce.data
+        }catch(error:any){
+            return thunkApi.rejectWithValue(error.message);
+        }
+    }
+)
+
+
 const initialState:userSliceState = {
     loading:false,
     error:false,
@@ -39,6 +52,19 @@ const usersSlice = createSlice({
              state.successMsg = action.payload   
         })
         .addCase(addUser.rejected, (state, action:PayloadAction<any>)=>{
+            state.loading=false,
+            state.errmsg = action.payload,
+            state.error = true
+        })
+        .addCase(getUser.pending,(state,action)=>{
+            state.loading=true;
+        })
+        .addCase(getUser.fulfilled,(state, action:PayloadAction<userType>)=>{
+             state.loading=false,
+             state.error=false
+             state.user = action.payload   
+        })
+        .addCase(getUser.rejected, (state, action:PayloadAction<any>)=>{
             state.loading=false,
             state.errmsg = action.payload,
             state.error = true
