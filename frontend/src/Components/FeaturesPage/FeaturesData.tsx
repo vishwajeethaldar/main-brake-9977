@@ -1,75 +1,79 @@
 import React from 'react'
 import "./FeaturesData.css"
 import EighthPart from '../Homepage/EighthPart'
+import Footer from '../Homepage/Footer'
+import { Flex, Stack, Text, Box, Button, Image, Link } from "@chakra-ui/react"
 
 const FeaturesData = () => {
     return (
-        <div>
-            <div className='firstdiv'>
-                <h2 className='timetracker'>Time tracker</h2>
-                <h3 className='features_page__text_center'>Start and stop timer as you work, or enter hours manually.</h3>
-                <img className='ttimg' src="https://clockify.me/assets/images/features/features-tracker-screenshot.svg" alt="" />
+        <Flex direction={"column"} align={"center"} width={"100%"}>
+          
+                <Text fontSize={"2.5em"} textAlign={"center"} >Time tracker</Text>
+                <Text fontSize={"18px"} textAlign={"center"} >Start and stop timer as you work, or enter hours manually.</Text>
+                {/* <img className='ttimg' src="https://clockify.me/assets/images/features/features-tracker-screenshot.svg" alt="" /> */}
+                <Image width={"75%"} src='https://clockify.me/assets/images/features/features-tracker-screenshot.svg' />
 
 
-                <div className='feattextbox'>
-                    <div>
-                        <h3>Timer</h3>
-                        <h4>Track time using a stopwatch.</h4>
-                    </div>
-                    <div>
-                        <h3>Add Time</h3>
-                        <h4>Enter and edit hours manually.</h4>
-                    </div>
-                    <div>
-                        <h3>Continue</h3>
-                        <h4>Continue tracking with one click.</h4>
-                    </div>
-                    <div>
-                        <h3>Billable</h3>
-                        <h4>Mark hours as billable.</h4>
-                    </div>
-                </div>
+                <Flex >
+                    <Box>
+                        <Text>Timer</Text>
+                        <Text>Track time using a stopwatch.</Text>
+                    </Box>
+                    <Box>
+                        <Text>Add Time</Text>
+                        <Text>Enter and edit hours manually.</Text>
+                    </Box>
+                    <Box>
+                        <Text>Continue</Text>
+                        <Text>Continue tracking with one click.</Text>
+                    </Box>
+                    <Box>
+                        <Text>Billable</Text>
+                        <Text>Mark hours as billable.</Text>
+                    </Box>
+                </Flex>
 
 
 
-            </div>
+         
 
             {/* TIMESHEET */}
-            <div className='firstdiv' >
-                <h2 className='timetracker'>Time Sheet</h2>
-                <h3 className='features_page__text_center'>Log your weekly activities in less than a minute.</h3>
-                <img className='ttimg' src="https://clockify.me/assets/images/features/features-timesheet-screenshot.svg" alt="" />
+            
+                <Text fontSize={"2.5em"} textAlign={"center"} className='timetracker'>Time Sheet</Text>
+                <Text fontSize={"18px"} textAlign={"center"}>Log your weekly activities in less than a minute.</Text>
+                {/* <img  className='ttimg' src="https://clockify.me/assets/images/features/features-timesheet-screenshot.svg" alt="" /> */}
+                <Image src='https://clockify.me/assets/images/features/features-timesheet-screenshot.svg' />
 
 
-                <div className='feattextbox'>
-                    <div>
-                        <h3>Activities</h3>
-                        <h4>Select activity and enter time.</h4>
-                    </div>
-                    <div>
-                        <h3>Templates</h3>
-                        <h4>Select activity and enter time.</h4>
-                    </div>
-                    <div>
-                        <h3>Approval</h3>
-                        <h4>Submit and approve timesheets</h4>
-                    </div>
-                    <div>
-                        <h3>Reminders</h3>
-                        <h4>Reminder for due timesheets.</h4>
-                    </div>
-                </div>
+                <Flex >
+                    <Box>
+                        <Text>Activities</Text>
+                        <Text>Select activity and enter time.</Text>
+                    </Box>
+                    <Box>
+                        <Text>Templates</Text>
+                        <Text>Select activity and enter time.</Text>
+                    </Box>
+                    <Box>
+                        <Text>Approval</Text>
+                        <Text>Submit and approve timesheets</Text>
+                    </Box>
+                    <Box>
+                        <Text>Reminders</Text>
+                        <Text>Reminder for due timesheets.</Text>
+                    </Box>
+                </Flex>
 
 
 
-            </div>
 
 
             {/* KIOSK */}
             <div className='firstdiv'>
                 <h2 className='timetracker'>Kiosk</h2>
                 <h3 className='features_page__text_center'>Clock in with your PIN code from a shared device.</h3>
-                <img className='ttimg' src="https://clockify.me/assets/images/features/features-kiosk-screenshot.png" alt="" />
+                {/* <img className='ttimg' src="https://clockify.me/assets/images/features/features-kiosk-screenshot.png" alt="" /> */}
+                <Image src='https://clockify.me/assets/images/features/features-kiosk-screenshot.png' />
 
 
                 <div className='feattextbox'>
@@ -101,7 +105,8 @@ const FeaturesData = () => {
             <div className='firstdiv'>
                 <h2 className='timetracker'>Calendar</h2>
                 <h3 className='features_page__text_center'>Visualize your time and block out activities.</h3>
-                <img className='ttimg' src="https://clockify.me/assets/images/features/features-calendar-screenshot.svg" alt="" />
+                {/* <img className='ttimg' src="https://clockify.me/assets/images/features/features-calendar-screenshot.svg" alt="" /> */}
+                <Image src='https://clockify.me/assets/images/features/features-calendar-screenshot.svg' />
 
 
                 <div className='feattextbox'>
@@ -132,7 +137,8 @@ const FeaturesData = () => {
             <div className='firstdiv'>
                 <h2 className='timetracker'>Dashboard</h2>
                 <h3 className='features_page__text_center'>See where you spend time and what your team is working on.</h3>
-                <img className='ttimg' src="https://clockify.me/assets/images/features/features-dashboard-screenshot.svg" alt="" />
+                {/* <img className='ttimg' src="https://clockify.me/assets/images/features/features-dashboard-screenshot.svg" alt="" /> */}
+                <Image src='https://clockify.me/assets/images/features/features-dashboard-screenshot.svg' />
 
 
                 <div className='feattextbox'>
@@ -164,7 +170,8 @@ const FeaturesData = () => {
             <div className='firstdiv'>
                 <h2 className='timetracker'>Projects</h2>
                 <h3 className='features_page__text_center'>Track time on projects, and keep an eye on progress and budget.</h3>
-                <img className='ttimg' src="https://clockify.me/assets/images/features/features-projects-screenshot.svg" alt="" />
+                {/* <img className='ttimg' src="https://clockify.me/assets/images/features/features-projects-screenshot.svg" alt="" /> */}
+                <Image src='https://clockify.me/assets/images/features/features-projects-screenshot.svg' />
 
 
                 <div className='feattextbox'>
@@ -196,7 +203,8 @@ const FeaturesData = () => {
             <div className='firstdiv'>
                 <h2 className='timetracker'>Team</h2>
                 <h3 className='features_page__text_center'>Invite your team to track time in your account.</h3>
-                <img className='ttimg' src="https://clockify.me/assets/images/features/features-team-screenshot.svg" alt="" />
+                {/* <img className='ttimg' src="https://clockify.me/assets/images/features/features-team-screenshot.svg" alt="" /> */}
+                <Image src='https://clockify.me/assets/images/features/features-team-screenshot.svg' />
 
 
                 <div className='feattextbox'>
@@ -228,7 +236,8 @@ const FeaturesData = () => {
             <div className='firstdiv'>
                 <h2 className='timetracker'>Time off</h2>
                 <h3 className='features_page__text_center'>Track your team's holidays and time off requests.</h3>
-                <img className='ttimg' src="https://clockify.me/assets/images/features/features-timeoff-screenshot.svg" alt="" />
+                {/* <img className='ttimg' src="https://clockify.me/assets/images/features/features-timeoff-screenshot.svg" alt="" /> */}
+                <Image src='https://clockify.me/assets/images/features/features-timeoff-screenshot.svg' />
 
 
                 <div className='feattextbox'>
@@ -258,7 +267,8 @@ const FeaturesData = () => {
             <div className='firstdiv'>
                 <h2 className='timetracker'> Approval</h2>
                 <h3 className='features_page__text_center'>Officially approve your team's timesheets and expenses.</h3>
-                <img className='ttimg' src="https://clockify.me/assets/images/features/features-approval-screenshot.svg" alt="" />
+                {/* <img className='ttimg' src="https://clockify.me/assets/images/features/features-approval-screenshot.svg" alt="" /> */}
+                <Image src='https://clockify.me/assets/images/features/features-approval-screenshot.svg' />
 
 
                 <div className='feattextbox'>
@@ -289,7 +299,8 @@ const FeaturesData = () => {
             <div className='firstdiv'>
                 <h2 className='timetracker'> Expenses</h2>
                 <h3 className='features_page__text_center'>Record fixed-fees and other project expenses.</h3>
-                <img className='ttimg' src="https://clockify.me/assets/images/features/features-expenses-screenshot.svg" alt="" />
+                {/* <img className='ttimg' src="https://clockify.me/assets/images/features/features-expenses-screenshot.svg" alt="" /> */}
+                <Image src='https://clockify.me/assets/images/features/features-expenses-screenshot.svg' />
 
 
                 <div className='feattextbox'>
@@ -321,8 +332,11 @@ const FeaturesData = () => {
             <div className='firstdiv'>
                 <h2 className='timetracker'> Invoicing</h2>
                 <h3 className='features_page__text_center'>Issue invoices based on tracked time, expenses, and hourly rates.</h3>
-                <img className='ttimg' src="https://clockify.me/assets/images/features/features-invoicing-screenshot.svg" alt="" />
-
+                {/* <img className='ttimg' src="https://clockify.me/assets/images/features/features-invoicing-screenshot.svg" alt="" /> */}
+                <Box mx={"auto"} width={"90%"}>       
+                    
+                             <Image src='https://clockify.me/assets/images/features/features-invoicing-screenshot.svg' />
+                </Box>
 
                 <div className='feattextbox'>
                     <div >
@@ -349,6 +363,7 @@ const FeaturesData = () => {
 
             </div>
             <EighthPart />
+            <Footer />
 
 
 
@@ -361,7 +376,7 @@ const FeaturesData = () => {
 
 
 
-        </div>
+        </Flex>
     )
 }
 
