@@ -1,5 +1,7 @@
-import {Box, Button, Flex} from '@chakra-ui/react'
-import { useEffect } from 'react'
+import {Box, Button, Flex, Stack} from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
+import AppNavbar from '../Components/App_Bars/AppNavbar'
+import { CompactAppSidebar, ExpandedAppSidebar } from '../Components/App_Bars/AppSidebar'
 import { Filter } from '../Components/projects/Filter/Filter'
 import { NewProjectModal } from '../Components/projects/NewProjectModal'
 import { PageTitle } from '../Components/projects/PageTitle'
@@ -8,10 +10,14 @@ import { useAppDispatch, useAppSelector } from '../features/hooks'
 import { addprojects, getProjects } from '../features/projects/projectsSlice'
 import { addUser } from '../features/users/usersSlice'
  export const Projects = () => {
+    const [showsidebar, setshowSidebar] =  useState<boolean>(false)
     const project = useAppSelector(store=>store.projectsSlice)
     const auth = useAppSelector(store=>store.authSlice)
     const dispatch = useAppDispatch()
-    console.log(project);
+
+    const toggleSidebar = ()=>{
+        setshowSidebar(!showsidebar)
+    }
     
     useEffect(()=>{
    
@@ -21,12 +27,15 @@ import { addUser } from '../features/users/usersSlice'
     },[])
     
   return (
-    <Flex width="100%" bg={"#F2F6F8"} justify={"space-between"} align={["center"]}>
-        {/* <Box width={"20%"} display={["none", "none", "none", "block"]}>
+    <Box>
+        <AppNavbar Open={toggleSidebar}/>
+        <Flex position={"relative"} width="100%" bg={"#F2F6F8"} justify={"space-between"} align={["top"]}>
+        
+        <Box>
+                {showsidebar?<ExpandedAppSidebar />:<CompactAppSidebar />}
+        </Box>  
 
-        </Box>   */}
-
-        <Box  width={["100%", "100%", "100%","100%"]} px={["20px"]} >
+        <Box width={["","",showsidebar?"85%":"80%", showsidebar?"85%":"95%"]} px={["20px"]} >
             <Flex justify={"space-between"} width="100%" align={["center"]} py={["25px","25px","25px","50px"]}>
                 <PageTitle title='Projects'/>
                 <Box >
@@ -43,5 +52,6 @@ import { addUser } from '../features/users/usersSlice'
        
         
     </Flex>
+    </Box>
   )
 }

@@ -2,7 +2,7 @@ import { Stack, Text, Flex, Box } from '@chakra-ui/react'
 
 export const CompactAppSidebar = () => {
     return (
-        <Box display={["none","none","block","block"]} h="92vh" borderRight="1px solid #bdbdbd" >
+        <Box display={["none","none","block","block"]} h="92vh" borderRight="1px solid #bdbdbd" minH={"100%"}>
             <Stack spacing="0">
 
                 <Flex _hover={{ bg: "#e4eaee", cursor: "pointer", borderLeft: "4px solid #0277ac" }} borderLeft="4px solid #02a9f4" bgColor="white" p=".8rem 1rem .8rem 1rem" textAlign="left">
@@ -50,7 +50,7 @@ export const CompactAppSidebar = () => {
                 </Flex>
 
 
-                <Flex h="31vh" color="white" borderLeft="4px solid #02a9f4" bgColor="white">.</Flex>
+                <Flex minH={"100%"} color="white" borderLeft="4px solid #02a9f4" bgColor="white">.</Flex>
 
 
             </Stack>
@@ -60,7 +60,7 @@ export const CompactAppSidebar = () => {
 
 export const ExpandedAppSidebar = () => {
     return (
-        <Box h="92vh" borderRight="1px solid #bdbdbd" >
+        <Box minH={"100%"} borderRight="1px solid #bdbdbd" >
             <Stack spacing="0">
 
                 <Flex _hover={{ bg: "#e4eaee", cursor: "pointer", borderLeft: "4px solid #0277ac" }} borderLeft="4px solid #02a9f4" bgColor="white" p=".8rem 1.8rem .8rem 1rem" textAlign="left">
