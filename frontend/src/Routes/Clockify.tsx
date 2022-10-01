@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from "../Components/Navbar/NavbarHome"
+import NavbarHome from "../Components/Navbar/NavbarHome"
 import SecondPart from '../Components/Homepage/SecondPart'
 import ThirdPart from '../Components/Homepage/ThirdPart'
 import FourthPart from '../Components/Homepage/FourthPart'
@@ -8,19 +8,26 @@ import SixthPart from '../Components/Homepage/SixthPart'
 import SeventhPart from '../Components/Homepage/SeventhPart'
 import EighthPart from '../Components/Homepage/EighthPart'
 import { Box } from '@chakra-ui/react'
+import Footer from '../Components/Homepage/Footer'
+
 
 
 const Clockify = () => {
   return (
-    <Box w="100%">
-    {/* <Navbar/> */}
+
+    <Box width={"100%"}>
+     <Box backgroundColor={"white"} zIndex={"999"} top={"0px"} position={"sticky"}>   <NavbarHome /></Box>
     <SecondPart/>
-    {/* <ThirdPart/>
+     <ThirdPart/>
+
     <FourthPart/>
     <FifthPart/>
     <SixthPart/>
     <SeventhPart/>
-    <EighthPart/> */}
+
+    <EighthPart/> 
+    <Footer/>
+
     </Box>
     
   )

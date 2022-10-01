@@ -6,8 +6,10 @@ import AppNavbar from '../Components/App_Bars/AppNavbar';
 import CompactAppSidebar, {ExpandedAppSidebar } from '../Components/App_Bars/AppSidebar';
 import LoginFooter from '../Components/login/LoginFooter';
 import SignUpNavbar from '../Components/signup/SignupNavbar';
-import { useAppDispatch } from '../features/hooks';
+import { useAppDispatch, useAppSelector } from '../features/hooks';
 import { addUser } from '../features/users/usersSlice';
+import load from "../../public/loader.gif"
+import { useNavigate } from 'react-router-dom';
 
 type SignCredProp = {
   name: string;
@@ -20,6 +22,10 @@ const SignUp = () => {
 
   //   const Open:Function=()=>{setIsOpen(!isOpen)}
 
+  const Auth = useAppSelector((store) => store.usersSlice);
+  const Auth2 = useAppSelector((store) => store.authSlice);
+
+
   const [signupcreds, setSignupCred] = useState<SignCredProp>({ name: "", email: "", password: "" });
   const dispatch = useAppDispatch();
 
@@ -30,11 +36,15 @@ const SignUp = () => {
       [name]: value,
     });
   };
+  
+  const navigate =useNavigate()
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(signupcreds);
     dispatch(addUser(signupcreds));
+    Auth.successMsg!==""? setTimeout(()=>{navigate("/login")},2500)
+    :navigate("/signup")
   };
 
   return (
@@ -106,6 +116,13 @@ const SignUp = () => {
       <Flex margin="auto" marginTop="3rem" justifyContent="center" >
         <LoginFooter />
       </Flex>
+      { Auth.loading?
+        <Box w="100%" h="100%" bgColor="rgba(228,234,238,.85)" position="absolute" top="0" left="0" zIndex="999">
+        <Box position="absolute" top="47vh" left="47vw" zIndex="9999">
+          <img src={load} alt="loader" />
+      </Box>
+      </Box>:null
+      }
     </Box>
   )
 }

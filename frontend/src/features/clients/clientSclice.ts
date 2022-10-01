@@ -4,15 +4,32 @@ import axios,{AxiosResponse} from "axios";
 
 const DBLINK = "https://clockify-clone-app.herokuapp.com";
 
+// export const getClients = createAsyncThunk(
+//     'clients/getClients',
+//     async(data:{token:string, query?:string}, thunkapi)=>{
+//         try{
+//             const res = await axios.get<clientType[]>(`${DBLINK}/clients?q=${data.query}`, {
+//                 headers:{
+//                     token:data.token
+//                 }
+//             });
+//             return res.data;
+//         }catch(error:any){
+//             return thunkapi.rejectWithValue(error.message);
+//         }
+//     }
+// )
+
 export const getClients = createAsyncThunk(
     'clients/getClients',
-    async(data:{token:string, query?:string}, thunkapi)=>{
+    async(data:{token:string}, thunkapi)=>{
         try{
-            const res = await axios.get<clientType[]>(`${DBLINK}/clients?q=${data.query}`, {
+            const res = await axios.get<clientType[]>(`${DBLINK}/clients`, {
                 headers:{
                     token:data.token
                 }
             });
+            console.log(res.data)
             return res.data;
         }catch(error:any){
             return thunkapi.rejectWithValue(error.message);
@@ -50,7 +67,7 @@ export const deleteClient = createAsyncThunk(
                     token:data.token
                 }
             })          
-            return res.data;
+            return data.id;
         }catch(error:any){
             return thunkapi.rejectWithValue(error.message);
         }
@@ -61,57 +78,68 @@ export const deleteClient = createAsyncThunk(
 const initialState:clientSliceType = {
     loading:false,
     error:false,
-    errmsg:"",
+    errmsg:"string",
     clients:[]
 }
 
+const client:clientType = {
+    _id:"",
+    name:"",
+    address:"",
+    note:"",
+    archive:false,
+    userId:""
+}
+
 const clientSlice = createSlice({
-    name:"clientsworkspace",
+    name: "clients",
     initialState,
-    reducers:{},
+    reducers: {},
     extraReducers(builder) {
-        builder.addCase(addClients.pending,(state, action   )=>{
-            state.loading =true;
+        builder.addCase(getClients.pending, (state, action) => {
+            state.loading = true
         })
-        .addCase(addClients.fulfilled, (state, action:PayloadAction<clientType>)=>{
-            state.loading =false;
-            state.error =false;
-            state.clients = [...state.clients,action.payload]
+        .addCase(getClients.fulfilled, (state, action:PayloadAction<clientType[]>) => {
+            state.loading = false,
+            state.error = false,
+            state.clients = action.payload
         })
-        .addCase(addClients.rejected, (state, action:PayloadAction<any>)=>{
-            state.errmsg = action.payload;
-            state.error = true;
-            state.loading = false
+        .addCase(getClients.rejected, (state, action:PayloadAction<any>) => {
+            state.error = true,
+            state.loading = false,
+            state.errmsg = action.payload
         })
-        .addCase(getClients.pending,(state, action)=>{
-            state.loading =true;
+        .addCase(addClients.pending, (state, action) => {
+            state.loading = true
         })
-        .addCase(getClients.fulfilled, (state, action:PayloadAction<clientType[]>)=>{
-            state.loading =false;
-            state.error =false;
-            state.clients = action.payload    
+        .addCase(addClients.fulfilled, (state, action:PayloadAction<clientType>) => {
+            state.loading = false,
+            state.error = false,
+            state.clients = [...state.clients, action.payload]
         })
-        .addCase(getClients.rejected, (state, action:PayloadAction<any>)=>{
-            state.errmsg = action.payload;
-            state.error = true;
-            state.loading = false
+        .addCase(addClients.rejected, (state, action:PayloadAction<any>) => {
+            state.error = true,
+            state.loading = false,
+            state.errmsg = action.payload
         })
-        .addCase(deleteClient.pending,(state, action)=>{
-            state.loading =true;
+        .addCase(deleteClient.pending, (state, action) => {
+            state.loading = true
         })
-        .addCase(deleteClient.fulfilled, (state, action:PayloadAction<clientType>)=>{
-            state.loading =false;
-            state.error =false;
-            state.clients = state.clients.filter((item)=>item._id!==action.payload._id)   
+        .addCase(deleteClient.fulfilled, (state, action:PayloadAction<string>) => {
+            state.loading = false,
+            state.error = false,
+            state.clients = state.clients.filter((client)=>{
+                if(client._id !== action.payload){
+                    return client
+                }
+            })
         })
-        .addCase(deleteClient.rejected, (state, action:PayloadAction<any>)=>{
-            state.errmsg = action.payload;
-            state.error = true;
-            state.loading = false
+        .addCase(deleteClient.rejected, (state, action:PayloadAction<any>) => {
+            state.error = true,
+            state.loading = false,
+            state.errmsg = action.payload
         })
-
-
     },
 })
 
-export default clientSlice.reducer
+export default clientSlice.reducer;

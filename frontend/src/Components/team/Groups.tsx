@@ -15,17 +15,19 @@ import {
   Td,
   TableContainer,
   useMediaQuery,
+  Grid, GridItem
 } from "@chakra-ui/react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import { FiEdit2, FiX } from "react-icons/fi";
+import { FiEdit2, FiMoreVertical, FiX } from "react-icons/fi";
 import GroupsEditModal from "./GroupsEditModal";
 import GroupsDeleteModal from "./GroupsDeleteModal";
 import { useSelector, useDispatch } from "react-redux";
-import { RiArrowDropDownLine } from "react-icons/ri";
+import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 import { useAppDispatch, useAppSelector } from "../../features/hooks";
-import { getGroups, addGroups } from "../../features/groups/groupsSlice";
+import { getGroups, addGroups, deleteGroup } from "../../features/groups/groupsSlice";
 
 const Groups = () => {
+  const [item, setItem] = useState(false)
   const dispatch = useAppDispatch();
   const groups = useAppSelector((store) => store.groupsSlice);
   const auth = useAppSelector((store) => store.authSlice);
@@ -41,7 +43,6 @@ const Groups = () => {
 
   useEffect(()=>{
     dispatch(getGroups({token:auth.token}));
-    dispatch(addGroups({token:auth.token, data:{name:"fvdgdfvdxfgdfgvdfdfgv", userId:userId}}));
     
     console.log(groups.groups);
     console.log(email)
@@ -52,6 +53,15 @@ const Groups = () => {
     setGroup(e.target.value)
   }
 
+  const onClick = () => {
+    let data = {name: group, userId: userId};
+    dispatch(addGroups({token:auth.token, data:data}));
+  }
+
+  const handleDelete:Function = (c:string) => {
+    dispatch(deleteGroup({token:auth.token, id:c}));
+    console.log("Connected")
+  }
 
   if(isLargerThan1365){
   return (
@@ -61,15 +71,37 @@ const Groups = () => {
             <Input value={group} onChange={onChange} placeholder="Add new user group" />
           </Box>
           <Box>
-          <Button backgroundColor={"#038fce"} color="white">
+          <Button onClick={onClick} backgroundColor={"#038fce"} color="white">
             ADD
           </Button>
         </Box>
         </Flex>
-        <Box bg={"#e4eaee"} padding="5px 10px">
+        <Box bg={"#e4eaee"} padding="10px 20px">
                   Groups
                   </Box>
-      <TableContainer>
+                  <Flex border={"1px solid"} bg='white'>
+    <Box width={"30%"} padding="10px 10px 10px 20px">NAME</Box>
+    <Box padding="10px 0px">ACCESS</Box>
+    </Flex>
+    {groups.groups.map((group) => {
+          return <Flex bg='white' padding={"5px"} key={group.name} borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
+          <Box padding="0px 0px 0px 10px" width={"30%"}>{group.name}</Box>
+          <Box borderLeft={"1px dashed"} paddingLeft="10px" width={"63%"}>
+            <Flex gap={"5px"}>
+              <AiOutlinePlusCircle />
+              <p>Access</p>
+            </Flex>
+          </Box>
+          <Box borderLeft={"1px dashed"} paddingLeft="10px" width={"70px"}>
+              <GroupsEditModal />
+          </Box>
+          <Box borderLeft={"1px dashed"} paddingLeft="10px" width={"70px"}>
+            <GroupsDeleteModal name={group.name} handleDelete={() => handleDelete(group._id)} />
+          </Box>
+        </Flex>
+        })}
+
+      {/* <TableContainer>
         <Table variant="simple">
           <Tbody>
             <Tr>
@@ -91,7 +123,7 @@ const Groups = () => {
               <GroupsEditModal />
           </Td>
           <Td>
-            <GroupsDeleteModal />
+            <GroupsDeleteModal name={group.name} handleDelete={() => handleDelete(group._id)} />
           </Td>
         </Tr>
         })}
@@ -100,7 +132,7 @@ const Groups = () => {
             
           </Tbody>
         </Table>
-      </TableContainer>
+      </TableContainer> */}
     </Box>
   );
   }
@@ -119,7 +151,71 @@ const Groups = () => {
           <Box bg={"#e4eaee"} padding="5px 10px">
                   Groups
                   </Box>
-        <TableContainer>
+                  <Box>
+        
+          <Flex marginBottom={"10px"}>
+            <Box>
+              <Select>
+                <option value="show all">Show all</option>
+                <option value="show active">Show active</option>
+                <option value="show inactive">Show inactive</option>
+              </Select>
+            </Box>
+            
+              <Input placeholder="Search by name or email" />
+            
+          </Flex>
+          
+          <Box textAlign={"right"}>
+            <Button backgroundColor={"#038fce"} color="white">
+              ADD NEW MEMBER
+            </Button>
+          </Box>
+          <Box bg={"#e4eaee"} padding="5px 10px" border={"1px solid"}>
+                  Members
+                  </Box>
+                  <Flex padding={"10px"} borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
+                    <Box width={"95%"}>Name</Box>
+                    <Box>
+                      <Button background={"#E1F5FE"} onClick={()=> setItem(!item)}>{item?<RiArrowDropUpLine fontSize={"30px"} />:<RiArrowDropDownLine fontSize={"30px"} />}</Button>
+                      </Box>
+                  </Flex>
+                  {groups.groups.map((group) => {
+                    return <Box>
+                  {item?<Flex padding={"10px"} borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
+                    <Box width={"95%"}>{group.name}</Box>
+                    <Box>
+                      <Button background={"#E1F5FE"} onClick={()=> setItem(!item)}><RiArrowDropUpLine fontSize={"30px"} /></Button>
+                      </Box>
+                  </Flex>:<Box padding={"10px"} borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
+                  <Flex>
+                    <Box width={"95%"}>{group.name}</Box>
+                    <Box>
+                      <Button background={"#E1F5FE"} onClick={()=> setItem(!item)}><RiArrowDropDownLine fontSize={"30px"} /></Button>
+                      </Box>
+                  </Flex>
+                  <Box bg={"#e4eaee"}>
+                    <Flex border={"1px solid"}>
+                      <Box width={"50%"} padding="10px">Members</Box>
+                      <Box borderLeft={"1px dashed"} padding="10px">Members</Box>
+                    </Flex>
+                    <Flex borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
+                      <Box width={"95%"} padding="10px">EDIT</Box>
+                      <Box borderLeft={"1px dashed"} padding="10px">
+                      <GroupsEditModal />
+                      </Box>
+                    </Flex>
+                    <Flex borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
+                      <Box width={"95%"} padding="10px">DELETE</Box>
+                      <Box borderLeft={"1px dashed"} padding="10px">
+                      <GroupsDeleteModal name={group.name} handleDelete={() => handleDelete(group._id)} />
+                      </Box>
+                    </Flex>
+                  </Box>
+                    </Box>}
+                    </Box>})}
+      </Box>
+        {/* <TableContainer>
           <Table variant="simple">
             
             <Tbody>
@@ -183,7 +279,7 @@ const Groups = () => {
                 </Tr>
               </Tbody>
             </Table>
-          </TableContainer>
+          </TableContainer> */}
         </Box>
       );
       }
