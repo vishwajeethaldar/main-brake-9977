@@ -11,7 +11,7 @@ export const ColorPicker = ({setColor,setShowColor,color}:{setColor:Function,set
             {colors.map((colorCode)=>{
                 return <Box onClick={()=>{
                     setColor(colorCode); 
-                    setShowColor(true)
+                    setShowColor(false)
                 }} key={colorCode} bg={colorCode} w="30px" h="30px" _hover={{cursor:"pointer"}}>
                     <Box  color="#fff" py="8px" px="7px" display={colorCode===color?"block":"none"}>
                         <GoCheck />
@@ -24,6 +24,7 @@ export const ColorPicker = ({setColor,setShowColor,color}:{setColor:Function,set
         
         <Input type="color" position={"absolute"} opacity={"0"} w="100%" zIndex={"998"} _hover={{cursor:"text"}} onChange={(e)=>{
             setColor(e.target.value)
+            setShowColor(false)
         }}/>
         <Box bg={color} w="20px" h="20px" position={"absolute"}>
          </Box>

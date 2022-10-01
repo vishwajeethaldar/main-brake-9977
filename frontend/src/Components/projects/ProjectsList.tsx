@@ -18,7 +18,7 @@ export const ProjectsList = ({projects}:{projects:projectType[]}) => {
   
  
   return (
-    <Box border={"1px solid #ccc"} bg="#ded" mt="50px">
+    <Box bg="#FFF"  border={"1px solid #ccc"} mt="50px">
        
        {/* <Table>
           <Thead>
@@ -28,18 +28,16 @@ export const ProjectsList = ({projects}:{projects:projectType[]}) => {
           </Thead>
        </Table> */}
        
-        <Box  px="20px" py="10px">
+        <Box bg="#ded"  px="20px" py="10px">
             <Text fontSize={["20px"]}>
                 Projects
             </Text>
         </Box>
 
-        <Flex  px="20px" w="100%" justify={"space-between"} align="center" bg="#fff">
-          
-
-          <Flex display={["none","none","none","flex"]} minH="35px" w={["90%"]} justify={"flex-start"} align="center">
+        <Flex minH="50px"  w="100%" justify={"space-between"} align="center" bg="#fff">
+           <Flex px="20px" display={["none","none","none","flex"]} minH="35px" w={["90%"]} justify={"flex-start"} align="center">
           <Checkbox w="30px" name="access"  defaultChecked={false}></Checkbox> 
-            <Box minW="15%"> NAME</Box>
+            <Box minW="19%"> NAME</Box>
             <Box minW="15%"> CLIENT</Box>
             <Box minW="15%"> TRACKED</Box>
             <Box minW="15%"> AMOUNT</Box>
@@ -56,11 +54,8 @@ export const ProjectsList = ({projects}:{projects:projectType[]}) => {
             {projects.map((project,i)=>{            
               return (
                 <Box key={project._id} w="100%" >
-                     <Box>
                         <ProjectCard project={project} bordertop={i===0?"1px solid #ccc":"none"} borderbottom={i>=0 && i<projects.length-1?"1px solid #ccc":"none"} />
-                     </Box>
-
-                </Box>
+            </Box>
               )
             })}
           </Box>
