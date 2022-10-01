@@ -11,6 +11,7 @@ export type task={
     sTime?:string;
     eTime?:string;
     _id?:string;
+    projectName?:string;
 }
 type tasksSearchProps={
     tasks:task[];

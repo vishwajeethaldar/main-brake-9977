@@ -3,7 +3,7 @@ import { jsx } from '@emotion/react';
 import { useState, FormEvent, ChangeEvent } from 'react'
 import { FcGoogle } from 'react-icons/fc';
 import AppNavbar from '../Components/App_Bars/AppNavbar';
-import { CompactAppSidebar, ExpandedAppSidebar } from '../Components/App_Bars/AppSidebar';
+import CompactAppSidebar, {ExpandedAppSidebar } from '../Components/App_Bars/AppSidebar';
 import LoginFooter from '../Components/login/LoginFooter';
 import SignUpNavbar from '../Components/signup/SignupNavbar';
 import { useAppDispatch } from '../features/hooks';
@@ -59,7 +59,7 @@ const SignUp = () => {
         </Stack>
         
       </Box>
-      <Box w="30%" margin="auto" bgColor="white" padding="2rem 2rem" marginTop="3rem" >
+      <Box w={["82%","40%","35%","35%"]} margin="auto" bgColor="white" padding={["1rem 1rem","1rem 1rem","2rem 2rem","2rem 2rem"]} marginTop="3rem" >
         <form onSubmit={handleSubmit}>
           <FormLabel>Sign Up</FormLabel>
           <Stack direction="column">
