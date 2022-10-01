@@ -46,10 +46,10 @@ const Login = () => {
   }, [isAuth])
 
   return (
-    <Flex bgColor="#f2f6f8">
-      <Box w="68%">
+    <Flex direction={["column","column","row","row"]} bgColor="#f2f6f8">
+      <Box w={["100%","100%","68%","68%"]}>
         <LoginNavbar />
-        <Box w="40%" margin="auto" bgColor="white" padding="2rem 2rem" marginTop="3rem" >
+        <Box w={["82%","65%","50%","40%"]} margin="auto" bgColor="white" padding={["1rem 1rem","1rem 1rem","1.6rem 1.6rem","2rem 2rem"]} marginTop="3rem" >
           <form onSubmit={handleSubmit} >
             <FormLabel>Log In</FormLabel>
             <Stack direction="column">
@@ -100,7 +100,7 @@ const Login = () => {
           <LoginFooter />
         </Flex>
       </Box>
-      <Box w="32%" className='login-left-part'>
+      <Box w={["100%","100%","32%","32%"]} className='login-left-part'>
         <LeftPart />
       </Box>
     </Flex>

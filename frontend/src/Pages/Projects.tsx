@@ -1,7 +1,7 @@
 import {Box, Button, Flex, Stack} from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import AppNavbar from '../Components/App_Bars/AppNavbar'
-import { CompactAppSidebar, ExpandedAppSidebar } from '../Components/App_Bars/AppSidebar'
+import CompactAppSidebar,{ ExpandedAppSidebar } from '../Components/App_Bars/AppSidebar'
 import { Filter } from '../Components/projects/Filter/Filter'
 import { NewProjectModal } from '../Components/projects/NewProjectModal'
 import { PageTitle } from '../Components/projects/PageTitle'
