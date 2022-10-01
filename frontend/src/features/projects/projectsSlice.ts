@@ -110,12 +110,20 @@ const initialState:projectsSliceType = {
     error:false,
     errmsg:"",
     products:[],
-    product:initialProjectState
+    testproduct:[]
 }
 const projectsSlice = createSlice({
     name:"projects",
     initialState,
-    reducers:{},
+    reducers:{
+        updateProjects:(state, action:PayloadAction<projectType[]>)=>{
+                state.testproduct = action.payload
+        },
+        getLocalProducts:(state)=>{
+                state.testproduct = state.products
+        }
+
+    },
     extraReducers(builder) {
         builder.addCase(addprojects.pending,(state, action)=>{
             state.loading=true
@@ -124,6 +132,7 @@ const projectsSlice = createSlice({
             state.loading=false;
             state.error= false;
             state.products = [...state.products, action.payload];
+            state.testproduct = [...state.testproduct, action.payload]
         })
         .addCase(addprojects.rejected,(state, action:PayloadAction<any>)=>{
             state.loading=false;
@@ -136,7 +145,8 @@ const projectsSlice = createSlice({
         .addCase(getProjects.fulfilled, (state, action:PayloadAction<projectType[]>)=>{
             state.loading=false;
             state.error= false;
-            state.products = action.payload
+            state.products = action.payload;
+            state.testproduct = action.payload;
 
         })
         .addCase(getProjects.rejected,(state, action:PayloadAction<any>)=>{
@@ -155,6 +165,7 @@ const projectsSlice = createSlice({
                     return project
                 }
             })
+            state.testproduct = state.products
 
         })
         .addCase(deleteProject.rejected,(state, action:PayloadAction<any>)=>{
@@ -175,7 +186,7 @@ const projectsSlice = createSlice({
                     return project
                 }
             })
-
+            state.testproduct = state.products
         })
         .addCase(updateProject.rejected,(state, action:PayloadAction<any>)=>{
             state.loading=false;
@@ -185,4 +196,5 @@ const projectsSlice = createSlice({
     },
 })
 
+export const { updateProjects, getLocalProducts} = projectsSlice.actions
 export default projectsSlice.reducer;

@@ -37,7 +37,7 @@ export type projectsSliceType = {
     error:boolean;
     errmsg:string;
     products:projectType[];
-    product:projectType;
+    testproduct:projectType[];
 
 }
 

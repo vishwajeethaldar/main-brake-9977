@@ -53,7 +53,7 @@ export const ProjectsList = ({projects}:{projects:projectType[]}) => {
           <Box>
             {projects.map((project,i)=>{            
               return (
-                <Box key={project._id} w="100%" >
+                <Box key={`${project._id} ${Date.now()}`} w="100%" >
                         <ProjectCard project={project} bordertop={i===0?"1px solid #ccc":"none"} borderbottom={i>=0 && i<projects.length-1?"1px solid #ccc":"none"} />
             </Box>
               )

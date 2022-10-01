@@ -21,6 +21,7 @@ import { ProjectsList } from '../Components/projects/ProjectsList'
 
 import { useAppDispatch, useAppSelector } from '../features/hooks'
 import { addprojects, getProjects } from '../features/projects/projectsSlice'
+import { projectType } from '../features/types/types';
 import { addUser } from '../features/users/usersSlice'
 
  export const Projects = () => {
@@ -30,7 +31,7 @@ import { addUser } from '../features/users/usersSlice'
     const auth = useAppSelector(store=>store.authSlice)
     const dispatch = useAppDispatch()
     const { isOpen, onOpen, onClose } = useDisclosure()
-
+    const [allProjects, setAllProjects] =  useState<projectType[]>([])
 
 
     const toggleSidebar = ()=>{
@@ -40,7 +41,7 @@ import { addUser } from '../features/users/usersSlice'
     
     useEffect(()=>{
        dispatch(getProjects({token:auth.token, query:""}))
-       console.log(project);
+       
     },[])
     
   return (
@@ -66,10 +67,9 @@ import { addUser } from '../features/users/usersSlice'
                     <NewProjectModal/>
                 </Box>
             </Flex>
-            <Filter/>
-
+            <Filter allProjects={allProjects} setAllProjects={setAllProjects} projects={project.products}/>
             <Box>
-                <ProjectsList projects={project.products}/>
+                <ProjectsList projects={project.testproduct}/>
             </Box>
         </Box>
       
