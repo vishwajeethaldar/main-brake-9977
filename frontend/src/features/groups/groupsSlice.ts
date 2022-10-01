@@ -48,7 +48,7 @@ export const deleteGroup = createAsyncThunk(
                     token:data.token
                 }
             })          
-            return res.data;
+            return data.id;
         }catch(error:any){
             return thunkapi.rejectWithValue(error.message);
         }
@@ -124,10 +124,15 @@ const groupsSlice = createSlice({
         .addCase(deleteGroup.pending, (state, action) => {
             state.loading = true
         })
-        .addCase(deleteGroup.fulfilled, (state, action:PayloadAction<groupsType>) => {
+        .addCase(deleteGroup.fulfilled, (state, action:PayloadAction<string>) => {
             state.loading = false,
             state.error = false,
-            state.groups = [...state.groups, action.payload]
+            state.groups = state.groups.filter((group)=>{
+                if(group._id !== action.payload){
+                    return group
+                }
+            })
+            console.log(state.groups)
         })
         .addCase(deleteGroup.rejected, (state, action:PayloadAction<any>) => {
             state.error = true,

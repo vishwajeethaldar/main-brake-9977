@@ -20,8 +20,8 @@ type deleteGroupProps={
 const GroupsDeleteModal = ({handleDelete, name}:deleteGroupProps) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const onClick = () => {
+      handleDelete();
       onClose();
-        handleDelete();
     }
   return (
     <>

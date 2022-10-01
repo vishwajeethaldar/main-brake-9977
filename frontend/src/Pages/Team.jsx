@@ -36,8 +36,8 @@ const Team = () => {
         <Box>
           {showsidebar ? <ExpandedAppSidebar /> : <CompactAppSidebar />}
         </Box>
-        <Box width={showsidebar ? "89%" : "96%"}>
-          <Heading>Team</Heading>
+        <Box padding={"40px 10px"} width={showsidebar ? "89%" : "96%"}>
+          <Heading fontSize={"24px"} color="#666666" marginBottom={"40px"}>Team</Heading>
           <Tabs variant="enclosed-colored">
             <TabList>
               <Tab>Members</Tab>
@@ -46,17 +46,17 @@ const Team = () => {
             </TabList>
             <TabPanels>
               <TabPanel>
-                <Box padding={"20px"} bg={"white"}>
+                <Box padding={"20px"} bg={"white"} margin="-15px">
                   <Members />
                 </Box>
               </TabPanel>
               <TabPanel>
-                <Box padding={"20px"} bg={"white"}>
+                <Box padding={"20px"} bg={"white"} margin="-15px">
                 <Groups />
                 </Box>
               </TabPanel>
               <TabPanel>
-                <Box padding={"20px"} bg={"white"}>
+                <Box padding={"20px"} bg={"white"} margin="-15px">
                 <Reminders />
                 </Box>
                 
