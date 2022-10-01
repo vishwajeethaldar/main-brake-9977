@@ -7,20 +7,21 @@ import FifthPart from '../Components/Homepage/Fifthpart'
 import SixthPart from '../Components/Homepage/SixthPart'
 import SeventhPart from '../Components/Homepage/SeventhPart'
 import EighthPart from '../Components/Homepage/EighthPart'
+import { Box } from '@chakra-ui/react'
 
 
 const Clockify = () => {
   return (
-    <div>
-    <Navbar/>
+    <Box w="100%">
+    {/* <Navbar/> */}
     <SecondPart/>
-    <ThirdPart/>
+    {/* <ThirdPart/>
     <FourthPart/>
     <FifthPart/>
     <SixthPart/>
     <SeventhPart/>
-    <EighthPart/>
-    </div>
+    <EighthPart/> */}
+    </Box>
     
   )
 }
