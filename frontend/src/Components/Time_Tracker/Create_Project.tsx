@@ -6,10 +6,17 @@ import { projectType } from "../../features/types/types";
 import { Project_Model } from "./Project_Model";
 import {useAppSelector} from "../../features/hooks"
 import axios from "axios";
-const Create_Project = () => {
+type createProjectProps={
+  setViewProject:Function;
+  handleProjectName:Function;
+}
+const Create_Project = ({setViewProject,handleProjectName}:createProjectProps) => {
   const token = useAppSelector(store=>store.authSlice.token)
   const [projects, setProjects ]  = useState<projectType[]>([])
-
+  const onClick=(name:string)=>{
+    handleProjectName(name)
+    setViewProject(true)
+  }
   const hanleGetProject = async(val:string)=>{
       let data = await axios.get(`https://clockify-clone-app.herokuapp.com/projects?q=${val}`, {
         headers:{
@@ -31,7 +38,7 @@ const Create_Project = () => {
           <Input onChange={(e)=>hanleGetProject(e.target.value)} size={"md"} placeholder="Find project or client"/>
           {
             projects?.map((project)=>{
-              return <MenuItem key={project._id}> {project.name}</MenuItem>
+              return <MenuItem onClick={()=>onClick(project.name)} key={project._id}> {project.name}</MenuItem>
             })
           }
           <Project_Model />
