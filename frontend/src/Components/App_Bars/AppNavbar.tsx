@@ -4,15 +4,17 @@ import { AiOutlineMenu } from "react-icons/ai"
 import { useAppDispatch, useAppSelector } from '../../features/hooks';
 import { useEffect } from 'react';
 import { getUser } from '../../features/users/usersSlice';
-import { logout } from '../../features/auth/authSlice';
-
+// import { logout } from '../../features/auth/authSlice';
+import {logout} from "../../features/auth/authSlice"
+import { Navigate, useNavigate } from 'react-router-dom';
 export default function AppNavbar({ Open }: { Open: Function }) {
-    const token = useAppSelector(store => store.authSlice.token)
+    const auth = useAppSelector(store => store.authSlice)
     const user = useAppSelector(store => store.usersSlice.user)
-    const [userid, email, p] = token.trim().split(":")
+    const [userid, email, p] = auth.token.trim().split(":")
     const dispatch = useAppDispatch()
+    const navigate=useNavigate()
     useEffect(() => {
-        dispatch(getUser({ token: token, id: userid }))
+        dispatch(getUser({ token: auth.token, id: userid }))
     }, [])
 
     const SplitName = user?.name.split(" ")
@@ -22,7 +24,9 @@ export default function AppNavbar({ Open }: { Open: Function }) {
     //     console.log(SplitName)
     //   },3000)
 
-
+ const handlelogout = ()=>{
+        dispatch(logout())
+  }
 
 
     return (
@@ -58,7 +62,7 @@ export default function AppNavbar({ Open }: { Open: Function }) {
                 <Box borderLeft="1px dotted #bdbdbd" px="1.5rem">
                     <Menu isLazy>
                         <MenuButton>
-                            <Box _hover={{ cursor: "pointer" }} flexWrap="nowrap" bgColor="#2a9789" textAlign="center" padding=".3rem .5rem" borderRadius="full" color="white">
+                            <Box _hover={{ cursor: "pointer" }} flexWrap="nowrap" bgColor="#2a9789" textAlign="center" padding=".3rem .5rem" borderRadius="25px" color="white">
                                 <Text fontSize="1.3rem" fontWeight="500">{SplitName?.map((n) => (n[0]))}</Text>
                             </Box>
                         </MenuButton>
@@ -71,7 +75,7 @@ export default function AppNavbar({ Open }: { Open: Function }) {
                             <MenuItem><Text color="#333333" fontSize="1rem">Download</Text></MenuItem>
                             <MenuItem><Flex justifyContent="space-between"><Text color="#333333" fontSize="1rem">Dark Theme</Text><Box ml="4rem" ><Badge colorScheme="green" variant="solid">NEW</Badge></Box></Flex></MenuItem>
                             <MenuDivider/>
-                            <MenuItem onClick={logout}><Text color="#333333" fontSize="1rem">Log out</Text></MenuItem>
+                            <MenuItem onClick={handlelogout}><Text color="#333333" fontSize="1rem">Log out</Text></MenuItem>
                         </MenuList>
                     </Menu>
                 </Box>
