@@ -16,6 +16,7 @@ export type userSliceState = {
 export type projectType = {
     name:string;
     client?:string;
+    clientId?:string;
     tracked?:number;
     amount?:number;
     billable?:boolean;
@@ -27,6 +28,7 @@ export type projectType = {
     endTime?:number;
     template?:string,
     userId:string,
+    _id?:string
 }
 
 export type projectsSliceType = {
@@ -45,6 +47,7 @@ export type projectPostProp = {
 
 
 export type clientType = {
+    _id?:string;
     name:string;
     address?:string;
     note?:string
@@ -83,6 +86,9 @@ export type taskPropType={
     endTime:number;
     totalTime?:number;
     userId:string;
+    eTime?:string;
+    sTime?:string;
+    _id?:string;
 }
 export type tasksSliceType = {
     tasks:taskPropType[],

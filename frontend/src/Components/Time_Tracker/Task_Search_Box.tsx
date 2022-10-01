@@ -1,13 +1,16 @@
 import { Box, Text } from '@chakra-ui/react'
 import React from 'react'
 import { useSelector } from 'react-redux'
-type task={
+export type task={
     name:string;
     billable:boolean;
     startTime?:number;
     endTime:number;
     totalTime?:number;
     userId:string;
+    sTime?:string;
+    eTime?:string;
+    _id?:string;
 }
 type tasksSearchProps={
     tasks:task[];

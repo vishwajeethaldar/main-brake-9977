@@ -3,19 +3,21 @@ import { useEffect } from 'react'
 import { Filter } from '../Components/projects/Filter/Filter'
 import { NewProjectModal } from '../Components/projects/NewProjectModal'
 import { PageTitle } from '../Components/projects/PageTitle'
+import { ProjectsList } from '../Components/projects/ProjectsList'
 import { useAppDispatch, useAppSelector } from '../features/hooks'
 import { addprojects, getProjects } from '../features/projects/projectsSlice'
 import { addUser } from '../features/users/usersSlice'
  export const Projects = () => {
     const project = useAppSelector(store=>store.projectsSlice)
-    const auth = useAppSelector(store=>store.usersSlice)
+    const auth = useAppSelector(store=>store.authSlice)
     const dispatch = useAppDispatch()
-    console.log(auth.token);
+    console.log(project);
     
     useEffect(()=>{
-        // if(auth.token){
-        //     dispatch(getProjects({token:auth.token}))
-        // }   
+   
+       dispatch(getProjects({token:auth.token, query:""}))
+       console.log(project);
+    
     },[])
     
   return (
@@ -32,8 +34,13 @@ import { addUser } from '../features/users/usersSlice'
                 </Box>
             </Flex>
             <Filter/>
+
+            <Box>
+                <ProjectsList projects={project.products}/>
+            </Box>
         </Box>
 
+       
         
     </Flex>
   )
