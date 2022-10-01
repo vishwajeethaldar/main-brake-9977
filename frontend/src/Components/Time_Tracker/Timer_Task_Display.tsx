@@ -45,7 +45,7 @@ const Timer_Task_Display = ({tasks,setType,handleStart,handleUpdateId,setUpdate,
                     <Flex key={el.name} justifyContent={"space-between"} padding="10px" bg={"white"} border="1px solid #ababab" borderTop={"none"}>
                         <Flex justifyContent={"space-between"}  width={"20%"} alignItems="center" >
                             <Text fontSize={"sm"}>{el.name}</Text>
-                            <Text fontSize={"sm"}>Project</Text>
+                            <Text fontSize={"sm"}>{el.projectName}</Text>
                         </Flex>
                         <Flex justifyContent={"space-between"}   width={"50%"}>
                         <Flex alignItems={"center"} justifyContent={"space-between"}   width={"10%"}>
