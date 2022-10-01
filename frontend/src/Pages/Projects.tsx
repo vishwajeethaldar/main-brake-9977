@@ -18,6 +18,7 @@ import { Filter } from '../Components/projects/Filter/Filter'
 import { NewProjectModal } from '../Components/projects/NewProjectModal'
 import { PageTitle } from '../Components/projects/PageTitle'
 import { ProjectsList } from '../Components/projects/ProjectsList'
+
 import { useAppDispatch, useAppSelector } from '../features/hooks'
 import { addprojects, getProjects } from '../features/projects/projectsSlice'
 import { addUser } from '../features/users/usersSlice'
@@ -40,16 +41,17 @@ import { addUser } from '../features/users/usersSlice'
     useEffect(()=>{
        dispatch(getProjects({token:auth.token, query:""}))
        console.log(project);
+       
     },[])
     
   return (
-    <Box maxH={"100vh"} >
-        <Box>
+    <Box >
+        <Box bg="#fff" position={"sticky"} top="0px" zIndex={"999"}>
         <AppNavbar Open={toggleSidebar}/>
         </Box>
         <Flex position={"relative"} width="100%" bg={"#F2F6F8"} justify={"space-between"} align={["top"]}>
         
-        <Box>
+        <Box bg="#fff">
             <Box display={["none","none","none","block"]}>
                 {showsidebar?<ExpandedAppSidebar />:<CompactAppSidebar />}
             </Box>
@@ -57,9 +59,8 @@ import { addUser } from '../features/users/usersSlice'
                 {showsidebar2||showsidebar?<ExpandedAppSidebar />:null}
             </Box>
         </Box>  
-        
 
-        <Box onClick={()=>setshowSidebar2(false)} width={["100%","100%",showsidebar?"100%":"100%", showsidebar?"85%":"95%"]} px={["20px"]} >
+        <Box height={"100vh"} overflow={"scroll"} onClick={()=>setshowSidebar2(false)} width={["100%","100%",showsidebar?"100%":"100%", showsidebar?"85%":"95%"]} px={["20px"]} >
             <Flex justify={"space-between"} width="100%" align={["center"]} py={["25px","25px","25px","50px"]}>
                 <PageTitle title='Projects'/>
                 <Box>
