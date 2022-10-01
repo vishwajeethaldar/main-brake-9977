@@ -13,8 +13,7 @@ import Members from "../Components/team/Members";
 import Groups from "../Components/team/Groups";
 import Reminders from "../Components/team/Reminders";
 import AppNavbar from "../Components/App_Bars/AppNavbar";
-import {
-  CompactAppSidebar,
+import CompactAppSidebar, {
   ExpandedAppSidebar,
 } from "../Components/App_Bars/AppSidebar";
 

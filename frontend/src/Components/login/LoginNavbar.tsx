@@ -5,7 +5,7 @@ const LoginNavbar = () => {
   return (
     <Flex justifyContent="space-between" padding="1.5rem">
         <div>
-            <img src="https://app.clockify.me/assets/logo.svg" alt="logo" />
+            <Link to="/"><img src="https://app.clockify.me/assets/logo.svg" alt="logo" /></Link>
         </div>
         <Flex>
             <Text color="gray">

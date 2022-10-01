@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import ClientsComponent from '../Components/clients/ClientsComponent'
+import {ClientsComponent} from '../Components/clients/ClientsComponent'
 import AppNavbar from '../Components/App_Bars/AppNavbar'
-import { CompactAppSidebar, ExpandedAppSidebar } from '../Components/App_Bars/AppSidebar'
+import CompactAppSidebar, { ExpandedAppSidebar } from '../Components/App_Bars/AppSidebar'
 import { Box, Flex } from '@chakra-ui/react'
 
 const Clients = () => {
@@ -18,8 +18,11 @@ const Clients = () => {
                 {showsidebar?<ExpandedAppSidebar />:<CompactAppSidebar />}
         </Box>
       <Box width={showsidebar?"89%":"96%"} >
-        <ClientsComponent />
+
+          <ClientsComponent />
+
         </Box>
+          
         </Flex>
     </div>
   )

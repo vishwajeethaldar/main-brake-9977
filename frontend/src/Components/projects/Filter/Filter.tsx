@@ -41,6 +41,7 @@ export type filterQueryType = {
 
 
 export const Filter = ({allProjects, setAllProjects,projects}:{projects:projectType[],allProjects:projectType[],setAllProjects:Function} ) => {
+
   const [clients, setClients] =  useState<clientType[]>([])
   const auth = useAppSelector(store=>store.authSlice)
   const [filterQuery, setFilterQuery] = useState<filterQueryType>({})

@@ -46,7 +46,7 @@ import { addUser } from '../features/users/usersSlice'
     
   return (
     <Box maxW="100vw">
-        <Box mx={"auto"} w={"98vw"} bg="#fff" position={"sticky"} top="0px" zIndex={"999"}>
+        <Box mx={"auto"} w={"100%"} bg="#fff" position={"sticky"} top="0px" zIndex={"999"}>
             <AppNavbar Open={toggleSidebar}/>
         </Box>
         <Flex position={"relative"} width="100%" bg={"#F2F6F8"} justify={"space-between"} align={["top"]}>

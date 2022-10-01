@@ -24,7 +24,7 @@ import { useAppDispatch, useAppSelector } from '../../features/hooks';
 import DeleteClientModal from "./DeleteClientModal";
 import EditClientModal from "./EditClientModal";
 
-const ClientsComponent = () => {
+export const ClientsComponent = () => {
   const dispatch = useAppDispatch();
   const clients = useAppSelector((store) => store.clientSlice);
   const auth = useAppSelector((store) => store.authSlice);
@@ -34,9 +34,6 @@ const ClientsComponent = () => {
 
   useEffect(()=>{
     dispatch(getClients({token:auth.token}));
-    console.log(clientId)
-    console.log(clients.clients);
-    console.log(email)
   }, []);
 
   const onChange = (e:ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +46,7 @@ const ClientsComponent = () => {
     dispatch(getClients({token:auth.token}));
   }
 
-  const handleDelete:Function = (c:any) => {
+  const handleDelete:Function = (c:string) => {
     dispatch(deleteClient({token:auth.token, id:c}));
   }
   
@@ -62,88 +59,205 @@ const ClientsComponent = () => {
     '(max-width: 173px)',
   ])
 
-  if(isLargerThan1365){
   return (
-    <Box backgroundColor={"#f2f6f8"} padding={"2.8572rem .7143rem"}>
-      <Heading marginBottom={"40px"} fontSize="24px" color={"#666666"} fontWeight={400}>Clients</Heading>
-      <Flex marginBottom={"20px"}>
-        <Flex gap={"10px"}>
+      <>
+        {isLargerThan1365?
+         <Box backgroundColor={"#f2f6f8"} padding={"2.8572rem .7143rem"}>
+         <Heading marginBottom={"40px"} fontSize="24px" color={"#666666"} fontWeight={400}>Clients</Heading>
+         <Flex marginBottom={"20px"}>
+           <Flex gap={"10px"}>
+             <Box>
+               <Select bg={"white"} borderRadius={"0px"}>
+                 <option value="show all">Show active</option>
+                 <option value="show active">Show archived</option>
+                 <option value="show inactive">Show all</option>
+               </Select>
+             </Box>
+             <Box>
+               <Input bg={"white"} borderRadius={"0px"} placeholder="Search by name or email" />
+             </Box>
+           </Flex>
+           <Spacer />
+           <Flex textAlign={"right"} gap={"10px"}>
+             <Box>
+               <Input bg={"white"} borderRadius={"0px"} value={client} onChange={onChange} placeholder="Add new client" />
+             </Box>
+             <Box>
+               <Button borderRadius={"0px"} onClick={onClick} backgroundColor={"#038fce"} color="white">
+                 ADD
+               </Button>
+             </Box>
+           </Flex>
+         </Flex>
+         <Box>
+         <Flex border={"1px solid"} bg='#e4eaee'>
+       <Box width={"30%"} padding="10px 10px 10px 20px">NAME</Box>
+       <Box padding="10px 0px">ADDRESS</Box>
+       </Flex>
+           {clients.clients.map((client) => {
+             return <Flex bg='white' padding={"5px"} key={client.name} borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
+             <Box padding="0px 0px 0px 10px" width={"30%"}>{client.name}</Box>
+             <Box borderLeft={"1px dashed"} paddingLeft="10px" width={"63%"}>
+               {client.address}
+             </Box>
+             <Box borderLeft={"1px dashed"} paddingLeft="10px" width={"70px"}>
+                 <EditClientModal />
+             </Box>
+             <Box borderLeft={"1px dashed"} paddingLeft="10px" width={"70px"}>
+               <DeleteClientModal name={client.name} handleDelete={() => handleDelete(client._id)} />
+             </Box>
+           </Flex>
+           })}
+         </Box>
+        
+       </Box>:isSmallerThan1365 && isLargerThan991?
+       <Box backgroundColor={"#f2f6f8"} padding={"2.8572rem .7143rem"}>
+       <Heading marginBottom={"40px"} fontSize="24px" color={"#666666"} fontWeight={400}>Clients</Heading>
+       <Flex marginBottom={"20px"}>
+           <Box>
+             <Select bg={"white"}>
+               <option value="show all">Show active</option>
+               <option value="show active">Show archived</option>
+               <option value="show inactive">Show all</option>
+             </Select>
+           </Box>
+           <Box>
+             <Input bg={"white"} placeholder="Search by name or email" />
+           </Box>
+         </Flex>
+         <Flex marginBottom={"20px"}>
+             <Input bg={"white"} placeholder="Add new client" />
+           <Box>
+             <Button backgroundColor={"#038fce"} color="white">
+               ADD
+             </Button>
+           </Box>
+         </Flex>
+         <Box>
+     <Flex border={"1px solid"} bg='#e4eaee'>
+   <Box width={"30%"} padding="10px 10px 10px 20px">NAME</Box>
+   <Box padding="10px 0px">ADDRESS</Box>
+   </Flex>
+       {clients.clients.map((client) => {
+         return <Flex bg='white' padding={"5px"} key={client.name} borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
+         <Box padding="0px 0px 0px 10px" width={"30%"}>{client.name}</Box>
+         <Box borderLeft={"1px dashed"} paddingLeft="10px" width={"63%"}>
+           {client.address}
+         </Box>
+         <Box borderLeft={"1px dashed"} paddingLeft="10px" width={"70px"}>
+             <EditClientModal />
+         </Box>
+         <Box borderLeft={"1px dashed"} paddingLeft="10px" width={"70px"}>
+           <DeleteClientModal name={client.name} handleDelete={() => handleDelete(client._id)} />
+         </Box>
+       </Flex>
+       })}
+     </Box>
+       
+     </Box>:isSmallerThan991 && isLargerThan173?
+
+<Box backgroundColor={"#f2f6f8"} padding={"2.8572rem .7143rem"}>
+<Heading marginBottom={"40px"} fontSize="24px" color={"#666666"} fontWeight={400}>Clients</Heading>
+<Flex marginBottom={"20px"}>
+    <Box>
+      <Select bg={"white"}>
+        <option value="show all">Show active</option>
+        <option value="show active">Show archived</option>
+        <option value="show inactive">Show all</option>
+      </Select>
+    </Box>
+    <Box>
+      <Input bg={"white"} placeholder="Search by name or email" />
+    </Box>
+  </Flex>
+  <Flex marginBottom={"20px"}>
+      <Input bg={"white"} placeholder="Add new client" />
+    <Box>
+      <Button backgroundColor={"#038fce"} color="white">
+        ADD
+      </Button>
+    </Box>
+  </Flex>
+<Box border={"1px solid"} bg='#e4eaee' padding="10px 10px 10px 20px">NAME & ADDRESS</Box>
+{clients.clients.map((client) => {
+  return <Box bg='white' padding={"5px"} key={client.name} borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
+  <Box padding="0px 0px 0px 10px">
+    <Box>{client.name}</Box>
+    <Box>{client.address}</Box>
+  </Box>
+  <Flex>
+  <Box paddingLeft="10px" width={"50%"}>
+      <EditClientModal />
+  </Box>
+  <Box borderLeft={"1px dashed"} paddingLeft="10px">
+    <DeleteClientModal name={client.name} handleDelete={() => handleDelete(client._id)} />
+  </Box>
+  </Flex>
+</Box>
+})}
+
+</Box>:
+<Box>
+      <Heading>Clients</Heading>
+        <Flex>
           <Box>
-            <Select bg={"white"} borderRadius={"0px"}>
+            <Select>
               <option value="show all">Show active</option>
               <option value="show active">Show archived</option>
               <option value="show inactive">Show all</option>
             </Select>
           </Box>
           <Box>
-            <Input bg={"white"} borderRadius={"0px"} placeholder="Search by name or email" />
+            <Input placeholder="Search by name or email" />
           </Box>
         </Flex>
-        <Spacer />
-        <Flex textAlign={"right"} gap={"10px"}>
+        <Input placeholder="Add new client" />
           <Box>
-            <Input bg={"white"} borderRadius={"0px"} value={client} onChange={onChange} placeholder="Add new client" />
-          </Box>
-          <Box>
-            <Button borderRadius={"0px"} onClick={onClick} backgroundColor={"#038fce"} color="white">
-              ADD
+            <Button backgroundColor={"#038fce"} color="white">
+              {`ADD NEW MEMBER`}
             </Button>
           </Box>
-        </Flex>
-      </Flex>
-      <Box>
-      <Flex border={"1px solid"} bg='#e4eaee'>
-    <Box width={"30%"} padding="10px 10px 10px 20px">NAME</Box>
-    <Box padding="10px 0px">ADDRESS</Box>
-    </Flex>
-        {clients.clients.map((client) => {
-          return <Flex bg='white' padding={"5px"} key={client.name} borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
-          <Box padding="0px 0px 0px 10px" width={"30%"}>{client.name}</Box>
-          <Box borderLeft={"1px dashed"} paddingLeft="10px" width={"63%"}>
-            {client.address}
-          </Box>
-          <Box borderLeft={"1px dashed"} paddingLeft="10px" width={"70px"}>
-              <EditClientModal />
-          </Box>
-          <Box borderLeft={"1px dashed"} paddingLeft="10px" width={"70px"}>
-            <DeleteClientModal name={client.name} handleDelete={() => handleDelete(client._id)} />
-          </Box>
-        </Flex>
-        })}
-      </Box>
-      {/* <TableContainer>
-        <Table variant="simple">
-          <Thead>
-            <Tr>
-              <Th>Name</Th>
-              <Th>Address</Th>
-              <Th></Th>
-              <Th></Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {clients.clients.map((client) => {
-              console.log(client._id)
-              return <Tr key={client.name}>
-              <Td>{client.name}</Td>
-              <Td>{client._id}</Td>
+      <TableContainer>
+          <Table variant="simple">
+            <Thead>
+              <Tr>
+                <Th>{`Name & Address`}</Th>
+                <Th></Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              <Tr>
+                <Td>Client 1</Td>
+                <Td></Td>
+                
+              </Tr>
+              <Tr>
               <Td>
-                <EditClientModal />
-              </Td>
-              <Td>
-              <Button onClick={() => {
-                // setClientId(client._id)
-                console.log(clientId)
-              }}>
-                  <DeleteClientModal name={client.name} handleDelete={()=>handleDelete(client._id)} />
-              </Button>
-              </Td>
-            </Tr>
-            })}
-          </Tbody>
-        </Table>
-      </TableContainer> */}
+                <Center>
+                  <FiEdit2 />
+                </Center>
+                
+                </Td>
+                <Td>
+                <Button>
+                  <Center>
+                  <FiMoreVertical />
+                  </Center>
+                    
+                  </Button>
+                </Td>
+              </Tr>
+            </Tbody>
+          </Table>
+        </TableContainer>
     </Box>
+       }
+      </>
+  )
+/*
+  if(isLargerThan1365){
+  return (
+   
   );
   }
 
@@ -191,32 +305,7 @@ const ClientsComponent = () => {
         </Flex>
         })}
       </Box>
-        {/* <TableContainer>
-          <Table variant="simple">
-            <Thead>
-              <Tr>
-                <Th>Name</Th>
-                <Th>Address</Th>
-                <Th></Th>
-                <Th></Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr>
-                <Td>Client 1</Td>
-                <Td></Td>
-                <Td>
-                <FiEdit2 />
-                </Td>
-                <Td>
-                <Button>
-                    <FiMoreVertical />
-                  </Button>
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
-        </TableContainer> */}
+        
       </Box>
     );
   }
@@ -262,39 +351,7 @@ const ClientsComponent = () => {
           </Flex>
         </Box>
         })}
-        {/* <TableContainer>
-          <Table variant="simple">
-            <Thead>
-              <Tr>
-                <Th>Name & Address</Th>
-                <Th></Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr>
-                <Td>Client 1</Td>
-                <Td></Td>
-                
-              </Tr>
-              <Tr>
-              <Td>
-                <Center>
-                  <FiEdit2 />
-                </Center>
-                
-                </Td>
-                <Td>
-                <Button>
-                  <Center>
-                  <FiMoreVertical />
-                  </Center>
-                    
-                  </Button>
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
-        </TableContainer> */}
+        
       </Box>
     );
   }
@@ -318,14 +375,14 @@ if(isSmallerThan173){
         <Input placeholder="Add new client" />
           <Box>
             <Button backgroundColor={"#038fce"} color="white">
-              ADD NEW MEMBER
+              {`ADD NEW MEMBER`}
             </Button>
           </Box>
       <TableContainer>
           <Table variant="simple">
             <Thead>
               <Tr>
-                <Th>Name & Address</Th>
+                <Th>{`Name & Address`}</Th>
                 <Th></Th>
               </Tr>
             </Thead>
@@ -357,6 +414,7 @@ if(isSmallerThan173){
     </Box>
   );
 }
+*/
 }
 
-export default ClientsComponent;
+

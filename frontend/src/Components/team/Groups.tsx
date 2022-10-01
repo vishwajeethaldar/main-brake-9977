@@ -84,7 +84,7 @@ const Groups = () => {
     <Box padding="10px 0px">ACCESS</Box>
     </Flex>
     {groups.groups.map((group) => {
-          return <Flex bg='white' padding={"5px"} key={group.name} borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
+          return <Flex bg='white' padding={"5px"} key={group._id} borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
           <Box padding="0px 0px 0px 10px" width={"30%"}>{group.name}</Box>
           <Box borderLeft={"1px dashed"} paddingLeft="10px" width={"63%"}>
             <Flex gap={"5px"}>
@@ -101,43 +101,10 @@ const Groups = () => {
         </Flex>
         })}
 
-      {/* <TableContainer>
-        <Table variant="simple">
-          <Tbody>
-            <Tr>
-              <Td>NAME</Td>
-              <Td>ACCESS</Td>
-              <Td></Td>
-              <Td></Td>
-            </Tr>
-            {groups.groups.map((group) => {
-          return <Tr key={group.name}>
-          <Td>{group.name}</Td>
-          <Td>
-            <Flex>
-              <AiOutlinePlusCircle />
-              <p>Access</p>
-            </Flex>
-          </Td>
-          <Td>
-              <GroupsEditModal />
-          </Td>
-          <Td>
-            <GroupsDeleteModal name={group.name} handleDelete={() => handleDelete(group._id)} />
-          </Td>
-        </Tr>
-        })}
-              
-            
-            
-          </Tbody>
-        </Table>
-      </TableContainer> */}
+      
     </Box>
   );
-  }
-
-  if(isSmallerThan1365 && isLargerThan195){
+  }else  if(isSmallerThan1365 && isLargerThan195){
     return (
       <Box>
           <Flex marginBottom={"20px"}>
@@ -181,7 +148,7 @@ const Groups = () => {
                       </Box>
                   </Flex>
                   {groups.groups.map((group) => {
-                    return <Box>
+                    return <Box key={group._id}>
                   {item?<Flex padding={"10px"} borderLeft={"1px solid"} borderRight={"1px solid"} borderBottom={"1px solid"}>
                     <Box width={"95%"}>{group.name}</Box>
                     <Box>
@@ -214,72 +181,8 @@ const Groups = () => {
                   </Box>
                     </Box>}
                     </Box>})}
-      </Box>
-        {/* <TableContainer>
-          <Table variant="simple">
-            
-            <Tbody>
-              <Tr>
-                <Td>ACCESS</Td>
-                <Td>
-                  <Box textAlign={"right"}>
-                  <RiArrowDropDownLine />
-                  </Box>
-                </Td>
-              </Tr>
-                <Tr>
-                <Td>
-                
-                    Groups
-                    
-                </Td>
-                <Td>
-                  <Box textAlign={"right"}>
-                  <RiArrowDropDownLine />
-                  </Box>
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
-        </TableContainer>
-      </Box>
-    );
-    }
-
-    if(isSmallerThan195){
-      return (
-        <Box>
-                <Input placeholder="Add new user group" />
-              <Box>
-              <Button backgroundColor={"#038fce"} color="white" marginBottom={"20px"}>
-                ADD
-              </Button>
-            </Box>
-            <Box bg={"#e4eaee"} padding="5px 10px">
-                  Groups
-                  </Box>
-          <TableContainer>
-            <Table variant="simple">
-              <Tbody>
-                <Tr>
-                  <Td>ACCESS</Td>
-                  <Td>
-                    <Box textAlign={"right"}>
-                    <RiArrowDropDownLine />
-                    </Box>
-                  </Td>
-                </Tr>
-                  <Tr>
-                  <Td>Group 1</Td>
-                  <Td>
-                    <Box textAlign={"right"}>
-                    <RiArrowDropDownLine />
-                    </Box>
-                  </Td>
-                </Tr>
-              </Tbody>
-            </Table>
-          </TableContainer> */}
+           </Box>
+        
         </Box>
       );
       }
