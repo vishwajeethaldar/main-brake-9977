@@ -101,13 +101,13 @@ export const Timer_dashboard = ({show,setShow,handleProps,updatedTask}:trackerPr
         </Flex>
         <Flex alignItems={"center"} justifyContent="space-between">
             <Flex justifyContent="space-between" width={"40%"}>
-            <Button bg={"none"} _active={{bg:"none"}} _hover={{bg:"none"}}><AiFillTag color='grey' fontSize={"30px"}/></Button>
-            <Button onClick={handleBillable} bg={"none"} _active={{bg:"none"}} _hover={{bg:"none"}}><BsCurrencyDollar color={billable? "#03a9f4":"grey"} fontSize={"30px"}/></Button>
+            <Button bg={"none"} _active={{bg:"none"}} _hover={{bg:"none"}}><AiFillTag color='grey' fontSize={"20px"}/></Button>
+            <Button onClick={handleBillable} bg={"none"} _active={{bg:"none"}} _hover={{bg:"none"}}><BsCurrencyDollar color={billable? "#03a9f4":"grey"} fontSize={"20px"}/></Button>
             </Flex>
-            <Flex justifyContent="space-between" width={"25%"} alignItems={"center"}>
-            <Box><CounterApp timeString={timeString}/></Box>
+            <Flex justifyContent="space-between" width={["40%","50%","40%","25%"]} alignItems={"center"}>
+            <Box paddingRight={"15px"}><CounterApp timeString={timeString}/></Box>
             <Button size={"sm"} onClick={onClick} bg={type? "#03a9f4":"red"} _active={{bg:"#038fce"}} _hover={{bg:type?"#038fce":"#faa29c"}}><Text fontSize={"xs"} color={"white"}>{type? "START":"STOP"}</Text></Button>
-            <Button bg={"none"} _active={{bg:"none"}} _hover={{bg:"none"}}><IoEllipsisVertical fontSize={"30px"} color="grey"/></Button>
+            <Button bg={"none"} _active={{bg:"none"}} _hover={{bg:"none"}}><IoEllipsisVertical fontSize={"20px"} color="grey"/></Button>
             </Flex>
         </Flex>
     </Box>
