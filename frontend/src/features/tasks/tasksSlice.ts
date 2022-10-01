@@ -2,13 +2,24 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios,{AxiosResponse} from "axios";
 import { taskPropType, tasksSliceType } from "../types/types";
 const DBLINK = "https://clockify-clone-app.herokuapp.com";
-
+type task={
+    name:string;
+    billable:boolean;
+    startTime?:number;
+    endTime:number;
+    totalTime?:number;
+    userId:string;
+    sTime?:string;
+    eTime?:string;
+    _id?:string;
+}
 
 // tasks action - gettasks
 
 export const getTasks = createAsyncThunk(
     'tasks/getTasks',
-    async({token, query}:{token:string, query?:string}, thunkapi)=>{
+    async({token, query=""}:{token:string, query?:string}, thunkapi)=>{
+        // console.log(token)
         try{
             const res = await axios.get<taskPropType[]>(`${DBLINK}/tasks?q=${query}`, {
                 headers:{
@@ -22,11 +33,11 @@ export const getTasks = createAsyncThunk(
     }
 )
 
-
 // add New task
 export const addTask = createAsyncThunk(
     'tasks/addTasks',
     async({token, data}:{token:string,data:taskPropType}, thunkapi)=>{
+        // console.log(token,data,"add")
         try{
 
             const res:AxiosResponse<taskPropType> = await axios({
@@ -37,7 +48,7 @@ export const addTask = createAsyncThunk(
                     token:token
                 }
             })
-            console.log(res.data); 
+            console.log(res,"add"); 
             return res.data;
         }catch(error:any){
             return thunkapi.rejectWithValue(error.message);
@@ -45,20 +56,41 @@ export const addTask = createAsyncThunk(
     }
 )
 
+// update task
+export const updateTask = createAsyncThunk(
+    'tasks/updateTasks',
+    async({token, data}:{token:string,data:task}, thunkapi)=>{
+        // console.log(token,data)
+        try{
+
+            const res:AxiosResponse<taskPropType> = await axios({
+                method:"PATCH",
+                url:`${DBLINK}/tasks/${data._id}`,
+                data:data,
+                headers:{
+                    token:token
+                }
+            })
+            // console.log(res.data); 
+            return res.data;
+        }catch(error:any){
+            return thunkapi.rejectWithValue(error.message);
+        }
+    }
+)
 // delete Task
 export const deleteTask = createAsyncThunk(
     'tasks/deleteTask',
     async({token, id}:{token:string,id:string}, thunkapi)=>{
         try{
-            const res:AxiosResponse<taskPropType> = await axios({
+            const res:AxiosResponse<string> = await axios({
                 method:"DELETE",
                 url:`${DBLINK}/tasks/${id}`,
                 headers:{
                     token:token
                 }
             })
-            console.log(res.data); 
-            return res.data;
+            return id;
         }catch(error:any){
             return thunkapi.rejectWithValue(error.message);
         }
@@ -97,6 +129,44 @@ const taskSlice = createSlice({
 
         })
         .addCase(getTasks.rejected,(state, action:PayloadAction<any>)=>{
+            state.loading=false;
+            state.error= true;
+        })
+        .addCase(updateTask.pending, (state, action)=>{
+            state.loading=true;
+        })
+        .addCase(updateTask.fulfilled, (state, action:PayloadAction<taskPropType>)=>{
+            state.loading=false;
+            state.error= false;
+            state.tasks = state.tasks.map((el)=>{
+                if(el._id===action.payload._id)
+                {
+                    return action.payload
+                }
+                else
+                {
+                    return el
+                }
+            })
+        })
+        .addCase(updateTask.rejected,(state, action:PayloadAction<any>)=>{
+            state.loading=false;
+            state.error= true;
+        })
+        .addCase(deleteTask.pending, (state, action)=>{
+            state.loading=true;
+        })
+        .addCase(deleteTask.fulfilled, (state, action:PayloadAction<string>)=>{
+            state.loading=false;
+            state.error= false;
+            state.tasks = state.tasks.filter((el)=>{
+                if(el._id!=action.payload)
+                {
+                    return el
+                }
+            })
+        })
+        .addCase(deleteTask.rejected,(state, action:PayloadAction<any>)=>{
             state.loading=false;
             state.error= true;
         })

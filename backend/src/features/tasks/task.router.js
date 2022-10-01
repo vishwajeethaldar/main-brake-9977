@@ -44,8 +44,9 @@ app.patch("/:id", authMiddleware, async(req, res)=>{
     try{
         let task = await Tasks.findById(id)
         if(task){
-            await Projects.updateOne({...req.body})
-            return res.send("Updated Successfully")
+            let taskUpda = await Tasks.updateOne({_id:task._id},{ $set:{...req.body}})
+            let updatedTasks = await Tasks.findById(id)
+            return res.send(updatedTasks)
         }else{
             return res.send("task Not Found")
         }
@@ -58,8 +59,9 @@ app.patch("/:id", authMiddleware, async(req, res)=>{
 app.delete("/:id", authMiddleware, async(req, res)=>{
     let id = req.params.id;
     try{
+        let task = await Tasks.findById(id)
         await Tasks.deleteOne({_id:id})
-        res.send("Deleted Successfully")
+        res.send("deleted Success")
     }catch(e){
         res.status(400).send(e.message)
     }

@@ -21,7 +21,7 @@ app.post("/", authMiddleware, async(req, res)=>{
         let group = await Groups.findOne({name:name})
         if(!group){
             let newGroup = await Groups.create(req.body)
-            res.send("Group Added Successfully")
+            res.send(newGroup)
         }else{
             res.send("Group already exist")
         }
@@ -35,11 +35,11 @@ app.post("/", authMiddleware, async(req, res)=>{
 app.delete('/:id', authMiddleware, async(req, res)=>{
     let id = req.params.id;
     try{
-        let group = Groups.findOne({_id:id})
-        console.log(group)
+        let group = await Groups.findOne({_id:id})
+
         if(group){
             await Groups.deleteOne({_id:id})
-            return res.send("Deleted Successfully")
+            return res.send(group)
         }else{
             return res.status(500).send("Group not found")
         }
@@ -52,10 +52,11 @@ app.delete('/:id', authMiddleware, async(req, res)=>{
 app.patch("/:id",authMiddleware, async(req, res)=>{
     let id = req.params.id;
     try{
-        let group = Groups.find({_id:id})
+        let group = await Groups.find({_id:id})
         if(group){
-            await Groups.updateOne({_id:id}, {...req.body})
-            return res.send("Updated Successfully")
+            await Groups.updateOne({_id:id}, {$set:{...req.body}})
+            let updatedGroup = Groups.find({_id:id})
+            return res.send(updatedGroup)
         }else{
             return res.status(500).send("Group not found")
         }

@@ -14,6 +14,8 @@ export const getProjects = createAsyncThunk(
                     token:data.token
                 }
             });
+            console.log(res.data);
+            
             return res.data;
         }catch(error:any){
             return thunkapi.rejectWithValue(error.message);
@@ -48,6 +50,8 @@ export const addprojects = createAsyncThunk(
 export const updateProject = createAsyncThunk(
     'pojects/patchProject',
     async(data:{token:string, data:{},id:string}, thunkapi)=>{
+        console.log(data);
+        
         try{
         // <projectType>
             const res:AxiosResponse<projectType> = await axios({
@@ -71,15 +75,15 @@ export const deleteProject = createAsyncThunk(
     async(data:{token:string,id:string}, thunkapi)=>{
         try{
         // <projectType>
-            const res:AxiosResponse<projectType> = await axios({
+            const res:AxiosResponse<string> = await axios({
                 method:"DELETE",
                 url:`${DBLINK}/projects/${data.id}`,
                 headers:{
                     token:data.token
                 }
             })
-            console.log(res.data);
-            return res.data;
+        
+            return data.id;
         }catch(error:any){
             return thunkapi.rejectWithValue(error.message);
         }
@@ -136,6 +140,44 @@ const projectsSlice = createSlice({
 
         })
         .addCase(getProjects.rejected,(state, action:PayloadAction<any>)=>{
+            state.loading=false;
+            state.error= true;
+            state.errmsg = action.payload
+        })
+        .addCase(deleteProject.pending, (state, action)=>{
+            state.loading=true;
+        })
+        .addCase(deleteProject.fulfilled, (state, action:PayloadAction<string>)=>{
+            state.loading=false;
+            state.error= false;
+            state.products =  state.products.filter((project)=>{
+                if(project._id!==action.payload){
+                    return project
+                }
+            })
+
+        })
+        .addCase(deleteProject.rejected,(state, action:PayloadAction<any>)=>{
+            state.loading=false;
+            state.error= true;
+            state.errmsg = action.payload
+        })
+        .addCase(updateProject.pending, (state, action)=>{
+            state.loading=true;
+        })
+        .addCase(updateProject.fulfilled, (state, action:PayloadAction<projectType>)=>{
+            state.loading=false;
+            state.error= false;
+            state.products =  state.products.map((project)=>{
+                if(project._id===action.payload._id){
+                    return action.payload
+                }else{
+                    return project
+                }
+            })
+
+        })
+        .addCase(updateProject.rejected,(state, action:PayloadAction<any>)=>{
             state.loading=false;
             state.error= true;
             state.errmsg = action.payload

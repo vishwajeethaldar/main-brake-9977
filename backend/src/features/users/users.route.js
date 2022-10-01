@@ -59,7 +59,7 @@ app.post('/signup', async(req, res)=>{
            return res.status(400).send("User already Exist")
         }else{
             let newuser = await User.create(req.body)
-            return res.status(200).send("user added Successfully")
+            return res.status(200).send(newuser)
         }
     }catch(e){
         return res.status(401).send(e.message)

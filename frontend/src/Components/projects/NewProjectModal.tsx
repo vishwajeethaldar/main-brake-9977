@@ -15,7 +15,7 @@ import {
 import { RegistrationForm } from "./RegistrationForm";
 
 export const NewProjectModal = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen,onToggle, onClose } = useDisclosure()
   return (
     <Box>
         <Button onClick={onOpen} colorScheme={"twitter"} borderRadius={"none"} px="9px" py="4px">
