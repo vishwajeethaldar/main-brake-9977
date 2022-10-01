@@ -5,7 +5,7 @@ import "./SecondPart.css"
 
 const SecondPart = () => {
     return (
-        <Box>
+        <Box paddingTop={"40px"}>
             <Flex direction={"column"} align={"center"} gap={"25px"}>
                 <Text w={["100%", "100%", "70%", "70%"]} fontSize={["2.4em", "2em", "2em", "2.3em"]} textAlign={["center", "center", "center", "center"]} mt="20px" px="25px">
                     The most popular free <span style={{ color: "#03A9F4", }}>time tracker</span> for teams
@@ -26,7 +26,6 @@ const SecondPart = () => {
 
                 <Image px={["20px", "20px", "20px", "20px"]} py="30px" src="https://clockify.me/assets/images/customers-light-gray-3.svg" alt="" />
 
-     {/* <Box width={"90%"}>        <iframe width="100%" height="754" src="https://www.youtube.com/embed/NMZhFs_b0Aw" title="Clockify Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></Box>    */}
             </Flex>
 
 

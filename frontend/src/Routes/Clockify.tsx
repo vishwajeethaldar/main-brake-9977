@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from "../Components/Navbar/NavbarHome"
+import NavbarHome from "../Components/Navbar/NavbarHome"
 import SecondPart from '../Components/Homepage/SecondPart'
 import ThirdPart from '../Components/Homepage/ThirdPart'
 import FourthPart from '../Components/Homepage/FourthPart'
@@ -14,7 +14,7 @@ import Footer from '../Components/Homepage/Footer'
 const Clockify = () => {
   return (
     <Box width={"100%"}>
-    <Navbar/>
+     <Box backgroundColor={"white"} zIndex={"999"} top={"0px"} position={"sticky"}>   <NavbarHome /></Box>
     <SecondPart/>
      <ThirdPart/>
     <FourthPart/>

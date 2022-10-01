@@ -9,7 +9,7 @@ import Footer from '../Components/Homepage/Footer'
 const Downloads = () => {
     return (
         <div>
-            <NavbarHome />
+             <Box backgroundColor={"white"} zIndex={"999"} top={"0px"} position={"sticky"}>   <NavbarHome /></Box>
 
             <Box>
                 <Flex marginTop={"40px"}>
