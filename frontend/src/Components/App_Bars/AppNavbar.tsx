@@ -30,7 +30,7 @@ export default function AppNavbar({ Open }: { Open: Function }) {
 
 
     return (
-        <Flex borderLeft="4px solid #02a9f4" borderBottom="2px solid #bdbdbd" padding=".3rem .8rem" alignContent="center" alignItems="center" justifyContent="space-between">
+        <Flex maxW={"100%"} borderLeft="4px solid #02a9f4" borderBottom="2px solid #bdbdbd" padding=".3rem .8rem" alignContent="center" alignItems="center" justifyContent="space-between">
             <Flex alignItems="center">
                 <Box>
                     <IconButton

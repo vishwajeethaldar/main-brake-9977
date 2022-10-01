@@ -41,17 +41,16 @@ import { addUser } from '../features/users/usersSlice'
     useEffect(()=>{
        dispatch(getProjects({token:auth.token, query:""}))
        console.log(project);
-       
     },[])
     
   return (
-    <Box >
-        <Box bg="#fff" position={"sticky"} top="0px" zIndex={"999"}>
-        <AppNavbar Open={toggleSidebar}/>
+    <Box maxW="100vw">
+        <Box mx={"auto"} w={"98vw"} bg="#fff" position={"sticky"} top="0px" zIndex={"999"}>
+            <AppNavbar Open={toggleSidebar}/>
         </Box>
         <Flex position={"relative"} width="100%" bg={"#F2F6F8"} justify={"space-between"} align={["top"]}>
         
-        <Box bg="#fff">
+        <Box bg="#fff" height={"100%"}>
             <Box display={["none","none","none","block"]}>
                 {showsidebar?<ExpandedAppSidebar />:<CompactAppSidebar />}
             </Box>

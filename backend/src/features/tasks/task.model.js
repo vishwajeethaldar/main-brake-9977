@@ -9,7 +9,10 @@ const taskSchema =new mongoose.Schema({
     totalTime:{type:Number, default:0.00},
     sTime:{type:String, required:true},
     eTime:{type:String, required:true},
-    projectID:{type:mongoose.Schema.Types.ObjectId,ref:"project",  require:false},
+    projectId:{type:mongoose.Schema.Types.ObjectId,ref:"project",  require:false},
+    clientId:{type:mongoose.Schema.Types.ObjectId,ref:"client",  require:false},
+    clientName:{type:String,  require:false},
+    projectName:{type:String,  require:false},
     userId:{type:mongoose.Schema.Types.ObjectId,ref:"user", required:true}
 })
 
