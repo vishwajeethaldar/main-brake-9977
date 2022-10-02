@@ -50,9 +50,9 @@ This Project is build by me and four of my team members during the construction 
 
 #
 #
-> # Steps to Try Locally
+> # Steps to try locally
 #
-> ##  Clone the Project and Follow the steps
+> ##  Clone the project and follow the steps
 #
 > `>  cd main-brake-9977`
 #
