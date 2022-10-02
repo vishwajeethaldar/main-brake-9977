@@ -15,7 +15,7 @@ import {
   Button,
 } from '@chakra-ui/react'
 import axios from 'axios';
-import {useState} from 'react'
+import {useState,useRef} from 'react'
 import { useAppDispatch, useAppSelector } from '../../../features/hooks'
 import { FaLessThanEqual } from 'react-icons/fa'
 import { updateProjects } from '../../../features/projects/projectsSlice'
@@ -23,25 +23,25 @@ import { updateProjects } from '../../../features/projects/projectsSlice'
 const DBLINK = "https://clockify-clone-app.herokuapp.com";
 
 export type filterQueryType = {
-  access?:boolean;
-  billable?:boolean;
+  access?:string;
+  billable?:string;
   client?:string;
   name?:string;
-  archive?:boolean
+  archive?:string
 }
 
  const  filterParams:filterQueryType = {
-  access:true,
-  billable:true,
+  access:"public"||"private",
+  billable:"true"||"false",
   client:"",
   name:"",
-  archive:false
+  archive:"true"||"false",
 }
 
 
 
 export const Filter = ({allProjects, setAllProjects,projects}:{projects:projectType[],allProjects:projectType[],setAllProjects:Function} ) => {
-
+const ref2  = useRef<any>(null)
   const [clients, setClients] =  useState<clientType[]>([])
   const auth = useAppSelector(store=>store.authSlice)
   const [filterQuery, setFilterQuery] = useState<filterQueryType>({})
@@ -59,6 +59,44 @@ setClients(data.data)
 const handleSearch =()=>{
   
       let newFilter = projects.filter((project)=>{
+        if(filterQuery.name){
+          return project.name===filterQuery.name;
+        }
+        if(filterQuery.access==="public"){
+          return project.access===true
+        }
+        if(filterQuery.access==="private"){
+          return project.access===false
+        }
+        
+        
+        // if(filterQuery.client){
+        //   return project.client==filterQuery.client;
+        // }
+        
+           
+        //     if(filterQuery.billable==="true"||"false"){
+        //       if(filterQuery.billable==="true") {
+        //         return project.billable ===true
+        //        } else if(filterQuery.billable==="true"){
+        //         return project.billable ===false
+        //        }
+        //     }
+
+           
+            
+        //     if(filterQuery.archive==="true"||"false"){
+        //       if(filterQuery.archive==="true") {
+        //         return project.archive ===true
+        //        } else if(filterQuery.archive==="false"){
+        //         return project.archive ===false
+        //        }
+        //     }
+
+          })
+         
+       
+        /*
         if(filterQuery.access===true||false){
           console.log(project.access, filterQuery);
             return project.access ===filterQuery.access
@@ -72,9 +110,8 @@ const handleSearch =()=>{
         if(filterQuery.name){
               return project.name === filterQuery.name
             }
-        }) 
-       
-            
+            */  
+        
     dispatch(updateProjects(newFilter))
   }
 
@@ -94,9 +131,9 @@ const handleSearch =()=>{
                     </Flex>
                     </MenuButton>
                     <MenuList >
-                      <MenuItem onClick={()=>setFilterQuery({...filterQuery, archive:false})}>Active</MenuItem>
-                      <MenuItem onClick={()=>setFilterQuery({...filterQuery, archive:true})}>Archived</MenuItem>
-                      <MenuItem >All</MenuItem>
+                      <MenuItem onClick={()=>setFilterQuery({...filterQuery, archive:"false"})}>Active</MenuItem>
+                      <MenuItem onClick={()=>setFilterQuery({...filterQuery, archive:"true"})}>Archived</MenuItem>
+                      {/* <MenuItem >All</MenuItem> */}
                     </MenuList>
                   </Menu>
               </Flex>
@@ -133,8 +170,8 @@ const handleSearch =()=>{
                     </Flex>
                     </MenuButton>
                     <MenuList >
-                      <MenuItem onClick={()=>setFilterQuery({...filterQuery, access:true})}>Public</MenuItem>
-                      <MenuItem onClick={()=>setFilterQuery({...filterQuery, access:false})}>Private</MenuItem>
+                      <MenuItem onClick={()=>setFilterQuery({...filterQuery, access:"public"})}>Public</MenuItem>
+                      <MenuItem onClick={()=>setFilterQuery({...filterQuery, access:"private"})}>Private</MenuItem>
                     </MenuList>
                   </Menu>
               </Flex>
@@ -147,8 +184,8 @@ const handleSearch =()=>{
                     </Flex>
                     </MenuButton>
                     <MenuList >
-                      <MenuItem onClick={()=>setFilterQuery({...filterQuery, billable:true})}>Billable</MenuItem>
-                      <MenuItem onClick={()=>setFilterQuery({...filterQuery, billable:false})}>Non Billable</MenuItem>
+                      <MenuItem onClick={()=>setFilterQuery({...filterQuery, billable:"true"})}>Billable</MenuItem>
+                      <MenuItem onClick={()=>setFilterQuery({...filterQuery, billable:"false"})}>Non Billable</MenuItem>
                     </MenuList>
                   </Menu>
                

@@ -1,10 +1,13 @@
 {
+  "homepage": "https:/vishwajeethaldar.github.io/main-brake-9977",
   "name": "clokify.me",
   "private": true,
   "proxy": "https://clockify-clone-app.herokuapp.com",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
@@ -17,6 +20,7 @@
     "axios": "^0.27.2",
     "dotenv": "^16.0.2",
     "framer-motion": "^7.4.0",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",

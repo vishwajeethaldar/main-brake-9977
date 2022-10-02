@@ -45,7 +45,7 @@ app.post('/login', async(req, res)=>{
         res.status(200).send({token:token, status:"success"})
 
     }catch(e){
-        res.status(401).send(e.message)
+        res.status(400).send(e.message)
     }
   
 })
@@ -54,9 +54,9 @@ app.post('/login', async(req, res)=>{
 app.post('/signup', async(req, res)=>{
     let {email} = req.body;
     try{
-        let user = await User.findOne({email})
+        let user = await User.findOne({email:email})
         if(user){
-           return res.status(400).send("User already Exist")
+           return res.status(409).send("User already Exist")
         }else{
             let newuser = await User.create(req.body)
             return res.status(200).send(newuser)

@@ -7,7 +7,7 @@ import { Flex, Stack, Text, Box, Button, Image, Link } from "@chakra-ui/react"
 const FeaturesData = () => {
     return (
         <>
-        <Flex direction={"column"} align={"center"} width={"100%"}>
+        <Flex direction={"column"} align={"center"} width={"97vw"} mx="auto" >
           
                 <Text marginTop={"100px"} fontSize={"2.5em"} textAlign={"center"} >Time tracker</Text>
                 <Text fontSize={"18px"} textAlign={"center"} >Start and stop timer as you work, or enter hours manually.</Text>

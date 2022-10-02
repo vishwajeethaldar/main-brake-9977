@@ -17,8 +17,9 @@ export default function AppNavbar({ Open }: { Open: Function }) {
         dispatch(getUser({ token: auth.token, id: userid }))
     }, [])
 
-    const SplitName = user?.name.split(" ")
-
+    const SplitName = user?.name.trim().split(" ")
+    let displayName = ""
+   
     //   setTimeout(()=>{
     //     console.log(user)
     //     console.log(SplitName)
@@ -30,7 +31,6 @@ export default function AppNavbar({ Open }: { Open: Function }) {
 
 
     return (
-
         <Flex maxW={"100%"} borderLeft="4px solid #02a9f4" borderBottom="2px solid #bdbdbd" padding=".3rem .8rem" alignContent="center" alignItems="center" justifyContent="space-between">
 
             <Flex alignItems="center">

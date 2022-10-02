@@ -7,26 +7,13 @@ import { getProjects } from "../../features/projects/projectsSlice";
 import {BsFillArrowDownSquareFill,BsFillArrowUpSquareFill} from 'react-icons/bs'
 export const ProjectsList = ({projects}:{projects:projectType[]}) => {
 
-  // const project = useAppSelector(store=>store.projectsSlice)
-  // const auth = useAppSelector(store=>store.authSlice)
-  
-  // const dispatch = useAppDispatch()
 
-  // useEffect(()=>{
-  //   dispatch(getProjects({token:auth.token}))
-  // },[])
   
  
   return (
     <Box bg="#FFF"  border={"1px solid #ccc"} mt="50px">
        
-       {/* <Table>
-          <Thead>
-              <Tr> 
-                <Th> </Th>
-              </Tr>
-          </Thead>
-       </Table> */}
+    
        
         <Box bg="#ded"  px="20px" py="10px">
             <Text fontSize={["20px"]}>

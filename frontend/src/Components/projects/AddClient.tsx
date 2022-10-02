@@ -25,11 +25,14 @@ export const AddClient = ({setProjectProp,projectProp,setShowClient}:{setProject
     setShowClient(false)
   }
 
+  const handleClientGet = (val:string)=>{
+    dispatch(getClients({token:token, query:val}))
+  }
   return (
     <Stack maxW={"100%"} py="15px" px="20px">
         <Input name="client" onChange={
           (e)=>{
-              dispatch(getClients({token:token, query:e.target.value})) 
+            dispatch(getClients({token:token, query:e.target.value})) 
           }
           } ref={ref} type={"text"}  placeholder="Add/Find Client" borderRadius={"none"} outline={"1px solid #999"}/>
         <Flex justify={"flex-end"} w={"100%"}>

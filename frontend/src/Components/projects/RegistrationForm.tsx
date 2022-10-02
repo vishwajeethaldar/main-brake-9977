@@ -34,6 +34,7 @@ export const RegistrationForm = ({onClose}:{onClose:Function}) => {
 
 //  {name:addprojectProp.name, color:addprojectProp.color, userId:addprojectProp.userId, access:addprojectProp.access, client:"x"}
   const handleAddProject = ()=>{
+    
       dispatch(addprojects({token:auth.token, data:addprojectProp}))
       console.log(onClose());      
   }

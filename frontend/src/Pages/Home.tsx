@@ -11,11 +11,11 @@ import { Box } from '@chakra-ui/react'
 import Footer from '../Components/Homepage/Footer'
 
 
-
-const Clockify = () => {
+const Home = () => {
   return (
 
-    <Box width={"100%"}>
+    <Box width={"98.5vw"} mx="auto" boxSizing='border-box'>
+   
      <Box backgroundColor={"white"} zIndex={"999"} top={"0px"} position={"sticky"}>   <NavbarHome /></Box>
     <SecondPart/>
      <ThirdPart/>
@@ -33,4 +33,4 @@ const Clockify = () => {
   )
 }
 
-export default Clockify
+export default Home

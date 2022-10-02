@@ -22,9 +22,9 @@ const DBLINK = "https://clockify-clone-app.herokuapp.com";
 
 export const getClients = createAsyncThunk(
     'clients/getClients',
-    async(data:{token:string}, thunkapi)=>{
+    async(data:{token:string, query?:string}, thunkapi)=>{
         try{
-            const res = await axios.get<clientType[]>(`${DBLINK}/clients`, {
+            const res = await axios.get<clientType[]>(`${DBLINK}/clients?q=${data.query}`, {
                 headers:{
                     token:data.token
                 }

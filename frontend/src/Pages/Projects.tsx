@@ -1,4 +1,4 @@
-import {Box, Button, Flex,Text, Stack, useDisclosure} from '@chakra-ui/react';
+import {Box,Image, Button, Flex,Text, Stack, useDisclosure} from '@chakra-ui/react';
 import {
     Drawer,
     DrawerBody,
@@ -23,7 +23,9 @@ import { useAppDispatch, useAppSelector } from '../features/hooks'
 import { addprojects, getProjects } from '../features/projects/projectsSlice'
 import { projectType } from '../features/types/types';
 import { addUser } from '../features/users/usersSlice'
+import loader from '/Curve-Loading.gif'
 
+ 
  export const Projects = () => {
     const [showsidebar, setshowSidebar] =  useState<boolean>(false)
     const [showsidebar2, setshowSidebar2] =  useState<boolean>(false)
@@ -38,7 +40,6 @@ import { addUser } from '../features/users/usersSlice'
         setshowSidebar(!showsidebar)
         onOpen()
     }
-    
     useEffect(()=>{
        dispatch(getProjects({token:auth.token, query:""}))
        
@@ -51,7 +52,7 @@ import { addUser } from '../features/users/usersSlice'
         </Box>
         <Flex position={"relative"} width="100%" bg={"#F2F6F8"} justify={"space-between"} align={["top"]}>
         
-        <Box bg="#fff" height={"100%"}>
+        <Box bg="#fff" minH={"100%"} borderRight="1px solid #777">
             <Box display={["none","none","none","block"]}>
                 {showsidebar?<ExpandedAppSidebar />:<CompactAppSidebar />}
             </Box>
@@ -75,6 +76,10 @@ import { addUser } from '../features/users/usersSlice'
       
         
     </Flex>
+    {project.loading?
+      <Flex w="100vw" h={"100vh"} mx={"auto"} align={"center"} justify={"center"} bg={"rgba(245,250,254,.5)"} backgroundBlendMode={"hard-light"} position={"absolute"} top={"0"} left={"0"}>
+          <Image src={loader} />
+      </Flex>:null}
     </Box>
   )
 }

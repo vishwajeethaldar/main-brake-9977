@@ -42,10 +42,12 @@ const authSlice = createSlice({
     extraReducers(builder) {
         builder.addCase(login.pending,(state,action)=>{
             state.loading=true;
+            state.error = false;
         })
         .addCase(login.fulfilled,(state, action:PayloadAction<authResType>)=>{
              state.loading=false,
              state.isAuth = true,
+             state.error = false;
              state.token = action.payload.token 
              localStorage.setItem("token",action.payload.token)
         })

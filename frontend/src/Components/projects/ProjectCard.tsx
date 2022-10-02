@@ -15,11 +15,23 @@ import {
   MenuDivider,
   Button,
 } from '@chakra-ui/react'
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react'
+
 import { useAppDispatch, useAppSelector } from '../../features/hooks'
 import { deleteProject, updateProject } from '../../features/projects/projectsSlice'
+import { EditProjectCard } from './Filter/cards/EditProjectCard'
 
 export const ProjectCard = ({project,bordertop,borderbottom}:{project:projectType,bordertop?:string,borderbottom?:string}) => {
-  const { isOpen, onToggle, onClose } = useDisclosure()
+  const { isOpen, onToggle,onOpen, onClose } = useDisclosure()
+  
   const dispatch = useAppDispatch()
   const auth = useAppSelector(store=>store.authSlice)
   const [showcard, setShowcard] =  useState(false)
@@ -129,11 +141,12 @@ export const ProjectCard = ({project,bordertop,borderbottom}:{project:projectTyp
               </MenuButton>
               <MenuList w="100px">
                 <MenuItem onClick={()=>handleUpdate({...project, archive:!project.archive}, `${project._id}`)}>Archive</MenuItem>
-                <MenuItem>Edit</MenuItem>
+                
+                <MenuItem onClick={onOpen}>Edit</MenuItem>
+                
                 <MenuItem onClick={()=>handleDeleteProject(`${project._id}`)}>Delete</MenuItem>
               </MenuList>
           </Menu>
-
 
             </Box>
           </Flex>
@@ -141,6 +154,17 @@ export const ProjectCard = ({project,bordertop,borderbottom}:{project:projectTyp
 
           </Box>
       </Flex>
+
+      <Modal isOpen={isOpen} onClose={onClose}  size="2xl">
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader >Edit Project</ModalHeader>
+         
+          <ModalBody  >
+                <EditProjectCard onClose={onClose} project={project}/>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </Box>
   </>
   )

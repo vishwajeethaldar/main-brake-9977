@@ -7,14 +7,14 @@ import { Projects } from "../Pages/Projects"
 import SignUp from "../Pages/SignUp"
 import Team from "../Pages/Team"
 import { TimeTracker } from "../Pages/TimeTracker"
-import Clockify from "./Clockify"
+import Home from "../Pages/Home"
 import Features from "./Features"
 import Downloads from "./Downloads"
 
 export const MainRoutes = () => {
   return (
     <Routes>
-        <Route path="/" element={<Clockify/>} />
+        <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/downloads" element={<Downloads/>} />

@@ -14,7 +14,7 @@ const Timer_Tracker = () => {
   const token = useAppSelector((store) => store.authSlice.token);
   const tasks = useAppSelector((store) => store.tasksSlice.tasks);
   const [control, setControl] = useState<Function[]>([]);
-  const [updatedTask, setUpdateTask] = useState<task>({});
+  const [updatedTask, setUpdateTask] = useState<task>({name:"", billable:true, endTime:0, userId:""});
   const [total, setTotal] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   

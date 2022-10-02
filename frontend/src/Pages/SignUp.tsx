@@ -1,6 +1,13 @@
-import { Box, Button, Checkbox, Flex, FormLabel, Input, Stack, StackDivider, Text } from '@chakra-ui/react';
+import { Box, Button, Checkbox, Flex, FormLabel, Image, Input, InputGroup, InputRightAddon, Stack, StackDivider, Text } from '@chakra-ui/react';
 import { jsx } from '@emotion/react';
-import { useState, FormEvent, ChangeEvent } from 'react'
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from '@chakra-ui/react'
+import {AiFillEye} from 'react-icons/ai'
+import { useState, FormEvent, ChangeEvent, useEffect } from 'react'
 import { FcGoogle } from 'react-icons/fc';
 import AppNavbar from '../Components/App_Bars/AppNavbar';
 import CompactAppSidebar, {ExpandedAppSidebar } from '../Components/App_Bars/AppSidebar';
@@ -10,7 +17,7 @@ import { useAppDispatch, useAppSelector } from '../features/hooks';
 import { addUser } from '../features/users/usersSlice';
 import load from "../../public/loader.gif"
 import { useNavigate } from 'react-router-dom';
-
+import loader from '/Curve-Loading.gif'
 type SignCredProp = {
   name: string;
   email: string;
@@ -18,8 +25,9 @@ type SignCredProp = {
 }
 
 const SignUp = () => {
+  const [changeType, setChangeType] =  useState<boolean>(false)
   // const [isOpen,setIsOpen] = useState<boolean>(false);
-
+  const [passlen, setPasslen] = useState<boolean>(true)
   //   const Open:Function=()=>{setIsOpen(!isOpen)}
 
   const Auth = useAppSelector((store) => store.usersSlice);
@@ -41,10 +49,16 @@ const SignUp = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(signupcreds);
-    dispatch(addUser(signupcreds));
-    Auth.successMsg!==""? setTimeout(()=>{navigate("/login")},2500)
-    :navigate("/signup")
+    if(signupcreds.password.length>=8){
+      setPasslen(true)
+      dispatch(addUser(signupcreds));
+      setTimeout(()=>{
+        return (Auth.loading===false&&Auth.successMsg)?navigate("/login"): navigate("/signup")
+      }, 3000)
+    }else{
+      setPasslen(false)
+    }
+   
   };
 
   return (
@@ -78,8 +92,8 @@ const SignUp = () => {
               name="name"
               type="text"
               borderRadius="none"
-              placeholder="Enter name"
-              onChange={hanldeChange} />
+              placeholder="Enter Full name"
+              onChange={hanldeChange} required />
             <StackDivider />
             <Input
               variant="outline"
@@ -87,15 +101,18 @@ const SignUp = () => {
               type="email"
               borderRadius="none"
               placeholder="Enter email"
-              onChange={hanldeChange} />
+              onChange={hanldeChange} required/>
             <StackDivider />
+            <InputGroup  border={!(passlen)?"1px solid red":"none"} borderRadius={"7px"}>
             <Input
               variant="outline"
               name="password"
-              type="password"
+              type={changeType?"text":"password"}
               borderRadius="none"
               placeholder="Enter password"
-              onChange={hanldeChange} />
+              onChange={hanldeChange} required/>
+              <InputRightAddon children={<AiFillEye/>} _hover={{cursor:"pointer"}} onClick={()=>setChangeType(!changeType)} />
+            </InputGroup>
             <StackDivider />
             <Flex fontSize="xs">
               <Checkbox /><Text marginLeft=".5rem">I agree to the </Text><Text color="#03a9f4" _hover={{ textDecoration: "underline", cursor: "pointer" }} >Terms of Use</Text>
@@ -110,19 +127,40 @@ const SignUp = () => {
             <StackDivider />
             <StackDivider />
             <Button leftIcon={<FcGoogle />} color="gray" borderRadius="none" bgColor="white" border="1px solid gray" _hover={{ bg: '#d4dbdd' }} > Continue with Google</Button>
+          
+            {Auth.error?<Box w="100%">
+              <Alert status='error'>
+                <AlertIcon />
+                <AlertTitle>Registration Failed</AlertTitle>
+                <AlertDescription>{Auth.errmsg}</AlertDescription>
+              </Alert>
+              </Box>:null}
+            
+              {Auth.successMsg?<Box w="100%">
+              <Alert status='success'>
+                <AlertIcon />
+                <AlertTitle>Success</AlertTitle>
+                <AlertDescription>Registration  completed successfully</AlertDescription>
+              </Alert>
+              </Box>:null}
+
           </Stack>
         </form>
       </Box>
       <Flex margin="auto" marginTop="3rem" justifyContent="center" >
         <LoginFooter />
       </Flex>
-      { Auth.loading?
+      {/* { Auth.loading?
         <Box w="100%" h="100%" bgColor="rgba(228,234,238,.85)" position="absolute" top="0" left="0" zIndex="999">
         <Box position="absolute" top="47vh" left="47vw" zIndex="9999">
           <img src={load} alt="loader" />
       </Box>
       </Box>:null
-      }
+      } */}
+      {Auth.loading?
+      <Flex w="100vw" h={"100vh"} mx={"auto"} align={"center"} justify={"center"} bg={"rgba(245,250,254,.5)"} backgroundBlendMode={"hard-light"} position={"absolute"} top={"0"} left={"0"}>
+          <Image src={loader}/>
+      </Flex>:null}
     </Box>
   )
 }

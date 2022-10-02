@@ -6,7 +6,7 @@ import "./SecondPart.css"
 const SecondPart = () => {
     return (
 
-        <Box paddingTop={"40px"}>
+        <Box paddingTop={"40px"} >
             
 
        

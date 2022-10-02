@@ -4,7 +4,7 @@ import { Flex, Stack, Text, Box, Button, Image, Link } from "@chakra-ui/react"
 
 const Footer = () => {
     return (
-        <div>
+        <Box maxW={"95vw"} mx="auto">
             <Box paddingTop={"20px"} border={"1px solid #CCC"}>
                 <Flex px={["20px", "20px", "50px", "50px"]} justify={"center"} direction={["column", "column", "row", "row"]}>
                     <Flex width={["100%", "100%", "40%", "40%"]} direction={"column"}>
@@ -71,7 +71,7 @@ const Footer = () => {
                         Security </Text>
                 </Flex>
             </Box>
-        </div>
+        </Box>
     )
 }
 

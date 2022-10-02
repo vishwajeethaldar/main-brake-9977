@@ -8,8 +8,8 @@ import React from 'react'
 
 const NavbarHome = () => {
   return (
-    <Box boxShadow={"md"}>
-      <Flex align={"center"} px={"70px"} py={"20px"} justify={"space-between"} >
+    <Box w={"98.6vw"} boxShadow={"md"}>
+      <Flex align={"center"} px={"70px"} py={"10px"} justify={"space-between"} >
         <Flex  align={"center"} gap="25px">
           <Link href='/'><Image width={["150px"]} src="https://clockify.me/assets/images/clockify-logo.svg" alt='ImageNAvbar' /></Link>
 

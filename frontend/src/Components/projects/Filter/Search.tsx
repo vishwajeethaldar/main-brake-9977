@@ -33,6 +33,7 @@ export const Search = ({setFilterQuery,filterQuery}:{filterQuery:filterQueryType
         return project.name.includes(val);
     })
     setmyProject(proj)
+   
   }
 
 
@@ -48,7 +49,7 @@ export const Search = ({setFilterQuery,filterQuery}:{filterQuery:filterQueryType
         </MenuButton>
       <MenuList maxH={"200px"}  overflow={"scroll"}>
       <Input onChange={(e)=>handleSerch(e.target.value)} type="text/" name="searchProject" placeholder="search project" mx={"3%"} h="50px" w="94%" mb="15px"/>
-       <MenuItem color={"#0f532"}  fontSize={"1.2em"}  fontWeight={"700"} borderBottom={"1px solid #999"} onClick={()=>dispatch(getLocalProducts())}> Clear Search</MenuItem>
+       <MenuItem color={"#0f532"}  fontSize={"1.2em"}  fontWeight={"700"} borderBottom={"1px solid #999"} onClick={()=>{dispatch(getLocalProducts()); ref.current.value=""}}> Clear Search</MenuItem>
         {
         myProject?.map((project:projectType)=>{
           return <MenuItem  onClick={()=>{
