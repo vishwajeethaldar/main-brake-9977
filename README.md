@@ -48,3 +48,16 @@ This Project is build by me and four of my team members during the construction 
 <h2>Clients Page</h2> 
 <img src="https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/jpg/Clients.jpg?raw=true" w="100%" />
 
+#
+#
+> # Steps to Try Locally
+#
+> ##  Clone the Project and Follow the steps
+#
+> `>  cd main-brake-9977`
+#
+> `>  cd frontend`
+#
+> `>  npm install`
+# 
+> `>  npm run dev`
