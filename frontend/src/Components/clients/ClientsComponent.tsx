@@ -37,9 +37,9 @@ export const ClientsComponent = () => {
   const [clientId, setClientId] = useState<string>("");
 
   useEffect(() => {
+
     dispatch(getClients({ token: auth.token, query:""}));
-    console.log(clients);
-    
+
   }, []);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +49,6 @@ export const ClientsComponent = () => {
   const onClick = () => {
     let data = { name: client, userId: userId };
     dispatch(addClients({ token: auth.token, data: data }));
-   
   };
 
   const handleDelete: Function = (c: string) => {
