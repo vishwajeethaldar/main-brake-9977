@@ -42,7 +42,7 @@ const DeleteClientModal = ({handleDelete, name}:deleteClientProps) => {
             <Divider />
             <ModalCloseButton />
             <ModalBody>
-                <Text>Are you sure you want to archive {name}?</Text>
+                <Text marginBottom={"20px"}>Are you sure you want to archive {name}?</Text>
                 <Box>
                 <Checkbox>Also archive all projects assigned to this client</Checkbox>
                 </Box>
@@ -52,7 +52,7 @@ const DeleteClientModal = ({handleDelete, name}:deleteClientProps) => {
               <Button variant='ghost' mr={3} onClick={onClose}>
                 Cancel
               </Button>
-              <Button onClick={onClick} background={"#038fce"} color="white">Archive</Button>
+              <Button onClick={onClick} background={"#f44336"} color="white">Archive</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
