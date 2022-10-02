@@ -4,7 +4,7 @@ This project is clone of clockify.me website. clockify.me is a popular website w
 
 This Project is build by me and four of my team members during the construction week in Masai School.
 
-> ### Contributors (Team Mates) for this project
+> ### Contributors (Team Mates) of this project
 #### 1. [Pratik Kharat](https://github.com/pkharat29)
 #### 2. [Priyanshu Tyagi](https://github.com/priyanshu-tyagi)
 #### 3. [Js Sanjay](https://github.com/sanj1997)
@@ -16,21 +16,28 @@ This Project is build by me and four of my team members during the construction 
  ##
 > **Official Website - [Clokify.me](https://effortless-smakager-c491a1.netlify.app/)**
 ---
+<img src="https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/gif/trackerAnimation.gif?raw=true"
+ width="100%" />
+<hr/>
+ <img Src ="https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/gif/trackerAnimation2.gif?raw=true" width="100%" />
 
->  ## Homepage
-![](https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/jpg/Home.jpg?raw=true)
- >  ## Signup Page
-![](https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/jpg/Signup.jpg?raw=true)
-<br/>
-> ## Login Page
-![](https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/jpg/Login.jpg?raw=true)
- 
->  ## TIme Tracker Page
-![](https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/jpg/Time_Tracker.jpg?raw=true)
-   
-> ## Project Page
-![](https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/jpg/Project.jpg?raw=true)
+<hr/>
+<h2>Homepage</h2>
+<img src="https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/jpg/Home.jpg?raw=true" w="100%"/>
+<hr/>
+ <h2>Signup Page</h2>
+<img src ="https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/jpg/Signup.jpg?raw=true" w="100%" />
+<hr/>
 
-> ## Clients Page
-![](https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/jpg/Clients.jpg?raw=true)
+<h2>Login Page</h2>
+<img src="https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/jpg/Login.jpg?raw=true" w="100%" />
+<hr/>
+<h2>TIme Tracker Page</h2>
+<img src="https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/jpg/Time_Tracker.jpg?raw=true" w="100%"  />
+<hr/>
+<h2>Project Page</h2>
+<img src="https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/jpg/Project.jpg?raw=true" w="100%" />
+<hr/>
+<h2>Clients Page</h2> 
+<img src="https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/jpg/Clients.jpg?raw=true" w="100%" />
 
