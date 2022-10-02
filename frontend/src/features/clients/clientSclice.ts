@@ -115,7 +115,7 @@ const clientSlice = createSlice({
         .addCase(addClients.fulfilled, (state, action:PayloadAction<clientType>) => {
             state.loading = false,
             state.error = false,
-            state.clients = [...state.clients, action.payload]
+            state.clients.push(action.payload)
         })
         .addCase(addClients.rejected, (state, action:PayloadAction<any>) => {
             state.error = true,
