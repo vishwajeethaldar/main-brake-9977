@@ -36,7 +36,7 @@ const Team = () => {
           {showsidebar ? <ExpandedAppSidebar /> : <CompactAppSidebar />}
         </Box>
         <Box padding={"40px 10px"} width={showsidebar ? "89%" : "96%"}>
-          <Heading fontSize={"24px"} color="#666666" marginBottom={"40px"}>Team</Heading>
+          <Heading fontSize={"24px"} color="#666666" marginBottom={"40px"} fontWeight="600">Team</Heading>
           <Tabs variant="enclosed-colored">
             <TabList>
               <Tab>Members</Tab>

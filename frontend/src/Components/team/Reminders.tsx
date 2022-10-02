@@ -1,25 +1,43 @@
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text, Wrap, WrapItem } from "@chakra-ui/react";
 import React from "react";
 
 const Reminders = () => {
   return (
     <Box>
-      <Box textAlign={"right"} marginBottom="20px">
-        <Flex>
+      <Flex justifyContent={"right"} marginBottom="20px" gap={"15px"}>
+        <Wrap>
+          <WrapItem>
+          <Flex justifyContent={"right"}>
           <Text>If</Text>
-          <Text>(select team members)</Text>
-          <Text>tracked</Text>
-          <Text>Less</Text>
-          <Text>than</Text>
-          <Text>8</Text>
-          <Text>hours per</Text>
-          <Text>Week</Text>
-          <Text>, send</Text>
-          <Text>Them</Text>
-          <Text>a reminder</Text>
+          <Text marginLeft={"5px"} color={"#03a9f4"}>
+            (select team members)
+          </Text>
+          <Text marginLeft={"5px"}>tracked</Text>
+          <Text marginLeft={"5px"} color={"#03a9f4"}>
+            Less
+          </Text>
+          <Text marginLeft={"5px"}>than</Text>
+          <Text marginLeft={"5px"} color={"#03a9f4"}>
+            8
+          </Text>
+          <Text marginLeft={"5px"}>hours per</Text>
+          <Text marginLeft={"5px"} color={"#03a9f4"}>
+            Week
+          </Text>
+          <Text marginLeft={"5px"}>, send</Text>
+          <Text marginLeft={"5px"} color={"#03a9f4"}>
+            Them
+          </Text>
+          <Text marginLeft={"5px"}>a reminder</Text>
         </Flex>
-        <Button bg="#03A9F4">ADD</Button>
-      </Box>
+          </WrapItem>
+          <WrapItem>
+          <Button bg="#03A9F4">ADD</Button>
+          </WrapItem>
+        </Wrap>
+        
+        
+      </Flex>
       <Box bg="#e4eaee" w="100%" p={4} color="#999999">
         Reminders
       </Box>
