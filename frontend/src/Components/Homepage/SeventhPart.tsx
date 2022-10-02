@@ -1,12 +1,10 @@
-import React from 'react'
-import { UNLIMITED_BUTTON, TICK } from './Homepagecss'
-import { Flex, Stack, Text, Box, Button, Image } from "@chakra-ui/react"
+
+import { Flex,  Text, Box,  Image } from "@chakra-ui/react"
 import { AiOutlineArrowRight } from "react-icons/ai"
 import { TiTick } from "react-icons/ti"
 
 const SeventhPart = () => {
     return (
-     
         <Box py={"60px"} boxShadow= "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px">
 
             <Flex direction={["column", "row","row", "row"]} justify={"center"} width={"100%"}>

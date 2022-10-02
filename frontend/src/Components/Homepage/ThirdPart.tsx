@@ -1,7 +1,5 @@
 import { Box, Image } from "@chakra-ui/react";
-import React, { useState } from "react";
-import "./ThirdPart.css"
-
+import  { useState } from "react";
 
 const ThirdPart = () => {
 

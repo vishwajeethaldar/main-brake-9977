@@ -1,6 +1,6 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom'
-import "./FifthPart.css"
+
 import { Box, Flex, Image, Text, Button } from "@chakra-ui/react"
 
 const Fifthpart = () => {

@@ -8,8 +8,8 @@ import SignUp from "../Pages/SignUp"
 import Team from "../Pages/Team"
 import { TimeTracker } from "../Pages/TimeTracker"
 import Home from "../Pages/Home"
-import Features from "./Features"
-import Downloads from "./Downloads"
+import Features from "../Pages/Features"
+import Downloads from "../Pages/Downloads"
 
 export const MainRoutes = () => {
   return (

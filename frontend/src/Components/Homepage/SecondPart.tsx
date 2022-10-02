@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Text, Image } from '@chakra-ui/react';
-import React from 'react'
+
 import { Link } from "react-router-dom";
-import "./SecondPart.css"
+
 
 const SecondPart = () => {
     return (

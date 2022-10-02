@@ -15,8 +15,6 @@ import "../Components/login/Login.css"
 import { FcGoogle } from "react-icons/fc"
 import LeftPart from "../Components/login/LeftPart";
 import LoginNavbar from "../Components/login/LoginNavbar";
-import load from "../../public/loader.gif"
-// import { login } from "../store/users/users.action";
 import LoginFooter from "../Components/login/LoginFooter";
 import { useAppDispatch, useAppSelector } from "../features/hooks";
 import { login } from "../features/auth/authSlice";
@@ -33,7 +31,7 @@ const Login = () => {
   const [loginCreds, setLoginCreds] = useState<credsProp>({ email: "", password: "" });
   const [changeType, setChangeType] =  useState<boolean>(false)
   const navigate = useNavigate();
-  // const { state } = useLocation();
+
   const dispatch = useAppDispatch();
 
   const hanldeChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -136,13 +134,7 @@ const Login = () => {
       <Box w={["100%", "100%", "32%", "32%"]} className='login-left-part'>
         <LeftPart />
       </Box>
-      {/* { Auth.loading?
-        <Box w="100%" h="100%" background= "linear-gradient(144deg, rgba(0,212,255,1) 0%, rgba(73,9,121,0.4822303921568627) 95%)"  position="absolute" top="0" left="0" zIndex="999">
-        <Box position="absolute" top="47vh" left="47vw" zIndex="9999">
-          <img src={load} alt="loader" />
-      </Box>
-      </Box>:null
-      } */}
+   
 
     {Auth.loading?
       <Flex w="100vw" h={"100vh"} mx={"auto"} align={"center"} justify={"center"} bg={"rgba(245,250,254,.5)"} backgroundBlendMode={"hard-light"} position={"absolute"} top={"0"} left={"0"}>

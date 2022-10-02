@@ -1,6 +1,6 @@
-import React from 'react'
+
 import { Flex, Text } from "@chakra-ui/react"
-import { SECOND_PAGE_H1, SECOND_PAGE_H2 } from './Homepagecss'
+
 
 const FourthPart = () => {
   return (

@@ -1,8 +1,7 @@
-import React from 'react'
-import { SECOND_PAGE_H1, SECOND_PAGE_H2 } from './Homepagecss'
+
 import { Link } from "react-router-dom";
-import "./EightPart.css"
-import { Flex, Stack, Text, Box, Button, Image } from "@chakra-ui/react"
+
+import { Flex,  Text, Box, Button, Image } from "@chakra-ui/react"
 
 const EighthPart = () => {
   return (

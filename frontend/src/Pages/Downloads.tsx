@@ -1,5 +1,5 @@
-import React from 'react'
-import DownloadData from "../Components/DownloadsPage/DownloadData"
+
+
 import NavbarHome from '../Components/Navbar/NavbarHome'
 import { Flex, Stack, Text, Box, Button, Image, Link } from "@chakra-ui/react"
 import EighthPart from '../Components/Homepage/EighthPart'

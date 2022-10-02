@@ -1,4 +1,3 @@
-import React from 'react'
 import NavbarHome from "../Components/Navbar/NavbarHome"
 import SecondPart from '../Components/Homepage/SecondPart'
 import ThirdPart from '../Components/Homepage/ThirdPart'

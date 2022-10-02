@@ -1,8 +1,6 @@
-import React from 'react'
-import "./FeaturesData.css"
 import EighthPart from '../Homepage/EighthPart'
 import Footer from '../Homepage/Footer'
-import { Flex, Stack, Text, Box, Button, Image, Link } from "@chakra-ui/react"
+import { Flex,  Text, Box, Button, Image, Link } from "@chakra-ui/react"
 
 const FeaturesData = () => {
     return (
@@ -11,7 +9,7 @@ const FeaturesData = () => {
           
                 <Text marginTop={"100px"} fontSize={"2.5em"} textAlign={"center"} >Time tracker</Text>
                 <Text fontSize={"18px"} textAlign={"center"} >Start and stop timer as you work, or enter hours manually.</Text>
-                {/* <img className='ttimg' src="https://clockify.me/assets/images/features/features-tracker-screenshot.svg" alt="" /> */}
+              
                 <Image width={"75%"} src='https://clockify.me/assets/images/features/features-tracker-screenshot.svg' />
 
 
@@ -38,11 +36,10 @@ const FeaturesData = () => {
 
          
 
-            {/* TIMESHEET */}
             
                 <Text marginTop={"135px"} fontSize={"2.5em"} textAlign={"center"} className='timetracker'>Time Sheet</Text>
                 <Text marginTop={"10px"} fontSize={"1.17em"} textAlign={"center"}>Log your weekly activities in less than a minute.</Text>
-                {/* <img  className='ttimg' src="https://clockify.me/assets/images/features/features-timesheet-screenshot.svg" alt="" /> */}
+    
                 <Image src='https://clockify.me/assets/images/features/features-timesheet-screenshot.svg' />
 
 
@@ -69,11 +66,11 @@ const FeaturesData = () => {
 
 
 
-            {/* KIOSK */}
+
           
                 <Text marginTop={"135px"} fontSize={"2.5em"} textAlign={"center"}   className='timetracker'>Kiosk</Text>
                 <Text fontSize={"18px"} textAlign={"center"}  className='features_page__text_center'>Clock in with your PIN code from a shared device.</Text>
-                {/* <img className='ttimg' src="https://clockify.me/assets/images/features/features-kiosk-screenshot.png" alt="" /> */}
+                
                 <Image src='https://clockify.me/assets/images/features/features-kiosk-screenshot.png' />
 
 

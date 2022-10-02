@@ -62,12 +62,7 @@ const SignUp = () => {
   };
 
   return (
-    // <div>
-    //   <AppNavbar Open={Open}/>
-    //   <Flex>
-    //     {isOpen?<ExpandedAppSidebar />:<CompactAppSidebar />}
-    //   </Flex>
-    // </div>
+   
     <Box bgColor="#f2f6f8" >
       <SignUpNavbar />
       <Box>
@@ -150,13 +145,7 @@ const SignUp = () => {
       <Flex margin="auto" marginTop="3rem" justifyContent="center" >
         <LoginFooter />
       </Flex>
-      {/* { Auth.loading?
-        <Box w="100%" h="100%" bgColor="rgba(228,234,238,.85)" position="absolute" top="0" left="0" zIndex="999">
-        <Box position="absolute" top="47vh" left="47vw" zIndex="9999">
-          <img src={load} alt="loader" />
-      </Box>
-      </Box>:null
-      } */}
+     
       {Auth.loading?
       <Flex w="100vw" h={"100vh"} mx={"auto"} align={"center"} justify={"center"} bg={"rgba(245,250,254,.5)"} backgroundBlendMode={"hard-light"} position={"absolute"} top={"0"} left={"0"}>
           <Image src={loader}/>

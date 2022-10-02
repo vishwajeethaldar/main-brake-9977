@@ -29,7 +29,7 @@ const LeftPart = () => {
         </Box>
         <Box display="block" marginLeft="2rem" marginTop="3rem" paddingBottom="4rem" >
           <img height="100%" width="100%" src="https://drive.google.com/uc?export=view&id=18K9BUx-KvJQVfb9FlmNDXHIjQ2LWYnPM" alt="new Feature Image" />
-          {/* https://drive.google.com/file/d/18K9BUx-KvJQVfb9FlmNDXHIjQ2LWYnPM/view?usp=sharing */}
+         
         </Box>
     </div>
   )
