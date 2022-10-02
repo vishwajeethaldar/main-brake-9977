@@ -11,8 +11,15 @@ This Project is build by me and four of my team members during the construction 
 #### 4. [Ravishankar](https://github.com/ravipandeydu)
 #### 5. [Vishwajeet Haldar](https://github.com/vishwajeethaldar)
 
+## Tech Stacks
+### Frontend
+> **ReactJs, JavaScript, TypeScript, Chakra-UI, Axios, ReduxToolkit**
+
+### Backend
+> **ExpressJs, NodeJs, MongoDB**
+
 ---
-> **Checkout [Clokify.me  Clone](https://effortless-smakager-c491a1.netlify.app/)** 
+> **Checkout our [Clokify.me  Clone](https://effortless-smakager-c491a1.netlify.app/)** 
  ##
 > **Official Website - [Clokify.me](https://effortless-smakager-c491a1.netlify.app/)**
 ---
