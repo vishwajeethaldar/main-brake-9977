@@ -13,10 +13,10 @@ This Project is build by me and four of my team members during the construction 
 
 ## Tech Stacks
 ### Frontend
-> **ReactJs, JavaScript, TypeScript, Chakra-UI, Axios, ReduxToolkit**
+> **ReactJs,  TypeScript, Chakra-UI, Axios, ReduxToolkit**
 
 ### Backend
-> **ExpressJs, NodeJs, MongoDB**
+> **ExpressJs, NodeJs, MongoDB, JavaScript**
 
 ---
 > **Checkout our [Clokify.me  Clone](https://effortless-smakager-c491a1.netlify.app/)** 
