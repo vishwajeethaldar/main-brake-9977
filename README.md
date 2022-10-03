@@ -18,8 +18,15 @@ This Project is build by me and four of my team members during the construction 
 ### Backend
 > **ExpressJs, NodeJs, MongoDB, JavaScript**
 
+## Features Implemented - 
+* SignUp
+* Login
+* Time Tracker,
+* Creating New Projects
+* Creating New Clients
+
 ---
-> **Checkout our [Clokify.me  Clone](https://effortless-smakager-c491a1.netlify.app/)** 
+> **Checkout our [Clokify.me ](https://effortless-smakager-c491a1.netlify.app/)** Clone
  ##
 > **Official Website - [Clokify.me](https://effortless-smakager-c491a1.netlify.app/)**
 ---
