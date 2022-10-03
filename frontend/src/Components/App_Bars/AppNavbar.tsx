@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../features/hooks';
 import { useEffect } from 'react';
 import { getUser } from '../../features/users/usersSlice';
 // import { logout } from '../../features/auth/authSlice';
+import { Show, Hide } from '@chakra-ui/react'
 import {logout} from "../../features/auth/authSlice"
 import { Navigate, useNavigate } from 'react-router-dom';
 export default function AppNavbar({ Open }: { Open: Function }) {
@@ -17,14 +18,8 @@ export default function AppNavbar({ Open }: { Open: Function }) {
         dispatch(getUser({ token: auth.token, id: userid }))
     }, [])
 
-    const SplitName = user?.name.trim().split(" ")
-    let displayName = ""
-   
-    //   setTimeout(()=>{
-    //     console.log(user)
-    //     console.log(SplitName)
-    //   },3000)
-
+const SplitName = user?.name.trim().split(" ")
+let displayName = ""
  const handlelogout = ()=>{
         dispatch(logout())
   }
@@ -49,18 +44,23 @@ export default function AppNavbar({ Open }: { Open: Function }) {
                 </Box>
             </Flex >
             <Flex alignItems="center">
+            <Show breakpoint='(min-width: 991px)'>
                 <Box pl="1rem"><Text>{user?.name}</Text></Box>
+            </Show>
                 <Box px="1.5rem">
                     <button className="upgrade-btn" >
                         UPGRADE
                     </button>
                 </Box>
+                <Show breakpoint='(min-width: 991px)'>
                 <Box py=".6rem" borderLeft="1px dotted #bdbdbd" px="1.5rem">
                     <img src="https://app.clockify.me/assets/nav-icons/help.svg" alt="help" />
                 </Box>
+                </Show>
                 <Box py=".6rem" borderLeft="1px dotted #bdbdbd" px="1.5rem">
                     <img src="https://app.clockify.me/assets/nav-icons/notification.svg" alt="notification" />
                 </Box>
+                
                 <Box borderLeft="1px dotted #bdbdbd" px="1.5rem">
                     <Menu isLazy>
                         <MenuButton>

@@ -16,16 +16,16 @@ const Home = () => {
     <Box width={"98.5vw"} mx="auto" boxSizing='border-box'>
    
      <Box backgroundColor={"white"} zIndex={"999"} top={"0px"} position={"sticky"}>   <NavbarHome /></Box>
-    <SecondPart/>
+     <SecondPart/>
      <ThirdPart/>
 
-    <FourthPart/>
+     <FourthPart/>
     <FifthPart/>
-    <SixthPart/>
+   <SixthPart/>
     <SeventhPart/>
 
     <EighthPart/> 
-    <Footer/>
+     <Footer/>
 
     </Box>
     

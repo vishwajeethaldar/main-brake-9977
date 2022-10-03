@@ -8,9 +8,7 @@ const SecondPart = () => {
 
         <Box paddingTop={"40px"} >
             
-
-       
-            <Flex direction={"column"} align={"center"} gap={"25px"}>
+            <Flex wrap={"wrap"} direction={"column"} align={"center"} gap={"25px"}>
                 <Text w={["100%","100%","70%","50%"]} fontSize={["2.4em","2em","2em","2.3em" ]} textAlign={["center", "center","center","center"]} mt="20px" px="25px">
                         The most popular free <span style={{ color: "#03A9F4", }}>time tracker</span> for teams
                 </Text>  

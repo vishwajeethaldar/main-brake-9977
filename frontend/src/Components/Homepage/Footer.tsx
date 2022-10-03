@@ -4,7 +4,7 @@ import { Flex, Stack, Text, Box, Button, Image, Link } from "@chakra-ui/react"
 
 const Footer = () => {
     return (
-        <Box maxW={"95vw"} mx="auto">
+        <Box maxW={"100vw"} mx="auto">
             <Box paddingTop={"20px"} border={"1px solid #CCC"}>
                 <Flex px={["20px", "20px", "50px", "50px"]} justify={"center"} direction={["column", "column", "row", "row"]}>
                     <Flex width={["100%", "100%", "40%", "40%"]} direction={"column"}>
@@ -60,15 +60,24 @@ const Footer = () => {
                 </Flex>
 
 
-                <Flex  marginLeft={"30px"} width={"100%"} justify={"left"} py={"30px"} gap={"29px"}>
-                    <Text cursor={"pointer"} _hover={{ color: "#03A9F4" }}  fontSize={"18px"} color={"#7F9CAD"}>© 2022 Clockify </Text>
+                <Flex  wrap={"wrap"}  width={"98%"} justify={"center"} py={"30px"} gap={"20px"} >
+                    
                     <Text cursor={"pointer"} _hover={{ color: "#03A9F4" }}  fontSize={"18px"} color={"#7F9CAD"}>
-                        Sitemap </Text>
-                    <Text cursor={"pointer"} _hover={{ color: "#03A9F4" }}  fontSize={"18px"} color={"#7F9CAD"}>Cookies </Text>
-                    <Text cursor={"pointer"} _hover={{ color: "#03A9F4" }}  fontSize={"18px"} color={"#7F9CAD"}>Terms </Text>
+                        © 2022 Clockify 
+                    </Text>
+                    <Text cursor={"pointer"} _hover={{ color: "#03A9F4" }}  fontSize={"18px"} color={"#7F9CAD"}>
+                        Sitemap 
+                    </Text>
+                    <Text cursor={"pointer"} _hover={{ color: "#03A9F4" }}  fontSize={"18px"} color={"#7F9CAD"}>
+                        Cookies 
+                    </Text>
+                    <Text cursor={"pointer"} _hover={{ color: "#03A9F4" }}  fontSize={"18px"} color={"#7F9CAD"}>
+                        Terms 
+                    </Text>
                     <Text cursor={"pointer"} _hover={{ color: "#03A9F4" }}  fontSize={"18px"} color={"#7F9CAD"}>Privacy </Text>
                     <Text cursor={"pointer"} _hover={{ color: "#03A9F4" }}  fontSize={"18px"} color={"#7F9CAD"}>
-                        Security </Text>
+                        Security 
+                    </Text>
                 </Flex>
             </Box>
         </Box>

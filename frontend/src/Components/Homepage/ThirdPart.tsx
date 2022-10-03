@@ -7,9 +7,8 @@ const ThirdPart = () => {
 
 
   return (
-    <Box width={["90%"]} mx={"auto"}>
+    <Box  width={["90%"]} mx={"auto"}>
       <Image width={["100%"]} src="https://clockify.me/assets/images/time-tracker-screenshot.svg" alt="" />
-
     </Box>
   )
 }

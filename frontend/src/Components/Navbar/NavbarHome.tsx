@@ -6,8 +6,8 @@ import { Show, Hide } from '@chakra-ui/react'
 const NavbarHome = () => {
   const [showSmNav, setShowSmNav] = useState(false)
   return (
-    <Box w={"98.6vw"} boxShadow={"md"}>
-      <Flex align={["flex-start","flex-start","flex-start","center"]} px={"70px"} gap ="25px" py={"10px"} justify={"flex-start"} direction={["column", "column","column","row"]}>
+    <Box w={"99vw"} boxShadow={"md"} mx="auto">
+      <Flex align={["flex-start","flex-start","flex-start","center"]} px={["30px","30px","50px","70px"]} gap ="25px" py={"10px"} justify={"flex-start"} direction={["column", "column","column","row"]}>
         <Flex align={"center"} justify={"space-between"} w={["100%","100%","100%","10%"]}>
         <Link href='/'>
             <Image width={["150px"]} src="https://clockify.me/assets/images/clockify-logo.svg" alt='ImageNAvbar' />
