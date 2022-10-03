@@ -115,6 +115,13 @@ const Login = () => {
                 <AlertDescription>Incorrect UserId or Password</AlertDescription>
               </Alert>
               </Box>:null}
+              {!passlen?<Box w="100%">
+              <Alert status='error'>
+                <AlertIcon />
+                <AlertTitle></AlertTitle>
+                <AlertDescription>Password Length must be 8 Characters Long</AlertDescription>
+              </Alert>
+              </Box>:null}
 
               {Auth.isAuth?<Box w="100%">
               <Alert status='success'>

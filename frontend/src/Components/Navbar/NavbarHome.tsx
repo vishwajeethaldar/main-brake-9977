@@ -6,7 +6,7 @@ import { Show, Hide } from '@chakra-ui/react'
 const NavbarHome = () => {
   const [showSmNav, setShowSmNav] = useState(false)
   return (
-    <Box w={"99vw"} boxShadow={"md"} mx="auto">
+    <Box w={"100%"} boxShadow={"md"} mx="auto">
       <Flex align={["flex-start","flex-start","flex-start","center"]} px={["30px","30px","50px","70px"]} gap ="25px" py={"10px"} justify={"flex-start"} direction={["column", "column","column","row"]}>
         <Flex align={"center"} justify={"space-between"} w={["100%","100%","100%","10%"]}>
         <Link href='/'>

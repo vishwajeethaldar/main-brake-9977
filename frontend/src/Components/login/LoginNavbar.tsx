@@ -1,13 +1,13 @@
-import { Flex, Text } from "@chakra-ui/react"
+import { Flex, Text,Box } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 
 const LoginNavbar = () => {
   return (
-    <Flex justifyContent="space-between" padding="1.5rem">
-        <div>
+    <Flex justifyContent="space-between" padding="1.5rem" direction={["column","column","column","row"]}>
+        <Box>
             <Link to="/"><img src="https://app.clockify.me/assets/logo.svg" alt="logo" /></Link>
-        </div>
-        <Flex>
+        </Box>
+        <Flex justify={"space-between"} py="10px">
             <Text color="gray">
                 Don't have an account?
             </Text>

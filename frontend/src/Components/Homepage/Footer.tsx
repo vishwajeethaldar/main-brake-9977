@@ -5,17 +5,18 @@ import { Flex, Stack, Text, Box, Button, Image, Link } from "@chakra-ui/react"
 const Footer = () => {
     return (
         <Box maxW={"100vw"} mx="auto">
-            <Box paddingTop={"20px"} border={"1px solid #CCC"}>
-                <Flex px={["20px", "20px", "50px", "50px"]} justify={"center"} direction={["column", "column", "row", "row"]}>
-                    <Flex width={["100%", "100%", "40%", "40%"]} direction={"column"}>
-                        <Link href={"/"}><Image width={"30%"} src='https://clockify.me/assets/images/clockify-logo.svg' /></Link>
-                        <Text my={"15px"} width={"60%"}>The world's leading time tracker and timesheet software for teams</Text>
-                        <Link _hover={{ textDecoration: "none" }} href={"/signup"}>         <Text _hover={{ color: "#03A9F4" }} marginBottom={"25px"}>SIGN UP FREE</Text></Link>
-                        <Link _hover={{ textDecoration: "none" }} href={"/login"}>     <Text _hover={{ color: "#03A9F4" }}>LOG IN</Text></Link>
-
+            <Box w={"100%"} paddingTop={"20px"} border={"1px solid #CCC"}>
+                <Flex w={"100%"} px={["20px", "20px", "50px", "8    0px"]} justify={"center"} direction={["column", "column", "row", "row"]}>
+                    <Flex width={["100%", "100%", "30%", "20%"]} direction={"column"}>
+                        <Link href={"/"}><Image width={"50%"} src='https://clockify.me/assets/images/clockify-logo.svg' /></Link>
+                        <Text my={"18px"} width={"100%"}>The world's leading time tracker and timesheet software for teams</Text>
+                        <Flex direction={["row","row", "column","column"]} gap="10px">
+                        <Link _hover={{ textDecoration: "none" }} href={"/signup"}>   <Text  textAlign={"center"} _hover={{color: "#03A9F4", cursor:"pointer"}} py="6px" px="6px" borderRadius={"5px"}  w={"150px"} border={"1px solid #654"}  marginBottom={"10px"}>SIGN UP FREE</Text></Link>
+                        <Link _hover={{ textDecoration: "none" }} href={"/login"}>     <Text textAlign={"center"}  _hover={{color: "#03A9F4", cursor:"pointer"}} py="6px" px="6px" borderRadius={"5px"} w={"150px"}  border={"1px solid #654"} >LOG IN</Text></Link>
+                        </Flex>
                     </Flex>
-                    <Flex justify={"center"} width={["100%", "100%", "60%", "60%"]} direction={["row", "row", "row", "row"]} gap={"10%"}>
-                        <Flex align={"center"} gap={"12px"} direction={"column"}>
+                    <Flex justify={"center"} width={["100%", "100%", "64%", "75%"]} wrap={"wrap"} gap={"15px"}>
+                        <Flex  w={["45%","45%","20%","20%"]} align={"center"} gap={"12px"} direction={"column"} >
                             <Text fontWeight={"bold"}>Product</Text>
                             <Text>Features</Text>
                             <Text>Download</Text>
@@ -25,7 +26,7 @@ const Footer = () => {
                         </Flex>
 
 
-                        <Flex gap={"12px"} direction={"column"}>
+                        <Flex align={"center"} w={["45%","45%","20%","20%"]} gap={"12px"} direction={"column"}>
                             <Text fontWeight={"bold"}>Solution</Text>
                             <Text>Time Keeping</Text>
                             <Text>Time Management</Text>
@@ -35,7 +36,7 @@ const Footer = () => {
                         </Flex>
 
 
-                        <Flex gap={"12px"} direction={"column"}>
+                        <Flex  align={"center"} w={["45%","45%","20%","20%"]} gap={"12px"} direction={"column"}>
                             <Text fontWeight={"bold"}>Company</Text>
                             <Text>About Us</Text>
                             <Text>Customers</Text>
@@ -45,7 +46,7 @@ const Footer = () => {
                         </Flex>
 
 
-                        <Flex gap={"12px"} direction={"column"}>
+                        <Flex align={"center"} w={["45%","45%","20%","20%"]} gap={"12px"} direction={"column"}>
                             <Text fontWeight={"bold"}>Support</Text>
                             <Text>Help</Text>
                             <Text>Tutorials</Text>

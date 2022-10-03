@@ -13,7 +13,7 @@ import Footer from '../Components/Homepage/Footer'
 const Home = () => {
   return (
 
-    <Box width={"98.5vw"} mx="auto" boxSizing='border-box'>
+    <Box width={"100vw"} mx="auto" boxSizing='border-box'>
    
      <Box backgroundColor={"white"} zIndex={"999"} top={"0px"} position={"sticky"}>   <NavbarHome /></Box>
      <SecondPart/>

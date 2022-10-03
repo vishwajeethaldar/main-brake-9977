@@ -53,7 +53,7 @@ const SignUp = () => {
       setPasslen(true)
       dispatch(addUser(signupcreds));
       setTimeout(()=>{
-        return (Auth.loading===false&&Auth.successMsg)?navigate("/login"): navigate("/signup")
+        return (!Auth.error)?navigate("/login"): navigate("/signup")
       }, 3000)
     }else{
       setPasslen(false)
@@ -130,12 +130,19 @@ const SignUp = () => {
                 <AlertDescription>{Auth.errmsg}</AlertDescription>
               </Alert>
               </Box>:null}
-            
-              {Auth.successMsg?<Box w="100%">
-              <Alert status='success'>
+              {Auth.error?<Box w="100%">
+              <Alert status='error'>
                 <AlertIcon />
-                <AlertTitle>Success</AlertTitle>
-                <AlertDescription>Registration  completed successfully</AlertDescription>
+                <AlertTitle>Registration Failed</AlertTitle>
+                <AlertDescription>{Auth.errmsg}</AlertDescription>
+              </Alert>
+              </Box>:null}
+            
+              {!passlen?<Box w="100%">
+              <Alert status='error'>
+                <AlertIcon />
+                <AlertTitle></AlertTitle>
+                <AlertDescription>Password Length must be 8 Characters Long</AlertDescription>
               </Alert>
               </Box>:null}
 
