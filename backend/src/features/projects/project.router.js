@@ -8,6 +8,8 @@ const app = express.Router();
 app.get("/", authMiddleware, async(req, res)=>{
     let id =  req.reqId
     let {q} = req.query
+    console.log(req.query)
+    
     try{
         if(q){
             let projectQ =  await Projects.find({userId:id, name: { $regex: q, $options: "i" } })

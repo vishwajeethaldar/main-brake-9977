@@ -1,6 +1,6 @@
-import React from 'react'
-import { Flex, Stack, Text, Box, Button, Image, Link } from "@chakra-ui/react"
-
+import React from 'react';
+import { Flex, Stack, Text, Box, Button, Image} from "@chakra-ui/react";
+import {Link} from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -8,11 +8,11 @@ const Footer = () => {
             <Box w={"100%"} paddingTop={"20px"} border={"1px solid #CCC"}>
                 <Flex w={"100%"} px={["20px", "20px", "50px", "8    0px"]} justify={"center"} direction={["column", "column", "row", "row"]}>
                     <Flex width={["100%", "100%", "30%", "20%"]} direction={"column"}>
-                        <Link href={"/"}><Image width={"50%"} src='https://clockify.me/assets/images/clockify-logo.svg' /></Link>
+                        <Link to={"/"}><Image width={"50%"} src='https://clockify.me/assets/images/clockify-logo.svg' /></Link>
                         <Text my={"18px"} width={"100%"}>The world's leading time tracker and timesheet software for teams</Text>
                         <Flex direction={["row","row", "column","column"]} gap="10px">
-                        <Link _hover={{ textDecoration: "none" }} href={"/signup"}>   <Text  textAlign={"center"} _hover={{color: "#03A9F4", cursor:"pointer"}} py="6px" px="6px" borderRadius={"5px"}  w={"150px"} border={"1px solid #654"}  marginBottom={"10px"}>SIGN UP FREE</Text></Link>
-                        <Link _hover={{ textDecoration: "none" }} href={"/login"}>     <Text textAlign={"center"}  _hover={{color: "#03A9F4", cursor:"pointer"}} py="6px" px="6px" borderRadius={"5px"} w={"150px"}  border={"1px solid #654"} >LOG IN</Text></Link>
+                        <Link  to={"/signup"}>   <Text  textAlign={"center"} _hover={{color: "#03A9F4", cursor:"pointer"}} py="6px" px="6px" borderRadius={"5px"}  w={"150px"} border={"1px solid #654"}  marginBottom={"10px"}>SIGN UP FREE</Text></Link>
+                        <Link  to={"/login"}>     <Text textAlign={"center"}  _hover={{color: "#03A9F4", cursor:"pointer"}} py="6px" px="6px" borderRadius={"5px"} w={"150px"}  border={"1px solid #654"} >LOG IN</Text></Link>
                         </Flex>
                     </Flex>
                     <Flex justify={"center"} width={["100%", "100%", "64%", "75%"]} wrap={"wrap"} gap={"15px"}>
@@ -24,8 +24,6 @@ const Footer = () => {
                             <Text>Upgrade</Text>
                             <Text>API</Text>
                         </Flex>
-
-
                         <Flex align={"center"} w={["45%","45%","20%","20%"]} gap={"12px"} direction={"column"}>
                             <Text fontWeight={"bold"}>Solution</Text>
                             <Text>Time Keeping</Text>
@@ -54,9 +52,6 @@ const Footer = () => {
                             <Text>Blog</Text>
                             <Text>Contact</Text>
                         </Flex>
-
-
-
                     </Flex>
                 </Flex>
 
