@@ -28,7 +28,7 @@ This Project is build by me and four of my team members during the construction 
 ---
 > **Checkout our [Clokify.me ](https://effortless-smakager-c491a1.netlify.app/)** Clone
  ##
-> **Official Website - [Clokify.me](https://effortless-smakager-c491a1.netlify.app/)**
+> **Official Website - [Clokify.me](https://www.clockify.me)**
 ---
 <img src="https://github.com/vishwajeethaldar/vishwajeethaldar/blob/main/ProjectImages/Clokify_Clone/gif/trackerAnimation.gif?raw=true"
  width="100%" />
